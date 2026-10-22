@@ -70,6 +70,59 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'Polycat อาวรณ์',
     'Anatomy Rabbit ธรรมดาแสนพิเศษ',
   ],
+  tpop: [
+    'BUS แค่ไหนแค่นั้น',
+    'BUS แค่น้องชาย',
+    'BUS ภาพเรา',
+    '4EVE วัดปะหล่ะ',
+    '4EVE หยดน้ำตา',
+    '4EVE ข้อยกเว้น',
+    '4EVE กักกั๊ก',
+    'PROXIE คนไม่คุย',
+    'PROXIE ที่ไม่รัก',
+    'PROXIE สถานะเบลอ',
+    'PROXIE ตบปาก',
+    'SAUCE BKK ขี้แง',
+    'PiXXiE ติดฝน',
+    'PiXXiE เกินต้าน',
+    'PiXXiE มูเตลู',
+    'PiXXiE ลองเลิกกันดีไหม',
+    'ATLAS เค้ามาก่อน',
+    'ATLAS เป๊ะ',
+    'PERSES น่ารักน้อยลงหน่อย',
+    'LYKN ฉ่ำ',
+    'LYKN แอบรักไม่ทำให้ใครตาย',
+    'DICE โคตรชอบเลยอ่ะ',
+    'Billkin ชอบตัวเองตอนอยู่กับเธอ',
+    'Billkin กีดกัน',
+    'Billkin รู้งี้เป็นแฟนกันตั้งนานแล้ว',
+    'PP Krit ลังเล',
+    'PP Krit เส้นเรื่องเดิม',
+    'PP Krit ห่มผ้า',
+    'Jeff Satur ซ่อนไม่หา',
+    'Jeff Satur ลืมไปแล้วว่าลืมยังไง',
+    'Jeff Satur เหมือนวิวาห์',
+    'NONT TANONT โต๊ะริม',
+    'NONT TANONT รักแรก',
+    'NONT TANONT พิง',
+    'BOWKYLION วาดไว้',
+    'BOWKYLION บานปลาย',
+    'INK WARUNTORN สายตาหลอกกันไม่ได้',
+    'INK WARUNTORN ลบไม่ได้ช่วยให้ลืม',
+    'bamm ฉันจะฉาปเธอ',
+    'bamm ปล่อยจอย',
+    'BOW MAYLADA แฟนผมน่ารัก',
+    'GEMINI เพลงรัก',
+    'GEMINI เอาไรว่ามา',
+    'FOURTH อยู่เฉยๆก็น่ารัก',
+    'FOURTH เทคะแนน',
+    'NANON แค่เพื่อนมั้ง',
+    'TIMETHAI เลิกกับพี่ได้ดีทุกคน',
+    'TRINITY ชีวิตดีเพราะมีเธอ',
+    'ALLY ผ้าเช็ดหน้า',
+    'BNK48 คุกกี้เสี่ยงทาย',
+    'ALALA ร้องไห้ดังๆ',
+  ],
   inter: [
     'Taylor Swift',
     'The Weeknd',
@@ -733,6 +786,78 @@ export const FALLBACK_TRACKS: TrackItem[] = [
     category: 'thai',
   },
   {
+    id: 'fb-tpop-1',
+    title: 'แค่ไหนแค่นั้น (NO MATTER WHAT)',
+    artist: 'BUS',
+    cover: 'https://picsum.photos/seed/tp1/400/400',
+    preview: '/api/fallback-audio/fb-tpop-1.wav',
+    aliases: ['แค่ไหนแค่นั้น', 'no matter what'],
+    category: 'tpop',
+  },
+  {
+    id: 'fb-tpop-2',
+    title: 'วัดปะหล่ะ? (TEST ME)',
+    artist: '4EVE',
+    cover: 'https://picsum.photos/seed/tp2/400/400',
+    preview: '/api/fallback-audio/fb-tpop-2.wav',
+    aliases: ['วัดปะหล่ะ', 'test me'],
+    category: 'tpop',
+  },
+  {
+    id: 'fb-tpop-3',
+    title: 'คนไม่คุย (Silent Mode)',
+    artist: 'PROXIE',
+    cover: 'https://picsum.photos/seed/tp3/400/400',
+    preview: '/api/fallback-audio/fb-tpop-3.wav',
+    aliases: ['คนไม่คุย', 'silent mode'],
+    category: 'tpop',
+  },
+  {
+    id: 'fb-tpop-4',
+    title: 'ติดฝน (rain)',
+    artist: 'PiXXiE',
+    cover: 'https://picsum.photos/seed/tp4/400/400',
+    preview: '/api/fallback-audio/fb-tpop-4.wav',
+    aliases: ['ติดฝน', 'rain'],
+    category: 'tpop',
+  },
+  {
+    id: 'fb-tpop-5',
+    title: 'ฉ่ำ (CHARM)',
+    artist: 'LYKN',
+    cover: 'https://picsum.photos/seed/tp5/400/400',
+    preview: '/api/fallback-audio/fb-tpop-5.wav',
+    aliases: ['ฉ่ำ', 'charm'],
+    category: 'tpop',
+  },
+  {
+    id: 'fb-tpop-6',
+    title: 'ชอบตัวเองตอนอยู่กับเธอ',
+    artist: 'Billkin',
+    cover: 'https://picsum.photos/seed/tp6/400/400',
+    preview: '/api/fallback-audio/fb-tpop-6.wav',
+    aliases: ['ชอบตัวเองตอนอยู่กับเธอ'],
+    category: 'tpop',
+  },
+  {
+    id: 'fb-tpop-7',
+    title: 'ลังเล',
+    artist: 'PP KRIT',
+    cover: 'https://picsum.photos/seed/tp7/400/400',
+    preview: '/api/fallback-audio/fb-tpop-7.wav',
+    aliases: ['ลังเล'],
+    category: 'tpop',
+  },
+  {
+    id: 'fb-tpop-8',
+    title: 'เค้ามาก่อน (Lovefool)',
+    artist: 'ATLAS',
+    cover: 'https://picsum.photos/seed/tp8/400/400',
+    preview: '/api/fallback-audio/fb-tpop-8.wav',
+    aliases: ['เค้ามาก่อน', 'lovefool'],
+    category: 'tpop',
+  },
+  {
     id: 'fb-inter-1',
     title: 'Blinding Lights',
     artist: 'The Weeknd',
@@ -879,8 +1004,8 @@ export function isRelevantTrackForQuery(
     return false;
   }
 
-  if (category === 'thai') {
-    // Strictly require Thai script in the song title so foreign / 88rising / beat tracks never enter Thai category
+  if (category === 'thai' || category === 'tpop') {
+    // Strictly require Thai script in the song title so foreign / 88rising / beat tracks never enter Thai or T-POP categories
     return THAI_SCRIPT_REGEX.test(rawTitle);
   }
 
@@ -906,7 +1031,9 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
 
       const cleanTitle = cleanSongTitleForDisplay(item.title_short || item.title);
       if (!cleanTitle) continue;
-      if (category === 'thai' && !THAI_SCRIPT_REGEX.test(cleanTitle)) continue;
+      if ((category === 'thai' || category === 'tpop') && !THAI_SCRIPT_REGEX.test(cleanTitle)) {
+        continue;
+      }
 
       const aliases = new Set<string>([cleanTitle, item.title]);
       if (item.title_short) aliases.add(item.title_short);
@@ -985,6 +1112,7 @@ export async function getCategoryPool(
   if (category === 'mixed') {
     const subCats: Array<Exclude<Category, 'mixed' | 'tts'>> = [
       'thai',
+      'tpop',
       'inter',
       'kpop',
       'retro',

@@ -36,7 +36,7 @@ export class MatchmakingQueue {
     this.maxPlayers = options?.maxPlayers ?? 8;
     this.countdownMs = options?.countdownMs ?? 15000;
 
-    const categories: Category[] = ['thai', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
+    const categories: Category[] = ['thai', 'tpop', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
     for (const c of categories) {
       this.buckets.set(c, {
         players: new Map(),
