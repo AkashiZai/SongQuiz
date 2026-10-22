@@ -218,5 +218,16 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
     await store.deletePlayerRoomCode('player-1');
     assert.equal(await store.getPlayerRoomCode('player-1'), undefined);
   });
+
+  it('picks tracks with distinct artists per game so the same singer does not repeat', async () => {
+    const { pickTracksForRoom, FALLBACK_TRACKS } = await import('../src/server/deezer.js');
+    const store = new InMemoryStateStore();
+    await store.setCachedTracks('thai', FALLBACK_TRACKS.filter((t) => t.category === 'thai'), 60000);
+
+    const { selected } = await pickTracksForRoom('thai', 6, new Set(), store);
+    const uniqueArtists = new Set(selected.map((t) => t.artist.toLowerCase()));
+    assert.equal(uniqueArtists.size, selected.length);
+  });
 });
+
 

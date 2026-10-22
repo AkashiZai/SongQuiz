@@ -2,15 +2,60 @@ import { Category, TrackItem } from '../shared/types.js';
 import { cleanSongTitleForDisplay, normalizeSongText } from './scoring.js';
 import { StateStore } from './store.js';
 
-const CACHE_TTL_MS = 12 * 60 * 1000; // 12 minutes (Deezer preview URLs are signed with expiration)
+const CACHE_TTL_MS = 4 * 60 * 1000; // 4 minutes so artist rotation stays fresh across games
 
 const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed'>, string[]> = {
   thai: [
+    'Yented',
+    'SAUCE BKK ขี้แง',
+    'NONT TANONT',
+    'PUN',
+    'Only Monday',
+    'SERIOUS BACON',
+    'No One Else เธอ',
+    'Safeplanet',
+    'Mirrr',
+    'Dept เพลง',
+    'Patrickananda',
+    'MEYOU วันนี้ปีที่แล้ว',
+    'LANDOKMAI',
+    'Purpeech',
+    'SLAPKISS',
+    'SARAN ลืมแทบไม่ไหว',
+    'ZENTYARB',
+    'PONCHET พี่ชอบหนูที่สุดเลย',
+    'Tattoo Colour',
+    'Scrubb',
+    'Cocktail ดึงดัน',
+    'Lipta',
+    'PiXXiE',
+    'PROXIE',
+    'BUS Because of you i shine',
+    'URBOYTJ',
+    'MILLI พักก่อน',
+    'YOUNGOHM',
+    'Wanyai เจ็บจนพอ',
+    'Zom Marie',
+    'Whal & Dolph',
+    'TELEx TELEXs',
+    'Violette Wautier',
+    'Palmy',
+    'Slot Machine เคลิ้ม',
+    'Getsunova',
+    'Klear คำยินดี',
+    '25hours ไม่เคย',
+    'Labanoon',
+    'STAMP มันคงเป็นความรัก',
+    'THE TOYS ลาลาลอย',
+    'GAVIN:D',
+    'F.HERO',
+    'PP Krit ลังเล',
+    'JOEY PHUWASIT นะหน้าทอง',
+    'LOMOSONIC ขอ',
     'Three Man Down',
     'Tilly Birds',
     'Billkin',
     'BOWKYLION',
-    'NONT TANONT',
     'Jeff Satur',
     '4EVE',
     'POTATO',
@@ -32,6 +77,21 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed'>, string[]> = {
     'Ed Sheeran',
     'Post Malone',
     'Coldplay',
+    'Olivia Rodrigo',
+    'Charlie Puth',
+    'Shawn Mendes',
+    'Justin Bieber',
+    'Harry Styles',
+    'SZA',
+    'Doja Cat',
+    'Imagine Dragons',
+    'OneRepublic',
+    'The Chainsmokers',
+    'Kendrick Lamar',
+    'Hozier',
+    'Benson Boone',
+    'Chappell Roan',
+    'Lana Del Rey',
   ],
   kpop: [
     'BLACKPINK',
@@ -44,6 +104,21 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed'>, string[]> = {
     'SEVENTEEN',
     'Stray Kids',
     'ROSE APT',
+    'BABYMONSTER',
+    'ILLIT',
+    'ITZY',
+    'Red Velvet',
+    '(G)I-DLE',
+    'EXO',
+    'NCT DREAM',
+    'ENHYPEN',
+    'TOMORROW X TOGETHER',
+    'KISS OF LIFE',
+    'TREASURE',
+    'DAY6',
+    'IU',
+    'Jungkook',
+    'Lisa',
   ],
   retro: [
     'Linkin Park',
@@ -56,6 +131,20 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed'>, string[]> = {
     'Eminem',
     'Rihanna',
     'Green Day',
+    'Black Eyed Peas',
+    'Beyonce',
+    'Usher',
+    'Nelly',
+    'Gwen Stefani',
+    'Kelly Clarkson',
+    'Paramore',
+    'My Chemical Romance',
+    'Fall Out Boy',
+    'Simple Plan',
+    'Westlife',
+    'Blue',
+    'Shakira',
+    'Akon',
   ],
 };
 
@@ -113,6 +202,24 @@ export const FALLBACK_TRACKS: TrackItem[] = [
     cover: 'https://picsum.photos/seed/th6/400/400',
     preview: '/api/fallback-audio/fb-thai-6.wav',
     aliases: ['วาดไว้', 'recall'],
+    category: 'thai',
+  },
+  {
+    id: 'fb-thai-7',
+    title: 'ที่รักใจเย็น',
+    artist: 'Yented',
+    cover: 'https://picsum.photos/seed/th7/400/400',
+    preview: '/api/fallback-audio/fb-thai-7.wav',
+    aliases: ['ที่รักใจเย็น', 'her'],
+    category: 'thai',
+  },
+  {
+    id: 'fb-thai-8',
+    title: 'DAY ONE',
+    artist: 'PUN',
+    cover: 'https://picsum.photos/seed/th8/400/400',
+    preview: '/api/fallback-audio/fb-thai-8.wav',
+    aliases: ['day one'],
     category: 'thai',
   },
   {
@@ -243,26 +350,54 @@ interface DeezerTrackRaw {
   album?: { cover_big?: string; cover_medium?: string };
 }
 
+const THAI_SCRIPT_REGEX = /[\u0E00-\u0E7F]/;
+
+function isRelevantTrackForQuery(
+  item: DeezerTrackRaw,
+  query: string,
+  category: Category
+): boolean {
+  const artistName = (item.artist?.name || '').toLowerCase();
+  const rawTitle = (item.title || '').toLowerCase();
+  const qLower = query.toLowerCase();
+
+  // Extract ASCII words from query to match artist name
+  const asciiQueryPart = qLower.replace(/[\u0E00-\u0E7F]/g, '').trim();
+  const artistMatchesQuery =
+    asciiQueryPart.length >= 2 &&
+    (artistName.includes(asciiQueryPart) || asciiQueryPart.includes(artistName));
+
+  if (category === 'thai') {
+    const hasThaiScript =
+      THAI_SCRIPT_REGEX.test(rawTitle) || THAI_SCRIPT_REGEX.test(artistName);
+    return artistMatchesQuery || hasThaiScript;
+  }
+
+  return artistMatchesQuery || rawTitle.includes(qLower);
+}
+
 async function fetchDeezerQuery(query: string, category: Category): Promise<TrackItem[]> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 4500);
   try {
-    const url = `https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=12`;
+    const url = `https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=10`;
     const res = await fetch(url, { signal: controller.signal });
     if (!res.ok) return [];
     const json = (await res.json()) as { data?: DeezerTrackRaw[] };
     if (!Array.isArray(json.data)) return [];
 
-    const results: TrackItem[] = [];
+    const matched: TrackItem[] = [];
     for (const item of json.data) {
       if (!item.preview || typeof item.preview !== 'string' || !item.title) continue;
+      if (!isRelevantTrackForQuery(item, query, category)) continue;
+
       const cleanTitle = cleanSongTitleForDisplay(item.title_short || item.title);
       if (!cleanTitle) continue;
 
       const aliases = new Set<string>([cleanTitle, item.title]);
       if (item.title_short) aliases.add(item.title_short);
 
-      results.push({
+      matched.push({
         id: String(item.id),
         title: cleanTitle,
         artist: item.artist?.name || 'Unknown Artist',
@@ -275,7 +410,9 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
         category,
       });
     }
-    return results;
+
+    // Cap to at most 2 random tracks per query so no single artist floods the pool
+    return shuffleArray(matched).slice(0, 2);
   } catch {
     return [];
   } finally {
@@ -288,7 +425,7 @@ export async function getCategoryPool(
   store: StateStore
 ): Promise<TrackItem[]> {
   const cached = await store.getCachedTracks(category);
-  if (cached && cached.length >= 15) {
+  if (cached && cached.length >= 20) {
     return cached;
   }
 
@@ -296,13 +433,14 @@ export async function getCategoryPool(
   if (category === 'mixed') {
     const subCats: Array<Exclude<Category, 'mixed'>> = ['thai', 'inter', 'kpop', 'retro'];
     for (const c of subCats) {
-      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 3);
+      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 6);
       for (const q of sample) {
         queries.push({ q, cat: c });
       }
     }
   } else {
-    const list = shuffleArray(CATEGORY_QUERIES[category]).slice(0, 7);
+    // Sample 22 different artists per category fetch for wide artist rotation
+    const list = shuffleArray(CATEGORY_QUERIES[category]).slice(0, 22);
     queries = list.map((q) => ({ q, cat: category }));
   }
 
@@ -321,8 +459,8 @@ export async function getCategoryPool(
     }
   }
 
-  // Merge fallback tracks if Deezer returned fewer than 18 songs
-  if (deduped.size < 18) {
+  // Merge fallback tracks if Deezer returned fewer than 20 songs
+  if (deduped.size < 20) {
     const relevantFallbacks =
       category === 'mixed'
         ? FALLBACK_TRACKS
@@ -343,6 +481,10 @@ export async function getCategoryPool(
   return finalPool;
 }
 
+/**
+ * Picks `count` tracks for a room while enforcing maximum artist diversity
+ * (picks 1 song per distinct artist first before ever repeating an artist).
+ */
 export async function pickTracksForRoom(
   category: Category,
   count: number,
@@ -352,48 +494,87 @@ export async function pickTracksForRoom(
   const pool = await getCategoryPool(category, store);
   const unused = pool.filter((t) => !usedTrackIds.has(t.id));
   const source = unused.length >= count ? unused : pool;
-  const selected = shuffleArray(source).slice(0, count);
+
+  // Group available songs by normalized artist name
+  const byArtist = new Map<string, TrackItem[]>();
+  for (const track of shuffleArray(source)) {
+    const artistKey = track.artist.toLowerCase().trim();
+    const list = byArtist.get(artistKey) ?? [];
+    list.push(track);
+    byArtist.set(artistKey, list);
+  }
+
+  // Round-robin selection across shuffled artists: guarantees 1 song per artist first!
+  const artistBuckets = shuffleArray(Array.from(byArtist.values()));
+  const selected: TrackItem[] = [];
+  let pass = 0;
+
+  while (selected.length < count) {
+    let addedInPass = false;
+    for (const bucket of artistBuckets) {
+      if (pass < bucket.length) {
+        selected.push(bucket[pass]);
+        addedInPass = true;
+        if (selected.length >= count) break;
+      }
+    }
+    if (!addedInPass) break;
+    pass += 1;
+  }
+
   for (const t of selected) {
     usedTrackIds.add(t.id);
   }
-  return { selected, fullPool: pool };
+
+  return { selected: shuffleArray(selected), fullPool: pool };
 }
 
 export function buildChoicesForTrack(target: TrackItem, pool: TrackItem[]): string[] {
   const targetNorm = normalizeSongText(target.title);
-  const sameCategoryOrArtist = pool.filter(
+  const targetArtistKey = target.artist.toLowerCase().trim();
+
+  const sameCatDifferentArtist = pool.filter(
     (t) =>
       t.id !== target.id &&
       normalizeSongText(t.title) !== targetNorm &&
-      (t.artist === target.artist || t.category === target.category)
+      t.category === target.category &&
+      t.artist.toLowerCase().trim() !== targetArtistKey
   );
-  const otherTracks = pool.filter(
+  const otherPool = pool.filter(
     (t) =>
       t.id !== target.id &&
       normalizeSongText(t.title) !== targetNorm &&
-      !sameCategoryOrArtist.includes(t)
+      !sameCatDifferentArtist.includes(t)
   );
 
-  const candidates = [...shuffleArray(sameCategoryOrArtist), ...shuffleArray(otherTracks)];
+  const candidates = [
+    ...shuffleArray(sameCatDifferentArtist),
+    ...shuffleArray(otherPool),
+  ];
+
   const distractors: string[] = [];
   const usedNorms = new Set<string>([targetNorm]);
+  const usedArtists = new Set<string>([targetArtistKey]);
 
+  // First pass: prefer distractors with distinct artists so all 4 choices feature different artists
   for (const c of candidates) {
     const n = normalizeSongText(c.title);
-    if (!usedNorms.has(n)) {
+    const aKey = c.artist.toLowerCase().trim();
+    if (!usedNorms.has(n) && !usedArtists.has(aKey)) {
       usedNorms.add(n);
+      usedArtists.add(aKey);
       distractors.push(`${c.title} — ${c.artist}`);
       if (distractors.length === 3) break;
     }
   }
 
-  // Fallback distractors if pool is somehow tiny
-  for (const fb of FALLBACK_TRACKS) {
+  // Fallback pass if pool has fewer than 4 distinct artists
+  for (const c of [...candidates, ...FALLBACK_TRACKS]) {
     if (distractors.length >= 3) break;
-    const n = normalizeSongText(fb.title);
+    const n = normalizeSongText(c.title);
     if (!usedNorms.has(n)) {
       usedNorms.add(n);
-      distractors.push(`${fb.title} — ${fb.artist}`);
+      distractors.push(`${c.title} — ${c.artist}`);
     }
   }
 
@@ -411,7 +592,7 @@ export function shuffleArray<T>(arr: readonly T[]): T[] {
 }
 
 /**
- * Generates a pleasant 12-second melodic WAV buffer so fallback tracks work offline without external audio dependencies.
+ * Generates a pleasant 15-second melodic WAV buffer so fallback tracks work offline without external audio dependencies.
  */
 export function generateFallbackWav(seedStr: string): Buffer {
   const sampleRate = 22050;
