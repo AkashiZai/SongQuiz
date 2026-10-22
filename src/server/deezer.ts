@@ -504,6 +504,95 @@ const TTS_SONG_ENTRIES: TtsSongEntry[] = [
 ];
 
 const ttsAudioCache = new Map<string, Buffer>();
+const ttsTrackMetaMap = new Map<string, { title: string; artist: string; fallbackPrompt?: string }>();
+
+for (const e of TTS_SONG_ENTRIES) {
+  ttsTrackMetaMap.set(e.id, {
+    title: e.title,
+    artist: e.artist,
+    fallbackPrompt: e.ttsPrompt,
+  });
+}
+
+async function fetchRealLyricsSnippetFromLrclib(
+  title: string,
+  artist: string
+): Promise<string | null> {
+  const thaiTitleOnly = title.replace(/\s*\([^)]*\)/g, '').replace(/\s*\[[^\]]*\]/g, '').trim();
+  const queries = [`${thaiTitleOnly} ${artist}`, thaiTitleOnly];
+
+  for (const q of queries) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3500);
+      try {
+        const res = await fetch(
+          `https://lrclib.net/api/search?q=${encodeURIComponent(q)}`,
+          {
+            headers: {
+              'User-Agent': 'SongQuizParty/1.0 (https://github.com/AkashiZai/SongQuiz)',
+            },
+            signal: controller.signal,
+          }
+        );
+        if (res.status === 503 || res.status === 429) {
+          await new Promise((r) => setTimeout(r, 550));
+          continue;
+        }
+        if (!res.ok) break;
+        const list = (await res.json()) as Array<{ plainLyrics?: string; syncedLyrics?: string }>;
+        if (!Array.isArray(list) || list.length === 0) break;
+
+        const match = list.find(
+          (item) =>
+            typeof item.plainLyrics === 'string' &&
+            /[\u0E00-\u0E7F]/.test(item.plainLyrics)
+        );
+        if (!match?.plainLyrics) break;
+
+        const lines = match.plainLyrics
+          .split('\n')
+          .map((l) => l.replace(/\[[^\]]*\]/g, '').trim())
+          .filter(
+            (l) =>
+              l.length >= 6 &&
+              /[\u0E00-\u0E7F]/.test(l) &&
+              !/^(เพลงประกอบ|ศิลปิน|คำร้อง|ทำนอง|เรียบเรียง)/i.test(l)
+          );
+
+        if (lines.length >= 4) {
+          // Pick 4 consecutive lines from the chorus/hook section (~30% into the song)
+          const startIdx = Math.min(
+            lines.length - 4,
+            Math.max(1, Math.floor(lines.length * 0.3))
+          );
+          return lines.slice(startIdx, startIdx + 4).join(' ... ');
+        }
+      } catch {
+        // Ignore and fallback
+      } finally {
+        clearTimeout(timeout);
+      }
+    }
+  }
+  return null;
+}
+
+async function fetchGoogleTtsChunk(text: string): Promise<Buffer | null> {
+  const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=th&client=tw-ob&q=${encodeURIComponent(
+    text.slice(0, 190)
+  )}`;
+  const res = await fetch(url, {
+    headers: {
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    },
+  });
+  if (!res.ok) return null;
+  const arr = await res.arrayBuffer();
+  const buf = Buffer.from(arr);
+  return buf.byteLength >= 500 ? buf : null;
+}
 
 export async function getTtsAudioBuffer(trackId: string): Promise<{ buffer: Buffer; mime: string }> {
   const cached = ttsAudioCache.get(trackId);
@@ -511,30 +600,23 @@ export async function getTtsAudioBuffer(trackId: string): Promise<{ buffer: Buff
     return { buffer: cached, mime: 'audio/mpeg' };
   }
 
-  const entry = TTS_SONG_ENTRIES.find((e) => e.id === trackId);
-  if (!entry) {
+  const meta = ttsTrackMetaMap.get(trackId);
+  if (!meta) {
     return { buffer: generateFallbackWav(trackId), mime: 'audio/wav' };
   }
 
-  // Repeat the spoken prompt twice with pauses so Siri/Google voice plays for ~15 seconds
-  const fullSpeech = `${entry.ttsPrompt} ... ฟังอีกครั้งนะคะ ... ${entry.ttsPrompt}`;
-  const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=th&client=tw-ob&q=${encodeURIComponent(
-    fullSpeech.slice(0, 195)
-  )}`;
+  const liveLyricsSnippet = await fetchRealLyricsSnippetFromLrclib(meta.title, meta.artist);
+  const spokenText = liveLyricsSnippet || meta.fallbackPrompt || meta.title;
 
   try {
-    const res = await fetch(url, {
-      headers: {
-        'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-      },
-    });
-    if (!res.ok) throw new Error(`TTS HTTP ${res.status}`);
-    const arr = await res.arrayBuffer();
-    const buf = Buffer.from(arr);
-    if (buf.byteLength < 500) throw new Error('TTS buffer too small');
-    ttsAudioCache.set(trackId, buf);
-    return { buffer: buf, mime: 'audio/mpeg' };
+    const chunk1 = await fetchGoogleTtsChunk(spokenText);
+    if (!chunk1) throw new Error('TTS chunk1 failed');
+
+    const chunk2 = await fetchGoogleTtsChunk(`ฟังอีกครั้ง ... ${spokenText}`);
+    const combined = chunk2 ? Buffer.concat([chunk1, chunk2]) : chunk1;
+
+    ttsAudioCache.set(trackId, combined);
+    return { buffer: combined, mime: 'audio/mpeg' };
   } catch {
     return { buffer: generateFallbackWav(trackId), mime: 'audio/wav' };
   }
@@ -862,15 +944,39 @@ export async function getCategoryPool(
   }
 
   if (category === 'tts') {
-    const ttsPool: TrackItem[] = TTS_SONG_ENTRIES.map((e) => ({
-      id: e.id,
-      title: e.title,
-      artist: e.artist,
-      cover: `https://picsum.photos/seed/${e.id}/400/400`,
-      preview: `/api/tts-audio/${e.id}`,
-      aliases: e.aliases,
-      category: 'tts',
-    }));
+    const thaiTracks = await getCategoryPool('thai', store);
+    const combinedMap = new Map<string, TrackItem>();
+
+    for (const t of thaiTracks) {
+      const ttsId = `tts-dz-${t.id}`;
+      ttsTrackMetaMap.set(ttsId, {
+        title: t.title,
+        artist: t.artist,
+      });
+      combinedMap.set(normalizeSongText(t.title), {
+        ...t,
+        id: ttsId,
+        preview: `/api/tts-audio/${ttsId}`,
+        category: 'tts',
+      });
+    }
+
+    for (const e of TTS_SONG_ENTRIES) {
+      const normKey = normalizeSongText(e.title);
+      if (!combinedMap.has(normKey)) {
+        combinedMap.set(normKey, {
+          id: e.id,
+          title: e.title,
+          artist: e.artist,
+          cover: `https://picsum.photos/seed/${e.id}/400/400`,
+          preview: `/api/tts-audio/${e.id}`,
+          aliases: e.aliases,
+          category: 'tts',
+        });
+      }
+    }
+
+    const ttsPool = Array.from(combinedMap.values());
     await store.setCachedTracks('tts', ttsPool, CACHE_TTL_MS);
     return ttsPool;
   }
