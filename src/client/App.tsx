@@ -44,6 +44,8 @@ function getInitialRoomCodeFromUrl(): string {
   return code ? code.trim().toUpperCase().slice(0, 5) : '';
 }
 
+const SERVER_URL = (import.meta.env.VITE_SERVER_URL as string | undefined)?.replace(/\/$/, '') || '';
+
 export default function App() {
   const [playerId] = useState<string>(() => getOrCreatePlayerId());
   const [nickname, setNickname] = useState<string>(() => getInitialNickname());
@@ -139,7 +141,9 @@ export default function App() {
       }
 
       audio.pause();
-      audio.src = payload.previewUrl;
+      audio.src = payload.previewUrl.startsWith('/')
+        ? `${SERVER_URL}${payload.previewUrl}`
+        : payload.previewUrl;
       audio.volume = volume;
       audio.load();
 
@@ -180,9 +184,12 @@ export default function App() {
   );
 
   useEffect(() => {
-    const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io({
-      transports: ['websocket', 'polling'],
-    });
+    const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
+      SERVER_URL || undefined,
+      {
+        transports: ['websocket', 'polling'],
+      }
+    );
     socketRef.current = socket;
 
     const syncClock = () => {
