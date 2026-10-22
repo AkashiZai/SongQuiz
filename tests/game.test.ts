@@ -228,6 +228,44 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
     const uniqueArtists = new Set(selected.map((t) => t.artist.toLowerCase()));
     assert.equal(uniqueArtists.size, selected.length);
   });
+
+  it('rejects 88rising, beat/instrumental tracks, and non-Thai song titles in Thai category', async () => {
+    const { isRelevantTrackForQuery } = await import('../src/server/deezer.js');
+
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 1, title: 'California', artist: { name: '88rising' }, preview: 'http://x' },
+        'MILLI พักก่อน',
+        'thai'
+      ),
+      false
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 2, title: 'Chill Type Beat 2025', artist: { name: 'BeatMaker' }, preview: 'http://x' },
+        'PUN',
+        'thai'
+      ),
+      false
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 3, title: 'Mirrors', artist: { name: 'Justin Timberlake' }, preview: 'http://x' },
+        'Mirrr ยิ่งห้ามยิ่งยุ',
+        'thai'
+      ),
+      false
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 4, title: 'ยิ่งห้ามยิ่งยุ (YHYU)', artist: { name: 'Mirrr' }, preview: 'http://x' },
+        'Mirrr ยิ่งห้ามยิ่งยุ',
+        'thai'
+      ),
+      true
+    );
+  });
 });
+
 
 

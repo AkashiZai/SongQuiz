@@ -6,65 +6,69 @@ const CACHE_TTL_MS = 4 * 60 * 1000; // 4 minutes so artist rotation stays fresh 
 
 const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed'>, string[]> = {
   thai: [
-    'Yented',
+    'Yented ว้าวุ่น',
+    'Yented ที่รักใจเย็น',
     'SAUCE BKK ขี้แง',
-    'NONT TANONT',
-    'PUN',
-    'Only Monday',
-    'SERIOUS BACON',
-    'No One Else เธอ',
-    'Safeplanet',
-    'Mirrr',
-    'Dept เพลง',
-    'Patrickananda',
+    'NONT TANONT โต๊ะริม',
+    'NONT TANONT รักแรก',
+    'PUN เขียว เหลือง แดง',
+    'PUN ที่เดิม',
+    'Only Monday ท้ายปี',
+    'Only Monday ได้แต่นึกถึง',
+    'SERIOUS BACON เธอๆเพื่อนเราชอบ',
+    'No One Else เธอคือกาแฟในตอนเช้า',
+    'Safeplanet ข้างกาย',
+    'Mirrr ยิ่งห้ามยิ่งยุ',
+    'Dept เพราะเธอนั้นเป็นเหมือนดั่งโลกทั้งใบ',
+    'Patrickananda จันทร์อังคาร',
     'MEYOU วันนี้ปีที่แล้ว',
-    'LANDOKMAI',
-    'Purpeech',
-    'SLAPKISS',
+    'LANDOKMAI เพลงรักเพลงแรก',
+    'Purpeech กลัวว่าฉันจะไม่เสียใจ',
+    'SLAPKISS แฟนเก่าคนโปรด',
     'SARAN ลืมแทบไม่ไหว',
-    'ZENTYARB',
+    'ZENTYARB ฉบับปรับปรุง',
     'PONCHET พี่ชอบหนูที่สุดเลย',
-    'Tattoo Colour',
-    'Scrubb',
+    'Tattoo Colour ขาหมู',
+    'Scrubb ใกล้',
     'Cocktail ดึงดัน',
-    'Lipta',
-    'PiXXiE',
-    'PROXIE',
-    'BUS Because of you i shine',
-    'URBOYTJ',
+    'Lipta ไปอยู่ที่ไหนมา',
+    'PiXXiE ติดฝน',
+    'PROXIE คนไม่คุย',
+    'BUS แค่ไหนแค่นั้น',
+    'URBOYTJ วายร้าย',
     'MILLI พักก่อน',
-    'YOUNGOHM',
+    'YOUNGOHM ธาตุทองซาวด์',
     'Wanyai เจ็บจนพอ',
-    'Zom Marie',
-    'Whal & Dolph',
-    'TELEx TELEXs',
-    'Violette Wautier',
-    'Palmy',
+    'Zom Marie ล้านปีแสง',
+    'Whal & Dolph ใจเดียว',
+    'TELEx TELEXs เหมือนเดิม',
+    'Violette Wautier ตั้งแต่มีเธอฉันมีความสุข',
+    'Palmy ซ่อนกลิ่น',
     'Slot Machine เคลิ้ม',
-    'Getsunova',
+    'Getsunova ความเงียบดังที่สุด',
     'Klear คำยินดี',
     '25hours ไม่เคย',
-    'Labanoon',
+    'Labanoon เชือกวิเศษ',
     'STAMP มันคงเป็นความรัก',
     'THE TOYS ลาลาลอย',
-    'GAVIN:D',
-    'F.HERO',
+    'GAVIN:D ได้แค่เดินมาส่ง',
+    'F.HERO จำเลยรัก',
     'PP Krit ลังเล',
     'JOEY PHUWASIT นะหน้าทอง',
     'LOMOSONIC ขอ',
-    'Three Man Down',
-    'Tilly Birds',
-    'Billkin',
-    'BOWKYLION',
-    'Jeff Satur',
-    '4EVE',
-    'POTATO',
-    'Bodyslam',
-    'INK WARUNTORN',
-    'Paper Planes',
-    'Fellow Fellow',
-    'Polycat',
-    'Anatomy Rabbit',
+    'Three Man Down ฝนตกไหม',
+    'Tilly Birds คิดแต่ไม่ถึง',
+    'Billkin ชอบตัวเองตอนอยู่กับเธอ',
+    'BOWKYLION วาดไว้',
+    'Jeff Satur ซ่อนไม่หา',
+    '4EVE วัดปะหล่ะ',
+    'POTATO ปากดี',
+    'Bodyslam ยาพิษ',
+    'INK WARUNTORN สายตาหลอกกันไม่ได้',
+    'Paper Planes ทรงอย่างแบด',
+    'Fellow Fellow ดาวหางฮัลเลย์',
+    'Polycat อาวรณ์',
+    'Anatomy Rabbit ธรรมดาแสนพิเศษ',
   ],
   inter: [
     'Taylor Swift',
@@ -210,16 +214,52 @@ export const FALLBACK_TRACKS: TrackItem[] = [
     artist: 'Yented',
     cover: 'https://picsum.photos/seed/th7/400/400',
     preview: '/api/fallback-audio/fb-thai-7.wav',
-    aliases: ['ที่รักใจเย็น', 'her'],
+    aliases: ['ที่รักใจเย็น'],
     category: 'thai',
   },
   {
     id: 'fb-thai-8',
-    title: 'DAY ONE',
+    title: 'เขียว เหลือง แดง (Get high)',
     artist: 'PUN',
     cover: 'https://picsum.photos/seed/th8/400/400',
     preview: '/api/fallback-audio/fb-thai-8.wav',
-    aliases: ['day one'],
+    aliases: ['เขียวเหลืองแดง', 'get high'],
+    category: 'thai',
+  },
+  {
+    id: 'fb-thai-9',
+    title: 'ท้ายปี',
+    artist: 'Only Monday',
+    cover: 'https://picsum.photos/seed/th9/400/400',
+    preview: '/api/fallback-audio/fb-thai-9.wav',
+    aliases: ['ท้ายปี'],
+    category: 'thai',
+  },
+  {
+    id: 'fb-thai-10',
+    title: 'ดาวหางฮัลเลย์ (Halley\'s Comet)',
+    artist: 'Fellow Fellow',
+    cover: 'https://picsum.photos/seed/th10/400/400',
+    preview: '/api/fallback-audio/fb-thai-10.wav',
+    aliases: ['ดาวหางฮัลเลย์'],
+    category: 'thai',
+  },
+  {
+    id: 'fb-thai-11',
+    title: 'วันนี้ปีที่แล้ว',
+    artist: 'Meyou',
+    cover: 'https://picsum.photos/seed/th11/400/400',
+    preview: '/api/fallback-audio/fb-thai-11.wav',
+    aliases: ['วันนี้ปีที่แล้ว'],
+    category: 'thai',
+  },
+  {
+    id: 'fb-thai-12',
+    title: 'นะหน้าทอง',
+    artist: 'JOEY PHUWASIT',
+    cover: 'https://picsum.photos/seed/th12/400/400',
+    preview: '/api/fallback-audio/fb-thai-12.wav',
+    aliases: ['นะหน้าทอง'],
     category: 'thai',
   },
   {
@@ -352,35 +392,38 @@ interface DeezerTrackRaw {
 
 const THAI_SCRIPT_REGEX = /[\u0E00-\u0E7F]/;
 
-function isRelevantTrackForQuery(
+// Filter out non-original / beat / karaoke / 88rising / instrumental / sped-up tracks
+const JUNK_TRACK_REGEX =
+  /\b(88rising|instrumental|karaoke|backing track|type beat|free beat|beat|lofi|lo-fi|ringtone|tribute|cover|8-bit|lullaby|piano version|sped up|speed up|slowed|reverb)\b/i;
+
+export function isRelevantTrackForQuery(
   item: DeezerTrackRaw,
   query: string,
   category: Category
 ): boolean {
-  const artistName = (item.artist?.name || '').toLowerCase();
-  const rawTitle = (item.title || '').toLowerCase();
-  const qLower = query.toLowerCase();
+  const artistName = (item.artist?.name || '').trim();
+  const rawTitle = (item.title || '').trim();
+  if (!artistName || !rawTitle) return false;
 
-  // Extract ASCII words from query to match artist name
-  const asciiQueryPart = qLower.replace(/[\u0E00-\u0E7F]/g, '').trim();
-  const artistMatchesQuery =
-    asciiQueryPart.length >= 2 &&
-    (artistName.includes(asciiQueryPart) || asciiQueryPart.includes(artistName));
-
-  if (category === 'thai') {
-    const hasThaiScript =
-      THAI_SCRIPT_REGEX.test(rawTitle) || THAI_SCRIPT_REGEX.test(artistName);
-    return artistMatchesQuery || hasThaiScript;
+  if (JUNK_TRACK_REGEX.test(rawTitle) || JUNK_TRACK_REGEX.test(artistName)) {
+    return false;
   }
 
-  return artistMatchesQuery || rawTitle.includes(qLower);
+  if (category === 'thai') {
+    // Strictly require Thai script in the song title so foreign / 88rising / beat tracks never enter Thai category
+    return THAI_SCRIPT_REGEX.test(rawTitle);
+  }
+
+  const artistLower = artistName.toLowerCase();
+  const qLower = query.toLowerCase();
+  return artistLower === qLower || artistLower.includes(qLower) || qLower.includes(artistLower);
 }
 
 async function fetchDeezerQuery(query: string, category: Category): Promise<TrackItem[]> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 4500);
   try {
-    const url = `https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=10`;
+    const url = `https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=8`;
     const res = await fetch(url, { signal: controller.signal });
     if (!res.ok) return [];
     const json = (await res.json()) as { data?: DeezerTrackRaw[] };
@@ -393,6 +436,7 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
 
       const cleanTitle = cleanSongTitleForDisplay(item.title_short || item.title);
       if (!cleanTitle) continue;
+      if (category === 'thai' && !THAI_SCRIPT_REGEX.test(cleanTitle)) continue;
 
       const aliases = new Set<string>([cleanTitle, item.title]);
       if (item.title_short) aliases.add(item.title_short);
@@ -425,7 +469,7 @@ export async function getCategoryPool(
   store: StateStore
 ): Promise<TrackItem[]> {
   const cached = await store.getCachedTracks(category);
-  if (cached && cached.length >= 20) {
+  if (cached && cached.length >= 16) {
     return cached;
   }
 
@@ -439,8 +483,8 @@ export async function getCategoryPool(
       }
     }
   } else {
-    // Sample 22 different artists per category fetch for wide artist rotation
-    const list = shuffleArray(CATEGORY_QUERIES[category]).slice(0, 22);
+    // Sample 24 different artist+song queries per category fetch for wide artist rotation
+    const list = shuffleArray(CATEGORY_QUERIES[category]).slice(0, 24);
     queries = list.map((q) => ({ q, cat: category }));
   }
 
@@ -459,15 +503,12 @@ export async function getCategoryPool(
     }
   }
 
-  // Merge fallback tracks if Deezer returned fewer than 20 songs
-  if (deduped.size < 20) {
+  // Only merge fallback tracks that match the requested category (never mix foreign fallbacks into Thai!)
+  if (deduped.size < 16) {
     const relevantFallbacks =
       category === 'mixed'
         ? FALLBACK_TRACKS
-        : [
-            ...FALLBACK_TRACKS.filter((t) => t.category === category),
-            ...FALLBACK_TRACKS.filter((t) => t.category !== category),
-          ];
+        : FALLBACK_TRACKS.filter((t) => t.category === category);
     for (const fb of relevantFallbacks) {
       const normKey = normalizeSongText(fb.title);
       if (!deduped.has(normKey)) {
@@ -540,16 +581,17 @@ export function buildChoicesForTrack(target: TrackItem, pool: TrackItem[]): stri
       t.category === target.category &&
       t.artist.toLowerCase().trim() !== targetArtistKey
   );
-  const otherPool = pool.filter(
+  const sameCatPool = pool.filter(
     (t) =>
       t.id !== target.id &&
       normalizeSongText(t.title) !== targetNorm &&
+      t.category === target.category &&
       !sameCatDifferentArtist.includes(t)
   );
 
   const candidates = [
     ...shuffleArray(sameCatDifferentArtist),
-    ...shuffleArray(otherPool),
+    ...shuffleArray(sameCatPool),
   ];
 
   const distractors: string[] = [];
@@ -568,8 +610,9 @@ export function buildChoicesForTrack(target: TrackItem, pool: TrackItem[]): stri
     }
   }
 
-  // Fallback pass if pool has fewer than 4 distinct artists
-  for (const c of [...candidates, ...FALLBACK_TRACKS]) {
+  // Fallback pass using only tracks of the SAME category
+  const categoryFallbacks = FALLBACK_TRACKS.filter((t) => t.category === target.category);
+  for (const c of [...candidates, ...categoryFallbacks]) {
     if (distractors.length >= 3) break;
     const n = normalizeSongText(c.title);
     if (!usedNorms.has(n)) {
