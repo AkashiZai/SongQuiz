@@ -929,7 +929,7 @@ export class GameManager {
   }
 
   private validateCategory(cat: unknown): Category {
-    const valid: Category[] = ['thai', 'tpop', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
+    const valid: Category[] = ['thai', 'tpop', 'idol48', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
     return valid.includes(cat as Category) ? (cat as Category) : 'thai';
   }
 

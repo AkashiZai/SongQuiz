@@ -123,6 +123,39 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'BNK48 คุกกี้เสี่ยงทาย',
     'ALALA ร้องไห้ดังๆ',
   ],
+  idol48: [
+    'BNK48',
+    'BNK48 คุกกี้เสี่ยงทาย',
+    'BNK48 โดดดิด่ง',
+    'BNK48 วันแรก',
+    'BNK48 เธอคือเมโลดี้',
+    'BNK48 ดีอะ',
+    'BNK48 หมกกบ',
+    'BNK48 พลิ้ว',
+    'BNK48 ฤดูใหม่',
+    'BNK48 อยากจะได้พบเธอ',
+    'BNK48 ซากุระแห่งความทรงจำ',
+    'BNK48 สายฟ้าฟาด',
+    'BNK48 สัญญานะ',
+    'CGM48',
+    'CGM48 มะลิ',
+    'CGM48 เชียงใหม่ 106',
+    'CGM48 2565',
+    'CGM48 ผูกพันนิรันดร์',
+    'CGM48 ความลับในใจ',
+    'AKB48',
+    'AKB48 Heavy Rotation',
+    'AKB48 Koisuru Fortune Cookie',
+    'AKB48 Ponytail to Shushu',
+    'AKB48 Everyday Kachuusha',
+    'AKB48 Flying Get',
+    'AKB48 River',
+    'AKB48 Beginner',
+    'AKB48 Aitakatta',
+    'AKB48 365nichi no Kamihikouki',
+    'AKB48 Oogoe Diamond',
+    'QRRA',
+  ],
   inter: [
     'Taylor Swift',
     'The Weeknd',
@@ -858,6 +891,78 @@ export const FALLBACK_TRACKS: TrackItem[] = [
     category: 'tpop',
   },
   {
+    id: 'fb-idol48-1',
+    title: 'Koisuru Fortune Cookie - คุกกี้เสี่ยงทาย',
+    artist: 'BNK48',
+    cover: 'https://picsum.photos/seed/48g1/400/400',
+    preview: '/api/fallback-audio/fb-idol48-1.wav',
+    aliases: ['คุกกี้เสี่ยงทาย', 'koisuru fortune cookie'],
+    category: 'idol48',
+  },
+  {
+    id: 'fb-idol48-2',
+    title: 'โดดดิด่ง',
+    artist: 'BNK48',
+    cover: 'https://picsum.photos/seed/48g2/400/400',
+    preview: '/api/fallback-audio/fb-idol48-2.wav',
+    aliases: ['โดดดิด่ง'],
+    category: 'idol48',
+  },
+  {
+    id: 'fb-idol48-3',
+    title: 'Shonichi - วันแรก',
+    artist: 'BNK48',
+    cover: 'https://picsum.photos/seed/48g3/400/400',
+    preview: '/api/fallback-audio/fb-idol48-3.wav',
+    aliases: ['วันแรก', 'shonichi'],
+    category: 'idol48',
+  },
+  {
+    id: 'fb-idol48-4',
+    title: 'Kimi wa Melody - เธอคือ...เมโลดี้',
+    artist: 'BNK48',
+    cover: 'https://picsum.photos/seed/48g4/400/400',
+    preview: '/api/fallback-audio/fb-idol48-4.wav',
+    aliases: ['เธอคือเมโลดี้', 'kimi wa melody'],
+    category: 'idol48',
+  },
+  {
+    id: 'fb-idol48-5',
+    title: 'มะลิ',
+    artist: 'CGM48',
+    cover: 'https://picsum.photos/seed/48g5/400/400',
+    preview: '/api/fallback-audio/fb-idol48-5.wav',
+    aliases: ['มะลิ', 'mali'],
+    category: 'idol48',
+  },
+  {
+    id: 'fb-idol48-6',
+    title: 'Chiang Mai 106',
+    artist: 'CGM48',
+    cover: 'https://picsum.photos/seed/48g6/400/400',
+    preview: '/api/fallback-audio/fb-idol48-6.wav',
+    aliases: ['เชียงใหม่ 106', 'chiang mai 106'],
+    category: 'idol48',
+  },
+  {
+    id: 'fb-idol48-7',
+    title: 'Heavy Rotation',
+    artist: 'AKB48',
+    cover: 'https://picsum.photos/seed/48g7/400/400',
+    preview: '/api/fallback-audio/fb-idol48-7.wav',
+    aliases: ['heavy rotation'],
+    category: 'idol48',
+  },
+  {
+    id: 'fb-idol48-8',
+    title: 'Ponytail to Shushu',
+    artist: 'AKB48',
+    cover: 'https://picsum.photos/seed/48g8/400/400',
+    preview: '/api/fallback-audio/fb-idol48-8.wav',
+    aliases: ['ponytail to shushu'],
+    category: 'idol48',
+  },
+  {
     id: 'fb-inter-1',
     title: 'Blinding Lights',
     artist: 'The Weeknd',
@@ -987,9 +1092,11 @@ interface DeezerTrackRaw {
 
 const THAI_SCRIPT_REGEX = /[\u0E00-\u0E7F]/;
 
-// Filter out non-original / beat / karaoke / 88rising / instrumental / sped-up tracks
+// Filter out non-original / beat / karaoke / off-vocal / 88rising / instrumental / sped-up tracks
 const JUNK_TRACK_REGEX =
-  /\b(88rising|instrumental|karaoke|backing track|type beat|free beat|beat|lofi|lo-fi|ringtone|tribute|cover|8-bit|lullaby|piano version|sped up|speed up|slowed|reverb)\b/i;
+  /\b(88rising|off vocal|vocal off|instrumental|karaoke|backing track|type beat|free beat|beat|lofi|lo-fi|ringtone|tribute|cover|8-bit|lullaby|piano version|acapella|sped up|speed up|slowed|reverb)\b/i;
+
+const IDOL48_ARTIST_REGEX = /^(bnk48|cgm48|akb48|qrra|vyra|mimigumo|indy camp)$/i;
 
 export function isRelevantTrackForQuery(
   item: DeezerTrackRaw,
@@ -1002,6 +1109,10 @@ export function isRelevantTrackForQuery(
 
   if (JUNK_TRACK_REGEX.test(rawTitle) || JUNK_TRACK_REGEX.test(artistName)) {
     return false;
+  }
+
+  if (category === 'idol48') {
+    return IDOL48_ARTIST_REGEX.test(artistName);
   }
 
   if (category === 'thai' || category === 'tpop') {
@@ -1052,8 +1163,9 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
       });
     }
 
-    // Cap to at most 2 random tracks per query so no single artist floods the pool
-    return shuffleArray(matched).slice(0, 2);
+    // For idol48, allow up to 6 tracks per query since only 3 core groups exist; otherwise cap at 2
+    const maxPerQuery = category === 'idol48' ? 6 : 2;
+    return shuffleArray(matched).slice(0, maxPerQuery);
   } catch {
     return [];
   } finally {
@@ -1113,12 +1225,13 @@ export async function getCategoryPool(
     const subCats: Array<Exclude<Category, 'mixed' | 'tts'>> = [
       'thai',
       'tpop',
+      'idol48',
       'inter',
       'kpop',
       'retro',
     ];
     for (const c of subCats) {
-      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 6);
+      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 5);
       for (const q of sample) {
         queries.push({ q, cat: c });
       }
@@ -1222,38 +1335,59 @@ export function buildChoicesForTrack(target: TrackItem, pool: TrackItem[]): stri
       t.category === target.category &&
       t.artist.toLowerCase().trim() !== targetArtistKey
   );
-  const sameCatPool = pool.filter(
+  const sameCatSameArtist = pool.filter(
     (t) =>
       t.id !== target.id &&
       normalizeSongText(t.title) !== targetNorm &&
       t.category === target.category &&
-      !sameCatDifferentArtist.includes(t)
+      t.artist.toLowerCase().trim() === targetArtistKey
   );
-
-  const candidates = [
-    ...shuffleArray(sameCatDifferentArtist),
-    ...shuffleArray(sameCatPool),
-  ];
 
   const distractors: string[] = [];
   const usedNorms = new Set<string>([targetNorm]);
-  const usedArtists = new Set<string>([targetArtistKey]);
 
-  // First pass: prefer distractors with distinct artists so all 4 choices feature different artists
-  for (const c of candidates) {
-    const n = normalizeSongText(c.title);
-    const aKey = c.artist.toLowerCase().trim();
-    if (!usedNorms.has(n) && !usedArtists.has(aKey)) {
-      usedNorms.add(n);
-      usedArtists.add(aKey);
-      distractors.push(`${c.title} — ${c.artist}`);
-      if (distractors.length === 3) break;
+  if (target.category === 'idol48') {
+    // For 48 Group, include same-group songs in the distractors so players can't guess purely by BNK48 vs CGM48 vs AKB48
+    const idolCandidates = [
+      ...shuffleArray(sameCatSameArtist).slice(0, 2),
+      ...shuffleArray(sameCatDifferentArtist),
+      ...shuffleArray(sameCatSameArtist),
+    ];
+    for (const c of idolCandidates) {
+      const n = normalizeSongText(c.title);
+      if (!usedNorms.has(n)) {
+        usedNorms.add(n);
+        distractors.push(`${c.title} — ${c.artist}`);
+        if (distractors.length === 3) break;
+      }
+    }
+  } else {
+    const candidates = [
+      ...shuffleArray(sameCatDifferentArtist),
+      ...shuffleArray(sameCatSameArtist),
+    ];
+    const usedArtists = new Set<string>([targetArtistKey]);
+
+    // First pass: prefer distractors with distinct artists so all 4 choices feature different artists
+    for (const c of candidates) {
+      const n = normalizeSongText(c.title);
+      const aKey = c.artist.toLowerCase().trim();
+      if (!usedNorms.has(n) && !usedArtists.has(aKey)) {
+        usedNorms.add(n);
+        usedArtists.add(aKey);
+        distractors.push(`${c.title} — ${c.artist}`);
+        if (distractors.length === 3) break;
+      }
     }
   }
 
   // Fallback pass using only tracks of the SAME category
   const categoryFallbacks = FALLBACK_TRACKS.filter((t) => t.category === target.category);
-  for (const c of [...candidates, ...categoryFallbacks]) {
+  for (const c of [
+    ...shuffleArray(sameCatDifferentArtist),
+    ...shuffleArray(sameCatSameArtist),
+    ...categoryFallbacks,
+  ]) {
     if (distractors.length >= 3) break;
     const n = normalizeSongText(c.title);
     if (!usedNorms.has(n)) {

@@ -44,7 +44,7 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
     }
   };
 
-  const categories: Category[] = ['thai', 'tpop', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
+  const categories: Category[] = ['thai', 'tpop', 'idol48', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
   const roundOptions: TotalRoundsOption[] = [5, 10, 15];
   const modes: Array<{ id: AnswerMode; label: string; desc: string }> = [
     { id: 'choice', label: '4 ตัวเลือก', desc: 'เลือกคำตอบจากตัวเลือก 4 ข้อ' },

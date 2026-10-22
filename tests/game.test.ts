@@ -276,6 +276,51 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
     const { buffer } = await getTtsAudioBuffer('tts-1');
     assert.equal(buffer.byteLength > 500, true);
   });
+
+  it('filters 48 Group (BNK48, CGM48, AKB48) tracks and rejects Off Vocal versions', async () => {
+    const { isRelevantTrackForQuery } = await import('../src/server/deezer.js');
+
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 10, title: 'Koisuru Fortune Cookie - คุกกี้เสี่ยงทาย', artist: { name: 'BNK48' }, preview: 'http://x' },
+        'BNK48',
+        'idol48'
+      ),
+      true
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 11, title: 'Heavy Rotation', artist: { name: 'AKB48' }, preview: 'http://x' },
+        'AKB48',
+        'idol48'
+      ),
+      true
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 12, title: 'มะลิ', artist: { name: 'CGM48' }, preview: 'http://x' },
+        'CGM48',
+        'idol48'
+      ),
+      true
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 13, title: 'ดีอะ (Off Vocal Version)', artist: { name: 'BNK48' }, preview: 'http://x' },
+        'BNK48 ดีอะ',
+        'idol48'
+      ),
+      false
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 14, title: 'Random Song', artist: { name: 'SomeOtherArtist' }, preview: 'http://x' },
+        'BNK48',
+        'idol48'
+      ),
+      false
+    );
+  });
 });
 
 

@@ -171,7 +171,7 @@ async function bootstrap() {
 
       await gameManager.leaveCurrentRoomIfAny(socket, pid);
 
-      const validCats: Category[] = ['thai', 'tpop', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
+      const validCats: Category[] = ['thai', 'tpop', 'idol48', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
       const category: Category = validCats.includes(payload?.category)
         ? payload.category
         : 'thai';
