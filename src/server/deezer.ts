@@ -8,14 +8,13 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
   thai: [
     'Yented ว้าวุ่น',
     'Yented ที่รักใจเย็น',
-    'SAUCE BKK ขี้แง',
     'NONT TANONT โต๊ะริม',
     'NONT TANONT รักแรก',
     'PUN เขียว เหลือง แดง',
     'PUN ที่เดิม',
     'Only Monday ท้ายปี',
     'Only Monday ได้แต่นึกถึง',
-    'SERIOUS BACON เธอๆเพื่อนเราชอบ',
+    'SERIOUS BACON มีปัญหาปรึกษาดาว',
     'No One Else เธอคือกาแฟในตอนเช้า',
     'Safeplanet ข้างกาย',
     'Mirrr ยิ่งห้ามยิ่งยุ',
@@ -41,7 +40,6 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'Wanyai เจ็บจนพอ',
     'Zom Marie ล้านปีแสง',
     'Whal & Dolph ใจเดียว',
-    'TELEx TELEXs เหมือนเดิม',
     'Violette Wautier ตั้งแต่มีเธอฉันมีความสุข',
     'Palmy ซ่อนกลิ่น',
     'Slot Machine เคลิ้ม',
@@ -51,7 +49,6 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'Labanoon เชือกวิเศษ',
     'STAMP มันคงเป็นความรัก',
     'THE TOYS ลาลาลอย',
-    'GAVIN:D ได้แค่เดินมาส่ง',
     'F.HERO จำเลยรัก',
     'PP Krit ลังเล',
     'JOEY PHUWASIT นะหน้าทอง',
@@ -60,7 +57,8 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'Tilly Birds คิดแต่ไม่ถึง',
     'Billkin ชอบตัวเองตอนอยู่กับเธอ',
     'BOWKYLION วาดไว้',
-    'Jeff Satur ซ่อนไม่หา',
+    'Jeff Satur ลืมไปแล้วว่าลืมยังไง',
+    'Jeff Satur เหมือนวิวาห์',
     '4EVE วัดปะหล่ะ',
     'POTATO ปากดี',
     'Bodyslam ยาพิษ',
@@ -68,7 +66,7 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'Paper Planes ทรงอย่างแบด',
     'Fellow Fellow ดาวหางฮัลเลย์',
     'Polycat อาวรณ์',
-    'Anatomy Rabbit ธรรมดาแสนพิเศษ',
+    'Anatomy Rabbit ขอให้โลกนี้ใจดีกับเธอ',
   ],
   tpop: [
     'BUS แค่ไหนแค่นั้น',
@@ -82,10 +80,8 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'PROXIE ที่ไม่รัก',
     'PROXIE สถานะเบลอ',
     'PROXIE ตบปาก',
-    'SAUCE BKK ขี้แง',
     'PiXXiE ติดฝน',
     'PiXXiE เกินต้าน',
-    'PiXXiE มูเตลู',
     'PiXXiE ลองเลิกกันดีไหม',
     'ATLAS เค้ามาก่อน',
     'ATLAS เป๊ะ',
@@ -99,7 +95,6 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'PP Krit ลังเล',
     'PP Krit เส้นเรื่องเดิม',
     'PP Krit ห่มผ้า',
-    'Jeff Satur ซ่อนไม่หา',
     'Jeff Satur ลืมไปแล้วว่าลืมยังไง',
     'Jeff Satur เหมือนวิวาห์',
     'NONT TANONT โต๊ะริม',
@@ -114,11 +109,10 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'BOW MAYLADA แฟนผมน่ารัก',
     'GEMINI เพลงรัก',
     'GEMINI เอาไรว่ามา',
-    'FOURTH อยู่เฉยๆก็น่ารัก',
+    'FOURTH ง้อว',
     'FOURTH เทคะแนน',
     'NANON แค่เพื่อนมั้ง',
     'TIMETHAI เลิกกับพี่ได้ดีทุกคน',
-    'TRINITY ชีวิตดีเพราะมีเธอ',
     'ALLY ผ้าเช็ดหน้า',
     'BNK48 คุกกี้เสี่ยงทาย',
     'ALALA ร้องไห้ดังๆ',
@@ -128,32 +122,32 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'BNK48 คุกกี้เสี่ยงทาย',
     'BNK48 โดดดิด่ง',
     'BNK48 วันแรก',
-    'BNK48 เธอคือเมโลดี้',
+    'BNK48 Kimi wa Melody',
     'BNK48 ดีอะ',
     'BNK48 หมกกบ',
     'BNK48 พลิ้ว',
     'BNK48 ฤดูใหม่',
     'BNK48 อยากจะได้พบเธอ',
-    'BNK48 ซากุระแห่งความทรงจำ',
-    'BNK48 สายฟ้าฟาด',
+    'BNK48 Sakura no Hanabiratachi',
+    'BNK48 Jabaja',
+    'BNK48 Heavy Rotation',
+    'BNK48 High Tension',
+    'BNK48 Sayonara Crawl',
     'BNK48 สัญญานะ',
     'CGM48',
     'CGM48 มะลิ',
     'CGM48 เชียงใหม่ 106',
     'CGM48 2565',
-    'CGM48 ผูกพันนิรันดร์',
-    'CGM48 ความลับในใจ',
     'AKB48',
-    'AKB48 Heavy Rotation',
-    'AKB48 Koisuru Fortune Cookie',
-    'AKB48 Ponytail to Shushu',
+    'AKB48 ヘビーローテーション',
+    'AKB48 恋するフォーチュンクッキー',
+    'AKB48 ポニーテールとシュシュ',
     'AKB48 Everyday Kachuusha',
-    'AKB48 Flying Get',
+    'AKB48 フライングゲット',
     'AKB48 River',
     'AKB48 Beginner',
-    'AKB48 Aitakatta',
-    'AKB48 365nichi no Kamihikouki',
-    'AKB48 Oogoe Diamond',
+    'AKB48 365日の紙飛行機',
+    'AKB48 大声ダイヤモンド',
     'QRRA',
   ],
   inter: [
@@ -1085,18 +1079,49 @@ interface DeezerTrackRaw {
   id: number | string;
   title?: string;
   title_short?: string;
+  title_version?: string;
   preview?: string;
   artist?: { name?: string };
-  album?: { cover_big?: string; cover_medium?: string };
+  album?: { title?: string; cover_big?: string; cover_medium?: string };
 }
 
 const THAI_SCRIPT_REGEX = /[\u0E00-\u0E7F]/;
 
-// Filter out non-original / beat / karaoke / off-vocal / 88rising / instrumental / sped-up tracks
-const JUNK_TRACK_REGEX =
-  /\b(88rising|off vocal|vocal off|instrumental|karaoke|backing track|type beat|free beat|beat|lofi|lo-fi|ringtone|tribute|cover|8-bit|lullaby|piano version|acapella|sped up|speed up|slowed|reverb)\b/i;
+// Strictly filter out non-official / Raw Session / Live Session / Acoustic / Tour / Concert / Off-Vocal / Remix / Cover tracks
+const NON_OFFICIAL_TITLE_REGEX =
+  /\b(88rising|raw session|live session|another session|studio session|in my room session|session|off vocal|vocal off|instrumental|karaoke|backing track|minus one|type beat|free beat|beat|lofi|lo-fi|ringtone|tribute|cover|covers|music box|8-bit|lullaby|piano|acoustic|unplugged|stripped|acapella|acappella|sped up|speed up|slowed|reverb|remix|bootleg|mashup|medley|interlude|overture|live|concert|tour|arena|festival|hall|band version|band ver|big band|gospel|orchestra|orchestral|string version|english version|english ver|japanese version|japanese ver|chinese version|french version|special version|special ver|light ver|2024 version|rearranged|demo|on a train|radio edit|video edit)\b|'s ver\.?|เวอร์ชันพิเศษ|แสดงสด|คอนเสิร์ต|อะคูสติก|บรรเลง/i;
+
+const NON_OFFICIAL_ALBUM_REGEX =
+  /\b(88rising|raw session|live session|another session|studio session|in my room session|session|off vocal|vocal off|instrumental|karaoke|backing track|minus one|type beat|free beat|lofi|lo-fi|ringtone|tribute|cover|covers|music box|8-bit|lullaby|piano|acoustic|unplugged|stripped|acapella|acappella|sped up|speed up|slowed|reverb|remix|bootleg|mashup|medley|live|concert|tour version|band version|orchestra|orchestral|english version|japanese version|japanese deluxe|french version|special version|light ver|2024 version|alternate versions|on a train)\b|เวอร์ชันพิเศษ|แสดงสด|คอนเสิร์ต|อะคูสติก|บรรเลง/i;
 
 const IDOL48_ARTIST_REGEX = /^(bnk48|cgm48|akb48|qrra|vyra|mimigumo|indy camp)$/i;
+
+const AKB48_ROMAJI_MAP: Record<string, { display: string; aliases: string[] }> = {
+  '恋するフォーチュンクッキー': {
+    display: 'Koisuru Fortune Cookie (恋するフォーチュンクッキー)',
+    aliases: ['Koisuru Fortune Cookie', 'คุกกี้เสี่ยงทาย', '恋するフォーチュンクッキー'],
+  },
+  'ヘビーローテーション': {
+    display: 'Heavy Rotation (ヘビーローテーション)',
+    aliases: ['Heavy Rotation', 'ヘビーローテーション'],
+  },
+  'ポニーテールとシュシュ': {
+    display: 'Ponytail to Shushu (ポニーテールとシュシュ)',
+    aliases: ['Ponytail to Shushu', 'ポニーテールとシュシュ'],
+  },
+  'フライングゲット': {
+    display: 'Flying Get (フライングゲット)',
+    aliases: ['Flying Get', 'フライングゲット'],
+  },
+  '365日の紙飛行機': {
+    display: '365nichi no Kamihikouki (365日の紙飛行機)',
+    aliases: ['365nichi no Kamihikouki', '365 วันกับเครื่องบินกระดาษ', '365日の紙飛行機'],
+  },
+  '大声ダイヤモンド': {
+    display: 'Oogoe Diamond (大声ダイヤモンド)',
+    aliases: ['Oogoe Diamond', 'ก็ชอบให้รู้ว่าชอบ', '大声ダイヤモンド'],
+  },
+};
 
 export function isRelevantTrackForQuery(
   item: DeezerTrackRaw,
@@ -1105,9 +1130,24 @@ export function isRelevantTrackForQuery(
 ): boolean {
   const artistName = (item.artist?.name || '').trim();
   const rawTitle = (item.title || '').trim();
+  const shortTitle = (item.title_short || '').trim();
+  const titleVersion = (item.title_version || '').trim();
+  const albumTitle = (item.album?.title || '').trim();
   if (!artistName || !rawTitle) return false;
 
-  if (JUNK_TRACK_REGEX.test(rawTitle) || JUNK_TRACK_REGEX.test(artistName)) {
+  // Reject any non-official / session / live / acoustic / off-vocal / remix / cover version
+  if (
+    NON_OFFICIAL_TITLE_REGEX.test(rawTitle) ||
+    NON_OFFICIAL_TITLE_REGEX.test(shortTitle) ||
+    NON_OFFICIAL_TITLE_REGEX.test(titleVersion) ||
+    NON_OFFICIAL_TITLE_REGEX.test(artistName) ||
+    NON_OFFICIAL_ALBUM_REGEX.test(albumTitle)
+  ) {
+    return false;
+  }
+
+  // Avoid self-titled group intro/overture tracks (e.g., track "BNK48" by artist "BNK48")
+  if (rawTitle.toLowerCase() === artistName.toLowerCase()) {
     return false;
   }
 
@@ -1115,14 +1155,21 @@ export function isRelevantTrackForQuery(
     return IDOL48_ARTIST_REGEX.test(artistName);
   }
 
+  const artistLower = artistName.toLowerCase();
+  const qLower = query.toLowerCase();
+  const isArtistMatch =
+    artistLower === qLower || artistLower.includes(qLower) || qLower.includes(artistLower);
+
+  if (!isArtistMatch) {
+    return false;
+  }
+
   if (category === 'thai' || category === 'tpop') {
-    // Strictly require Thai script in the song title so foreign / 88rising / beat tracks never enter Thai or T-POP categories
+    // Strictly require Thai script in the song title AND matching artist so foreign / cover tracks never enter
     return THAI_SCRIPT_REGEX.test(rawTitle);
   }
 
-  const artistLower = artistName.toLowerCase();
-  const qLower = query.toLowerCase();
-  return artistLower === qLower || artistLower.includes(qLower) || qLower.includes(artistLower);
+  return true;
 }
 
 async function fetchDeezerQuery(query: string, category: Category): Promise<TrackItem[]> {
@@ -1140,7 +1187,7 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
       if (!item.preview || typeof item.preview !== 'string' || !item.title) continue;
       if (!isRelevantTrackForQuery(item, query, category)) continue;
 
-      const cleanTitle = cleanSongTitleForDisplay(item.title_short || item.title);
+      let cleanTitle = cleanSongTitleForDisplay(item.title_short || item.title);
       if (!cleanTitle) continue;
       if ((category === 'thai' || category === 'tpop') && !THAI_SCRIPT_REGEX.test(cleanTitle)) {
         continue;
@@ -1148,6 +1195,12 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
 
       const aliases = new Set<string>([cleanTitle, item.title]);
       if (item.title_short) aliases.add(item.title_short);
+
+      const romajiInfo = AKB48_ROMAJI_MAP[cleanTitle];
+      if (romajiInfo) {
+        cleanTitle = romajiInfo.display;
+        for (const a of romajiInfo.aliases) aliases.add(a);
+      }
 
       matched.push({
         id: String(item.id),
@@ -1163,9 +1216,16 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
       });
     }
 
-    // For idol48, allow up to 6 tracks per query since only 3 core groups exist; otherwise cap at 2
-    const maxPerQuery = category === 'idol48' ? 6 : 2;
-    return shuffleArray(matched).slice(0, maxPerQuery);
+    // For specific song queries (thai / tpop / specific 48G song), take the top official studio match directly
+    if (category === 'thai' || category === 'tpop') {
+      return matched.slice(0, 1);
+    }
+    if (category === 'idol48') {
+      return query.trim().includes(' ')
+        ? matched.slice(0, 2)
+        : shuffleArray(matched).slice(0, 4);
+    }
+    return shuffleArray(matched).slice(0, 2);
   } catch {
     return [];
   } finally {

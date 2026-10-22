@@ -321,6 +321,75 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
       false
     );
   });
+
+  it('rejects Raw Session, Live Session, Acoustic, and Live Concert album versions so only Official Studio tracks are used', async () => {
+    const { isRelevantTrackForQuery } = await import('../src/server/deezer.js');
+
+    // Reject Raw Session in title or title_version
+    assert.equal(
+      isRelevantTrackForQuery(
+        {
+          id: 20,
+          title: 'ดาวหางฮัลเลย์ (Raw Session)',
+          title_short: 'ดาวหางฮัลเลย์',
+          title_version: '(Raw Session)',
+          artist: { name: 'Fellow Fellow' },
+          preview: 'http://x',
+        },
+        'Fellow Fellow ดาวหางฮัลเลย์',
+        'thai'
+      ),
+      false
+    );
+
+    // Reject Live Session in title/album
+    assert.equal(
+      isRelevantTrackForQuery(
+        {
+          id: 21,
+          title: 'ซ่อน(ไม่)หา [Ghost] [Live Session]',
+          artist: { name: 'Jeff Satur' },
+          album: { title: 'ซ่อน(ไม่)หา [Ghost] [Live Session]' },
+          preview: 'http://x',
+        },
+        'Jeff Satur ซ่อนไม่หา',
+        'tpop'
+      ),
+      false
+    );
+
+    // Reject track whose title looks normal ("ขาหมู") but is from a Live Concert album
+    assert.equal(
+      isRelevantTrackForQuery(
+        {
+          id: 22,
+          title: 'ขาหมู',
+          artist: { name: 'Tattoo Colour' },
+          album: { title: 'TATTOO COLOUR X TPO LIVE AT PRINCE MAHIDOL HALL' },
+          preview: 'http://x',
+        },
+        'Tattoo Colour ขาหมู',
+        'thai'
+      ),
+      false
+    );
+
+    // Reject cover artist when querying original artist
+    assert.equal(
+      isRelevantTrackForQuery(
+        {
+          id: 23,
+          title: '(Nont Tanont) รักแรก First Love',
+          artist: { name: 'Kemhour Teav' },
+          album: { title: 'Cover Compilation 6' },
+          preview: 'http://x',
+        },
+        'NONT TANONT รักแรก',
+        'thai'
+      ),
+      false
+    );
+  });
 });
 
 
