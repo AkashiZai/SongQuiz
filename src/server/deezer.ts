@@ -4,7 +4,7 @@ import { StateStore } from './store.js';
 
 const CACHE_TTL_MS = 4 * 60 * 1000; // 4 minutes so artist rotation stays fresh across games
 
-const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed'>, string[]> = {
+const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
   thai: [
     'Yented ว้าวุ่น',
     'Yented ที่รักใจเย็น',
@@ -151,6 +151,394 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed'>, string[]> = {
     'Akon',
   ],
 };
+
+interface TtsSongEntry {
+  id: string;
+  title: string;
+  artist: string;
+  aliases: string[];
+  ttsPrompt: string;
+}
+
+/**
+ * Server-only TTS voice prompts for the "AI อ่านเนื้อเพลง (Siri / Google)" category.
+ * These strings are converted into audio/mpeg on the server and never sent as text to clients.
+ */
+const TTS_SONG_ENTRIES: TtsSongEntry[] = [
+  {
+    id: 'tts-1',
+    title: 'ฝนตกไหม',
+    artist: 'Three Man Down',
+    aliases: ['ฝนตกไหม', 'fon tok mai'],
+    ttsPrompt: 'เสื้อผ้าที่ตากไว้แห้งหรือยัง ... ทีวีที่เปิดไว้ดูหรือเปล่า ... จะฝากซื้อของกินไหม',
+  },
+  {
+    id: 'tts-2',
+    title: 'คิด(แต่ไม่)ถึง (Same Page?)',
+    artist: 'Tilly Birds',
+    aliases: ['คิดแต่ไม่ถึง', 'same page'],
+    ttsPrompt: 'อยากรู้เพียงว่าความคิดถึงของเธอกับฉันมันเท่ากันหรือเปล่า ... ถามจริงจริงว่าใจเธอเปลี่ยนไปหรือเปล่า',
+  },
+  {
+    id: 'tts-3',
+    title: 'โต๊ะริม (Melt)',
+    artist: 'NONT TANONT',
+    aliases: ['โต๊ะริม', 'melt'],
+    ttsPrompt: 'เธอมาทำให้ละลายโดนสาปให้ตายแล้วตายอีก ... อย่าเพิ่งยิ้มแบบนี้จะได้ไหม',
+  },
+  {
+    id: 'tts-4',
+    title: 'ซ่อน(ไม่)หา (Ghost)',
+    artist: 'Jeff Satur',
+    aliases: ['ซ่อนไม่หา', 'ghost'],
+    ttsPrompt: 'ต่อให้ฉันจะซ่อนตัวอยู่ตรงไหน ... เธอก็ไม่คิดจะหาฉันเลยใช่ไหม ... สุดท้ายฉันคงต้องยอมแพ้ไปเอง',
+  },
+  {
+    id: 'tts-5',
+    title: 'ทรงอย่างแบด (Bad Boy)',
+    artist: 'Paper Planes',
+    aliases: ['ทรงอย่างแบด', 'bad boy'],
+    ttsPrompt: 'แซดอย่างบ่อย ... เธอไม่อินกับผู้ชายแบดบอย ... เธอรักเขาไม่ใช่เรา',
+  },
+  {
+    id: 'tts-6',
+    title: 'วาดไว้ (recall)',
+    artist: 'BOWKYLION',
+    aliases: ['วาดไว้', 'recall'],
+    ttsPrompt: 'ที่เธอเคยบอกฉันอย่าร้องไห้ ... อยู่ให้ได้ถ้าเธอไม่อยู่ ... โปรดรับรู้เธอยังอยู่ในใจ',
+  },
+  {
+    id: 'tts-7',
+    title: 'ที่รักใจเย็น',
+    artist: 'Yented',
+    aliases: ['ที่รักใจเย็น'],
+    ttsPrompt: 'อย่าเพิ่งไปไหนเลยนะคนดี ... ฟังฉันอธิบายก่อนได้ไหม ... อย่าเพิ่งโกรธกันเลยนะ',
+  },
+  {
+    id: 'tts-8',
+    title: 'ว้าวุ่น (On A Date)',
+    artist: 'Yented',
+    aliases: ['ว้าวุ่น', 'on a date'],
+    ttsPrompt: 'ทำไมใจฉันมันเต้นแรงขนาดนี้ ... เวลาที่ได้เจอหน้าเธอทีไร ... ทำตัวไม่ถูกเลยจริงๆ',
+  },
+  {
+    id: 'tts-9',
+    title: 'เขียว เหลือง แดง (Get high)',
+    artist: 'PUN',
+    aliases: ['เขียวเหลืองแดง', 'get high'],
+    ttsPrompt: 'ไฟจราจรเปลี่ยนสีแต่ใจฉันยังอยู่ที่เดิม ... มองตาเธอแล้วโลกมันหมุนช้าลง',
+  },
+  {
+    id: 'tts-10',
+    title: 'ท้ายปี',
+    artist: 'Only Monday',
+    aliases: ['ท้ายปี'],
+    ttsPrompt: 'ลมหนาวพัดมาอีกแล้ว ... แต่ปีนี้ไม่มีเธออยู่ข้างกายเหมือนเดิม ... เหลือเพียงความทรงจำเก่าๆ',
+  },
+  {
+    id: 'tts-11',
+    title: 'ดาวหางฮัลเลย์ (Halley\'s Comet)',
+    artist: 'Fellow Fellow',
+    aliases: ['ดาวหางฮัลเลย์', 'halleys comet'],
+    ttsPrompt: 'เจ็ดสิบห้าปีจะมาให้เห็นสักที ... แต่ฉันรอเธอได้นานกว่านั้น ... ขอแค่มีเธออยู่ตรงนี้ด้วยกัน',
+  },
+  {
+    id: 'tts-12',
+    title: 'วันนี้ปีที่แล้ว',
+    artist: 'Meyou',
+    aliases: ['วันนี้ปีที่แล้ว'],
+    ttsPrompt: 'แจ้งเตือนในโทรศัพท์พาภาพวันเก่ากลับมา ... วันที่เรายังรักกันดี ... แต่ตอนนี้ไม่มีเธอแล้ว',
+  },
+  {
+    id: 'tts-13',
+    title: 'นะหน้าทอง',
+    artist: 'JOEY PHUWASIT',
+    aliases: ['นะหน้าทอง'],
+    ttsPrompt: 'ต่อให้ต้องเป่าคาถาให้เธอหลงรัก ... ฉันก็ยอมทำทุกทาง ... ขอแค่ใจเธอหันมามองกันบ้าง',
+  },
+  {
+    id: 'tts-14',
+    title: 'พี่ชอบหนูที่สุดเลย',
+    artist: 'PONCHET',
+    aliases: ['พี่ชอบหนูที่สุดเลย'],
+    ttsPrompt: 'คนสวยขาอย่าเพิ่งใจร้ายกับพี่เลย ... ในสายตาพี่มีแค่หนูคนเดียวจริงๆ นะ',
+  },
+  {
+    id: 'tts-15',
+    title: 'ลืมแทบไม่ไหว',
+    artist: 'Saran',
+    aliases: ['ลืมแทบไม่ไหว'],
+    ttsPrompt: 'พยายามจะลบภาพเธอออกจากหัวใจ ... แต่ยิ่งลืมกลับยิ่งจำทุกรายละเอียดของเธอ',
+  },
+  {
+    id: 'tts-16',
+    title: 'ฉบับปรับปรุง',
+    artist: 'ZENTYARB',
+    aliases: ['ฉบับปรับปรุง'],
+    ttsPrompt: 'ฉันพร้อมจะเปลี่ยนตัวเองให้ดีขึ้นเพื่อเธอ ... ขอโอกาสแก้ตัวอีกครั้งจะได้ไหม',
+  },
+  {
+    id: 'tts-17',
+    title: 'แฟนเก่าคนโปรด (My Fav Ex)',
+    artist: 'SLAPKISS',
+    aliases: ['แฟนเก่าคนโปรด', 'my fav ex'],
+    ttsPrompt: 'ต่อให้เลิกกันไปนานแค่ไหน ... เธอก็ยังเป็นคนที่ติดอยู่ในใจฉันเสมอไม่เคยเปลี่ยน',
+  },
+  {
+    id: 'tts-18',
+    title: 'คนไม่คุย (Silent Mode)',
+    artist: 'PROXIE',
+    aliases: ['คนไม่คุย', 'silent mode'],
+    ttsPrompt: 'เป็นได้แค่คนที่เธอไม่คิดจะทักมา ... ปิดเสียงแจ้งเตือนไว้หรือเปล่าทำไมเงียบหายไปเลย',
+  },
+  {
+    id: 'tts-19',
+    title: 'ติดฝน (rain)',
+    artist: 'PiXXiE',
+    aliases: ['ติดฝน', 'rain'],
+    ttsPrompt: 'อยากให้ฟ้าเทลงมาหนักๆ อีกสักหน่อย ... จะได้มีข้ออ้างอยู่ข้างเธอให้นานกว่านี้',
+  },
+  {
+    id: 'tts-20',
+    title: 'แค่ไหนแค่นั้น (NO MATTER WHAT)',
+    artist: 'BUS',
+    aliases: ['แค่ไหนแค่นั้น', 'no matter what'],
+    ttsPrompt: 'ต่อให้เธอให้เป็นได้แค่เพื่อน ... ฉันก็พร้อมจะยืนข้างเธอตรงนี้ไม่ไปไหน',
+  },
+  {
+    id: 'tts-21',
+    title: 'วัดปะหล่ะ? (TEST ME)',
+    artist: '4EVE',
+    aliases: ['วัดปะหล่ะ', 'test me'],
+    ttsPrompt: 'ถ้าชอบก็เข้ามาเลยอย่ามัวแต่มองไกลๆ ... ลองดูสักตั้งจะได้รู้ว่าใจตรงกันไหม',
+  },
+  {
+    id: 'tts-22',
+    title: 'สายตาหลอกกันไม่ได้',
+    artist: 'Ink Waruntorn',
+    aliases: ['สายตาหลอกกันไม่ได้'],
+    ttsPrompt: 'ปากเธอบอกว่าไม่คิดอะไร ... แต่เวลามองตากันมันฟ้องออกมาหมดแล้วนะ',
+  },
+  {
+    id: 'tts-23',
+    title: 'ชอบตัวเองตอนอยู่กับเธอ',
+    artist: 'Billkin',
+    aliases: ['ชอบตัวเองตอนอยู่กับเธอ'],
+    ttsPrompt: 'ตั้งแต่มีเธอเข้ามาในชีวิต ... ฉันก็กลายเป็นคนที่ยิ้มง่ายกว่าเดิมตั้งเยอะ',
+  },
+  {
+    id: 'tts-24',
+    title: 'ลังเล',
+    artist: 'PP KRIT',
+    aliases: ['ลังเล'],
+    ttsPrompt: 'จะเดินหน้าต่อหรือพอแค่นี้ ... ใจหนึ่งก็กลัวเจ็บแต่อีกใจก็ยังอยากรักเธอ',
+  },
+  {
+    id: 'tts-25',
+    title: 'เธอ ๆ เพื่อนเราชอบ (Guess Who?)',
+    artist: 'Serious Bacon',
+    aliases: ['เธอๆเพื่อนเราชอบ', 'guess who'],
+    ttsPrompt: 'ฝากมาบอกเฉยๆ นะว่ามีคนแอบปลื้มเธออยู่ ... ลองทายดูสิว่าคนนั้นคือใครใกล้ๆ ตัวนี่แหละ',
+  },
+  {
+    id: 'tts-26',
+    title: 'เธอคือกาแฟในตอนเช้า',
+    artist: 'NO ONE ELSE',
+    aliases: ['เธอคือกาแฟในตอนเช้า'],
+    ttsPrompt: 'ตื่นมาเจอหน้าเธอทุกวันก็เหมือนได้เติมพลัง ... เป็นความสุขเล็กๆ ที่ขาดไม่ได้เลย',
+  },
+  {
+    id: 'tts-27',
+    title: 'ข้างกาย',
+    artist: 'Safeplanet',
+    aliases: ['ข้างกาย'],
+    ttsPrompt: 'ในคืนที่ดาวเต็มฟ้า ... แค่มีเธอจับมือฉันไว้ตรงนี้ก็ไม่ต้องกลัวอะไรอีกแล้ว',
+  },
+  {
+    id: 'tts-28',
+    title: 'ยิ่งห้ามยิ่งยุ (YHYU)',
+    artist: 'Mirrr',
+    aliases: ['ยิ่งห้ามยิ่งยุ', 'yhyu'],
+    ttsPrompt: 'บอกตัวเองว่าอย่าไปหลงรักคนใจร้ายแบบเธอ ... แต่หัวใจมันกลับดื้อรั้นไม่ยอมฟังเลย',
+  },
+  {
+    id: 'tts-29',
+    title: 'เพราะเธอนั้นเป็นเหมือนดั่งโลกทั้งใบ',
+    artist: 'Dept',
+    aliases: ['เพราะเธอนั้นเป็นเหมือนดั่งโลกทั้งใบ'],
+    ttsPrompt: 'ไม่ว่าวันข้างหน้าจะเป็นอย่างไร ... ทุกอย่างของฉันหมุนรอบตัวเธอคนเดียวเท่านั้น',
+  },
+  {
+    id: 'tts-30',
+    title: 'จันทร์อังคารพุธพฤหัสศุกร์เสาร์อาทิตย์',
+    artist: 'Patrickananda',
+    aliases: ['จันทร์อังคารพุธพฤหัสศุกร์เสาร์อาทิตย์', 'everyday'],
+    ttsPrompt: 'ไม่ว่าจะผ่านไปกี่วันในหนึ่งสัปดาห์ ... ในหัวของฉันก็มีแต่เรื่องของเธอทุกวันเลย',
+  },
+  {
+    id: 'tts-31',
+    title: 'เพลงรักเพลงแรก (Blooming)',
+    artist: 'LANDOKMAI',
+    aliases: ['เพลงรักเพลงแรก', 'blooming'],
+    ttsPrompt: 'ดอกไม้เริ่มผลิบานในใจอีกครั้ง ... เมื่อได้รู้จักความหมายของความรักจากเธอ',
+  },
+  {
+    id: 'tts-32',
+    title: 'กลัวว่าฉันจะไม่เสียใจ (Fear)',
+    artist: 'PURPEECH',
+    aliases: ['กลัวว่าฉันจะไม่เสียใจ', 'fear'],
+    ttsPrompt: 'ถ้าวันหนึ่งต้องเดินแยกทางกันไปจริงๆ ... สิ่งที่น่ากลัวที่สุดคือการที่เราไม่รู้สึกอะไรต่อกันอีกเลย',
+  },
+  {
+    id: 'tts-33',
+    title: 'ขาหมู',
+    artist: 'Tattoo Colour',
+    aliases: ['ขาหมู'],
+    ttsPrompt: 'สั่งข้าวร้านประจำหน้าปากซอยทุกวัน ... ไม่ได้หิวหรอกแค่อยากไปนั่งมองหน้าคนขาย',
+  },
+  {
+    id: 'tts-34',
+    title: 'ใกล้',
+    artist: 'SCRUBB',
+    aliases: ['ใกล้'],
+    ttsPrompt: 'เดินสวนกันอยู่ทุกวันแท้ๆ ... แต่ทำไมระยะห่างระหว่างใจเรามันดูไกลจังเลย',
+  },
+  {
+    id: 'tts-35',
+    title: 'ดึงดัน',
+    artist: 'Cocktail',
+    aliases: ['ดึงดัน'],
+    ttsPrompt: 'รู้ทั้งรู้ว่าไปกันไม่รอด ... แต่ก็ยังฝืนจับมือกันไว้ทั้งที่เจ็บทั้งสองฝ่าย',
+  },
+  {
+    id: 'tts-36',
+    title: 'วายร้าย',
+    artist: 'URBOYTJ',
+    aliases: ['วายร้าย'],
+    ttsPrompt: 'คนอย่างฉันมันไม่ใช่พระเอกในนิทาน ... แต่รักเธอหมดใจไม่แพ้ใครแน่นอน',
+  },
+  {
+    id: 'tts-37',
+    title: 'พักก่อน',
+    artist: 'MILLI',
+    aliases: ['พักก่อน'],
+    ttsPrompt: 'หยุดพูดจาเพ้อเจ้อเดี๋ยวนี้เลยนะพี่สาว ... กลับไปนอนตั้งสติสักแป๊บนะคะ',
+  },
+  {
+    id: 'tts-38',
+    title: 'ธาตุทองซาวด์',
+    artist: 'YOUNGOHM',
+    aliases: ['ธาตุทองซาวด์'],
+    ttsPrompt: 'อีกี้มันเป็นสก๊อยไปกับผู้บ่อยๆ ... เปิดเพลงเต้นหน้าเวทีตั้งแต่สมัยไฮไฟว์',
+  },
+  {
+    id: 'tts-39',
+    title: 'เจ็บจนพอ (Enough)',
+    artist: 'WANYAi',
+    aliases: ['เจ็บจนพอ', 'enough'],
+    ttsPrompt: 'ร้องไห้มาไม่รู้กี่ครั้งกับเรื่องเดิมๆ ... วันนี้หัวใจมันบอกตัวเองว่าพอได้แล้วจริงๆ',
+  },
+  {
+    id: 'tts-40',
+    title: 'ซ่อนกลิ่น',
+    artist: 'Palmy',
+    aliases: ['ซ่อนกลิ่น'],
+    ttsPrompt: 'เก็บความรู้สึกไว้ข้างในลึกสุดใจ ... แอบส่งยิ้มให้เธอไกลๆ โดยไม่ให้ใครรู้',
+  },
+  {
+    id: 'tts-41',
+    title: 'เคลิ้ม',
+    artist: 'Slot Machine',
+    aliases: ['เคลิ้ม'],
+    ttsPrompt: 'หลงใหลในมนตราของเธอจนถอนตัวไม่ขึ้น ... เหมือนลอยอยู่ในความฝันที่ไม่อยากตื่น',
+  },
+  {
+    id: 'tts-42',
+    title: 'ความเงียบดังที่สุด',
+    artist: 'Getsunova',
+    aliases: ['ความเงียบดังที่สุด'],
+    ttsPrompt: 'ไม่มีคำพูดใดหลุดออกมาจากปากเธอ ... แต่ความว่างเปล่านั้นกลับตะโกนก้องอยู่ในหัวใจ',
+  },
+  {
+    id: 'tts-43',
+    title: 'คำยินดี',
+    artist: 'Klear',
+    aliases: ['คำยินดี'],
+    ttsPrompt: 'ขอให้เธอไปดีขอให้มีความสุข ... กับคนที่เธอเลือกแล้วส่วนฉันจะยืนยิ้มทั้งน้ำตาตรงนี้เอง',
+  },
+  {
+    id: 'tts-44',
+    title: 'ไม่เคย',
+    artist: '25HOURS',
+    aliases: ['ไม่เคย'],
+    ttsPrompt: 'เราต่างไม่รู้เลยว่าเวลาที่มีอยู่ด้วยกันมันมีค่าแค่ไหน ... จนวันที่ต้องเสียมันไปตลอดกาล',
+  },
+  {
+    id: 'tts-45',
+    title: 'เชือกวิเศษ',
+    artist: 'Labanoon',
+    aliases: ['เชือกวิเศษ'],
+    ttsPrompt: 'ต่อให้มัดตัวเธอไว้แน่นแค่ไหน ... ถ้าใจเธอไม่อยู่แล้วก็รั้งไว้ไม่ได้อยู่ดี',
+  },
+  {
+    id: 'tts-46',
+    title: 'มันคงเป็นความรัก',
+    artist: 'STAMP',
+    aliases: ['มันคงเป็นความรัก'],
+    ttsPrompt: 'ที่ทำให้ตัวฉันยังยืนอยู่ตรงนี้ ... อยากดูแลเธอให้ดีที่สุดเท่าที่คนคนหนึ่งจะทำได้',
+  },
+  {
+    id: 'tts-47',
+    title: 'ลาลาลอย (100%)',
+    artist: 'THE TOYS',
+    aliases: ['ลาลาลอย'],
+    ttsPrompt: 'ส่งใจลอยไปหาเธอที่อยู่แสนไกล ... ไม่รู้ว่าตอนนี้เธอจะคิดถึงกันบ้างไหมนะ',
+  },
+  {
+    id: 'tts-48',
+    title: 'อาวรณ์',
+    artist: 'Polycat',
+    aliases: ['อาวรณ์'],
+    ttsPrompt: 'คนที่บอกลาเป็นคนสุดท้าย ... คือคนที่ยังรักและคิดถึงเธอมากที่สุดเสมอมา',
+  },
+];
+
+const ttsAudioCache = new Map<string, Buffer>();
+
+export async function getTtsAudioBuffer(trackId: string): Promise<{ buffer: Buffer; mime: string }> {
+  const cached = ttsAudioCache.get(trackId);
+  if (cached) {
+    return { buffer: cached, mime: 'audio/mpeg' };
+  }
+
+  const entry = TTS_SONG_ENTRIES.find((e) => e.id === trackId);
+  if (!entry) {
+    return { buffer: generateFallbackWav(trackId), mime: 'audio/wav' };
+  }
+
+  // Repeat the spoken prompt twice with pauses so Siri/Google voice plays for ~15 seconds
+  const fullSpeech = `${entry.ttsPrompt} ... ฟังอีกครั้งนะคะ ... ${entry.ttsPrompt}`;
+  const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=th&client=tw-ob&q=${encodeURIComponent(
+    fullSpeech.slice(0, 195)
+  )}`;
+
+  try {
+    const res = await fetch(url, {
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+      },
+    });
+    if (!res.ok) throw new Error(`TTS HTTP ${res.status}`);
+    const arr = await res.arrayBuffer();
+    const buf = Buffer.from(arr);
+    if (buf.byteLength < 500) throw new Error('TTS buffer too small');
+    ttsAudioCache.set(trackId, buf);
+    return { buffer: buf, mime: 'audio/mpeg' };
+  } catch {
+    return { buffer: generateFallbackWav(trackId), mime: 'audio/wav' };
+  }
+}
 
 // Fallback tracks used when Deezer API is down or unreachable
 export const FALLBACK_TRACKS: TrackItem[] = [
@@ -473,9 +861,28 @@ export async function getCategoryPool(
     return cached;
   }
 
+  if (category === 'tts') {
+    const ttsPool: TrackItem[] = TTS_SONG_ENTRIES.map((e) => ({
+      id: e.id,
+      title: e.title,
+      artist: e.artist,
+      cover: `https://picsum.photos/seed/${e.id}/400/400`,
+      preview: `/api/tts-audio/${e.id}`,
+      aliases: e.aliases,
+      category: 'tts',
+    }));
+    await store.setCachedTracks('tts', ttsPool, CACHE_TTL_MS);
+    return ttsPool;
+  }
+
   let queries: Array<{ q: string; cat: Category }> = [];
   if (category === 'mixed') {
-    const subCats: Array<Exclude<Category, 'mixed'>> = ['thai', 'inter', 'kpop', 'retro'];
+    const subCats: Array<Exclude<Category, 'mixed' | 'tts'>> = [
+      'thai',
+      'inter',
+      'kpop',
+      'retro',
+    ];
     for (const c of subCats) {
       const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 6);
       for (const q of sample) {
@@ -503,7 +910,7 @@ export async function getCategoryPool(
     }
   }
 
-  // Only merge fallback tracks that match the requested category (never mix foreign fallbacks into Thai!)
+  // Only merge fallback tracks that match the requested category
   if (deduped.size < 16) {
     const relevantFallbacks =
       category === 'mixed'

@@ -53,7 +53,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         )
       : null;
 
-  const categories: Category[] = ['thai', 'inter', 'kpop', 'retro', 'mixed'];
+  const categories: Category[] = ['thai', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
 
   const withAudio = (fn: () => void) => {
     if (!audioUnlocked) onUnlockAudio();
@@ -68,7 +68,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           ทายชื่อเพลงออนไลน์
         </h1>
         <p className="text-zinc-400 text-sm">
-          ฟังเพลง 30 วินาที แข่งทายชื่อเพลงกับเพื่อนแบบเรียลไทม์
+          ฟังเพลงหรือเสียง AI อ่านเนื้อร้อง แข่งทายชื่อเพลงกับเพื่อนแบบเรียลไทม์
         </p>
       </div>
 
@@ -113,7 +113,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     active
                       ? 'bg-emerald-500/10 border-emerald-500 text-white'
                       : 'bg-[#0a0a0c] border-[#22252d] text-zinc-300 hover:border-zinc-700'
-                  } ${cat === 'mixed' ? 'col-span-2' : ''}`}
+                  }`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-semibold">{info.name}</span>

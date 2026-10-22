@@ -265,7 +265,19 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
       true
     );
   });
+
+  it('loads AI TTS spoken-lyrics category pool and generates TTS audio buffer', async () => {
+    const { getCategoryPool, getTtsAudioBuffer } = await import('../src/server/deezer.js');
+    const store = new InMemoryStateStore();
+    const pool = await getCategoryPool('tts', store);
+    assert.equal(pool.length >= 40, true);
+    assert.equal(pool[0].preview.startsWith('/api/tts-audio/'), true);
+
+    const { buffer } = await getTtsAudioBuffer('tts-1');
+    assert.equal(buffer.byteLength > 500, true);
+  });
 });
+
 
 
 

@@ -8,7 +8,7 @@ import {
   ClientToServerEvents,
   ServerToClientEvents,
 } from '../shared/types.js';
-import { generateFallbackWav } from './deezer.js';
+import { generateFallbackWav, getTtsAudioBuffer } from './deezer.js';
 import { GameManager } from './gameManager.js';
 import { MatchmakingQueue } from './matchmaking.js';
 import { sanitizeNickname } from './scoring.js';
@@ -68,6 +68,14 @@ async function bootstrap() {
     res.setHeader('Content-Type', 'audio/wav');
     res.setHeader('Cache-Control', 'public, max-age=3600');
     res.send(wav);
+  });
+
+  // AI Siri / Google TTS spoken lyrics audio stream
+  app.get('/api/tts-audio/:id', async (req, res) => {
+    const { buffer, mime } = await getTtsAudioBuffer(req.params.id || 'tts-1');
+    res.setHeader('Content-Type', mime);
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.send(buffer);
   });
 
   // Safe proxy for Deezer 30s audio preview to prevent browser CORS issues
@@ -163,7 +171,7 @@ async function bootstrap() {
 
       await gameManager.leaveCurrentRoomIfAny(socket, pid);
 
-      const validCats: Category[] = ['thai', 'inter', 'kpop', 'retro', 'mixed'];
+      const validCats: Category[] = ['thai', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
       const category: Category = validCats.includes(payload?.category)
         ? payload.category
         : 'thai';

@@ -265,8 +265,10 @@ export const GameView: React.FC<GameViewProps> = ({
             <div className="text-center space-y-1.5">
               <div className="text-xs font-medium text-zinc-400">
                 {isAudioPlaying
-                  ? 'กำลังเล่นตัวอย่างเพลง 30 วินาที'
-                  : 'เสียงเพลงถูกระงับโดยเบราว์เซอร์'}
+                  ? room.settings.category === 'tts'
+                    ? 'กำลังเล่นเสียง AI (Siri / Google) อ่านเนื้อร้อง...'
+                    : 'กำลังเล่นตัวอย่างเพลง 30 วินาที'
+                  : 'เสียงถูกระงับโดยเบราว์เซอร์'}
               </div>
               {!isAudioPlaying && (
                 <button
@@ -274,7 +276,7 @@ export const GameView: React.FC<GameViewProps> = ({
                   onClick={onRetryPlayAudio}
                   className="px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-semibold text-xs transition cursor-pointer"
                 >
-                  แตะเพื่อเล่นเสียงเพลง
+                  แตะเพื่อเล่นเสียง
                 </button>
               )}
             </div>

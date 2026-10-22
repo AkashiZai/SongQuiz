@@ -1,4 +1,4 @@
-export type Category = 'thai' | 'inter' | 'kpop' | 'retro' | 'mixed';
+export type Category = 'thai' | 'tts' | 'inter' | 'kpop' | 'retro' | 'mixed';
 
 export type AnswerMode = 'choice' | 'type';
 
@@ -163,6 +163,7 @@ export interface ServerToClientEvents {
 
 export const CATEGORY_LABELS: Record<Category, { name: string; emoji: string; desc: string }> = {
   thai: { name: 'เพลงไทยฮิต', emoji: '🇹🇭', desc: 'T-Pop และเพลงไทยฮิตติดชาร์ต' },
+  tts: { name: 'AI อ่านเนื้อเพลง', emoji: '🤖', desc: 'Siri / Google อ่านท่อนฮิตให้ทาย' },
   inter: { name: 'เพลงสากลฮิต', emoji: '🌎', desc: 'Billboard & Global Pop Hits' },
   kpop: { name: 'K-Pop', emoji: '🇰🇷', desc: 'ไอดอลเกาหลีฮิตทั่วโลก' },
   retro: { name: 'ยุค 2000s/2010s', emoji: '💿', desc: 'เพลงดังวันวานที่ทุกคนร้องตามได้' },
