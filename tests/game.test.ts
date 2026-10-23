@@ -390,6 +390,51 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
       false
     );
   });
+
+  it('filters Anime category for official artists, rejects Japanese karaoke covers, and allows matching by song or anime title', async () => {
+    const { isRelevantTrackForQuery } = await import('../src/server/deezer.js');
+
+    // Accept official anime artist even when query uses Japanese name and Deezer returns Romaji artist
+    assert.equal(
+      isRelevantTrackForQuery(
+        {
+          id: 30,
+          title: 'Blue Bird',
+          artist: { name: 'Ikimonogakari' },
+          album: { title: 'Blue Bird' },
+          preview: 'http://x',
+        },
+        'いきものがかり ブルーバード',
+        'anime'
+      ),
+      true
+    );
+
+    // Reject Japanese karaoke cover (歌っちゃ王 / カラオケ)
+    assert.equal(
+      isRelevantTrackForQuery(
+        {
+          id: 31,
+          title: '廻廻奇譚-2Key(原曲歌手:Eve)[ガイド無しカラオケ]',
+          artist: { name: '歌っちゃ王' },
+          album: { title: '廻廻奇譚(ガイド無しカラオケ)[原曲歌手:Eve]' },
+          preview: 'http://x',
+        },
+        'Eve Kaikai Kitan',
+        'anime'
+      ),
+      false
+    );
+
+    // Verify player can type either the song name or anime name (English or Thai)
+    const animeTrack = {
+      title: 'Gurenge (Demon Slayer / ดาบพิฆาตอสูร)',
+      aliases: ['Gurenge', '紅蓮華', 'Demon Slayer', 'Kimetsu no Yaiba', 'ดาบพิฆาตอสูร'],
+    };
+    assert.equal(isFuzzyAnswerMatch('gurenge', animeTrack), true);
+    assert.equal(isFuzzyAnswerMatch('demon slayer', animeTrack), true);
+    assert.equal(isFuzzyAnswerMatch('ดาบพิฆาตอสูร', animeTrack), true);
+  });
 });
 
 

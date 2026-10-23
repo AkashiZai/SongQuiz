@@ -53,7 +53,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
         )
       : null;
 
-  const categories: Category[] = ['thai', 'tpop', 'idol48', 'tts', 'inter', 'kpop', 'retro', 'mixed'];
+  const categories: Category[] = [
+    'thai',
+    'tpop',
+    'idol48',
+    'anime',
+    'tts',
+    'inter',
+    'kpop',
+    'retro',
+    'mixed',
+  ];
 
   const withAudio = (fn: () => void) => {
     if (!audioUnlocked) onUnlockAudio();
@@ -113,7 +123,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     active
                       ? 'bg-emerald-500/10 border-emerald-500 text-white'
                       : 'bg-[#0a0a0c] border-[#22252d] text-zinc-300 hover:border-zinc-700'
-                  }`}
+                  } ${cat === 'mixed' ? 'col-span-2' : ''}`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-semibold">{info.name}</span>

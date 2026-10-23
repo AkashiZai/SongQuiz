@@ -150,6 +150,73 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'AKB48 大声ダイヤモンド',
     'QRRA',
   ],
+  anime: [
+    'LiSA 紅蓮華',
+    'Aimer 残響散歌',
+    'MAN WITH A MISSION 絆ノ奇跡',
+    'YOASOBI アイドル',
+    'King Gnu SPECIALZ',
+    'Eve Kaikai Kitan',
+    'Tatsuya Kitani 青のすみか',
+    'Kenshi Yonezu KICK BACK',
+    'Vaundy CHAINSAW BLOOD',
+    'ano Chu, Tayousei',
+    'Creepy Nuts Bling-Bang-Bang-Born',
+    'Creepy Nuts オトノケ',
+    'YOASOBI 勇者',
+    'Official HIGE DANdism ミックスナッツ',
+    'Gen Hoshino 喜劇',
+    'SiM The Rumbling',
+    'Linked Horizon Shinzou wo Sasageyo',
+    'Linked Horizon 紅蓮の弓矢',
+    'TK from 凛として時雨 unravel',
+    'TK from Ling tosite sigure Katharsis',
+    'amazarashi Kisetsu wa Tsugitsugi Shindeiku',
+    'LiSA crossing field',
+    'LiSA ADAMAS',
+    'いきものがかり ブルーバード',
+    'KANA-BOON シルエット',
+    'FLOW GO!!!',
+    'Ado New Genesis',
+    'RADWIMPS Zenzenzense',
+    'Mrs. GREEN APPLE インフェルノ',
+    'Mrs. GREEN APPLE Lilac',
+    'Official HIGE DANdism Cry Baby',
+    'Vaundy 裸の勇者',
+    'SPYAIR イマジネーション',
+    'BURNOUT SYNDROMES FLY HIGH!!',
+    'Kenshi Yonezu Peace Sign',
+    'ポルノグラフィティ THE DAY',
+    'UVERworld ODD FUTURE',
+    'BLUE ENCOUNT Polaris',
+    'ClariS コネクト',
+    'Goose house 光るなら',
+    'Yoko Takahashi 残酷な天使のテーゼ',
+    'YUI again',
+    'NICO Touches the Walls Hologram',
+    'SID Rain',
+    'ASIAN KUNG-FU GENERATION リライト',
+    'Masayuki Suzuki DADDY ! DADDY ! DO !',
+    'Masayuki Suzuki Love Dramatic',
+    '結束バンド 青春コンプレックス',
+    'Vickeblanka Black Catcher',
+    'KANA-BOON Song of the Dead',
+    '10-FEET Dai Zero Kan',
+    'JAM Project THE HERO',
+    'UNISON SQUARE GARDEN Chaos ga Kiwamaru',
+    'Konomi Suzuki Redo',
+    'MYTH & ROID Voracity',
+    'OxT Clattanoia',
+    'UVERworld Touch off',
+    'EGOIST The Everlasting Guilty Crown',
+    'supercell Kimi no Shiranai Monogatari',
+    'Aimer Brave Shine',
+    'LiSA Oath Sign',
+    'Masatoshi Ono Departure',
+    'Galneryus Hunting for your dream',
+    'ORANGE RANGE Asterisk',
+    'Ryokuoushoku Shakai Be a flower',
+  ],
   inter: [
     'Taylor Swift',
     'The Weeknd',
@@ -957,6 +1024,78 @@ export const FALLBACK_TRACKS: TrackItem[] = [
     category: 'idol48',
   },
   {
+    id: 'fb-anime-1',
+    title: 'Gurenge (Demon Slayer / ดาบพิฆาตอสูร)',
+    artist: 'LiSA',
+    cover: 'https://picsum.photos/seed/ani1/400/400',
+    preview: '/api/fallback-audio/fb-anime-1.wav',
+    aliases: ['Gurenge', '紅蓮華', 'Demon Slayer', 'Kimetsu no Yaiba', 'ดาบพิฆาตอสูร'],
+    category: 'anime',
+  },
+  {
+    id: 'fb-anime-2',
+    title: 'Idol (Oshi no Ko / เกิดใหม่เป็นลูกโอชิ)',
+    artist: 'YOASOBI',
+    cover: 'https://picsum.photos/seed/ani2/400/400',
+    preview: '/api/fallback-audio/fb-anime-2.wav',
+    aliases: ['Idol', 'アイドル', 'Oshi no Ko', 'เกิดใหม่เป็นลูกโอชิ'],
+    category: 'anime',
+  },
+  {
+    id: 'fb-anime-3',
+    title: 'SPECIALZ (Jujutsu Kaisen / มหาเวทย์ผนึกมาร)',
+    artist: 'King Gnu',
+    cover: 'https://picsum.photos/seed/ani3/400/400',
+    preview: '/api/fallback-audio/fb-anime-3.wav',
+    aliases: ['SPECIALZ', 'Jujutsu Kaisen', 'มหาเวทย์ผนึกมาร'],
+    category: 'anime',
+  },
+  {
+    id: 'fb-anime-4',
+    title: 'KICK BACK (Chainsaw Man / เชนซอว์แมน)',
+    artist: 'Kenshi Yonezu',
+    cover: 'https://picsum.photos/seed/ani4/400/400',
+    preview: '/api/fallback-audio/fb-anime-4.wav',
+    aliases: ['KICK BACK', 'Chainsaw Man', 'เชนซอว์แมน'],
+    category: 'anime',
+  },
+  {
+    id: 'fb-anime-5',
+    title: 'Bling-Bang-Bang-Born (Mashle / ศึกโลกเวทมนตร์คนพลังกล้าม)',
+    artist: 'Creepy Nuts',
+    cover: 'https://picsum.photos/seed/ani5/400/400',
+    preview: '/api/fallback-audio/fb-anime-5.wav',
+    aliases: ['Bling-Bang-Bang-Born', 'Mashle', 'ศึกโลกเวทมนตร์คนพลังกล้าม'],
+    category: 'anime',
+  },
+  {
+    id: 'fb-anime-6',
+    title: 'Shinzo wo Sasageyo! (Attack on Titan / ผ่าพิภพไททัน)',
+    artist: 'Linked Horizon',
+    cover: 'https://picsum.photos/seed/ani6/400/400',
+    preview: '/api/fallback-audio/fb-anime-6.wav',
+    aliases: ['Shinzo wo Sasageyo', 'Shinzou wo Sasageyo', 'Attack on Titan', 'ผ่าพิภพไททัน'],
+    category: 'anime',
+  },
+  {
+    id: 'fb-anime-7',
+    title: 'Unravel (Tokyo Ghoul / โตเกียวกูล)',
+    artist: 'TK from Ling tosite sigure',
+    cover: 'https://picsum.photos/seed/ani7/400/400',
+    preview: '/api/fallback-audio/fb-anime-7.wav',
+    aliases: ['Unravel', 'Tokyo Ghoul', 'โตเกียวกูล'],
+    category: 'anime',
+  },
+  {
+    id: 'fb-anime-8',
+    title: 'Blue Bird (Naruto Shippuden / นารูโตะ)',
+    artist: 'Ikimonogakari',
+    cover: 'https://picsum.photos/seed/ani8/400/400',
+    preview: '/api/fallback-audio/fb-anime-8.wav',
+    aliases: ['Blue Bird', 'Naruto', 'นารูโตะ'],
+    category: 'anime',
+  },
+  {
     id: 'fb-inter-1',
     title: 'Blinding Lights',
     artist: 'The Weeknd',
@@ -1089,10 +1228,10 @@ const THAI_SCRIPT_REGEX = /[\u0E00-\u0E7F]/;
 
 // Strictly filter out non-official / Raw Session / Live Session / Acoustic / Tour / Concert / Off-Vocal / Remix / Cover tracks
 const NON_OFFICIAL_TITLE_REGEX =
-  /\b(88rising|raw session|live session|another session|studio session|in my room session|session|off vocal|vocal off|instrumental|karaoke|backing track|minus one|type beat|free beat|beat|lofi|lo-fi|ringtone|tribute|cover|covers|music box|8-bit|lullaby|piano|acoustic|unplugged|stripped|acapella|acappella|sped up|speed up|slowed|reverb|remix|bootleg|mashup|medley|interlude|overture|live|concert|tour|arena|festival|hall|band version|band ver|big band|gospel|orchestra|orchestral|string version|english version|english ver|japanese version|japanese ver|chinese version|french version|special version|special ver|light ver|2024 version|rearranged|demo|on a train|radio edit|video edit)\b|'s ver\.?|เวอร์ชันพิเศษ|แสดงสด|คอนเสิร์ต|อะคูสติก|บรรเลง/i;
+  /\b(88rising|raw session|live session|another session|studio session|in my room session|session|off vocal|vocal off|instrumental|karaoke|backing track|minus one|type beat|free beat|beat|lofi|lo-fi|ringtone|tribute|cover|covers|music box|8-bit|lullaby|piano|acoustic|unplugged|stripped|acapella|acappella|sped up|speed up|slowed|reverb|remix|bootleg|mashup|medley|interlude|overture|live|concert|tour|arena|festival|hall|band version|band ver|big band|gospel|orchestra|orchestral|string version|english version|english ver|japanese version|japanese ver|chinese version|french version|special version|special ver|light ver|2024 version|rearranged|demo|on a train|radio edit|video edit)\b|'s ver\.?|เวอร์ชันพิเศษ|แสดงสด|คอนเสิร์ต|อะคูสติก|บรรเลง|カラオケ|原曲歌手|ガイド無し|オルゴール/i;
 
 const NON_OFFICIAL_ALBUM_REGEX =
-  /\b(88rising|raw session|live session|another session|studio session|in my room session|session|off vocal|vocal off|instrumental|karaoke|backing track|minus one|type beat|free beat|lofi|lo-fi|ringtone|tribute|cover|covers|music box|8-bit|lullaby|piano|acoustic|unplugged|stripped|acapella|acappella|sped up|speed up|slowed|reverb|remix|bootleg|mashup|medley|live|concert|tour version|band version|orchestra|orchestral|english version|japanese version|japanese deluxe|french version|special version|light ver|2024 version|alternate versions|on a train)\b|เวอร์ชันพิเศษ|แสดงสด|คอนเสิร์ต|อะคูสติก|บรรเลง/i;
+  /\b(88rising|raw session|live session|another session|studio session|in my room session|session|off vocal|vocal off|instrumental|karaoke|backing track|minus one|type beat|free beat|lofi|lo-fi|ringtone|tribute|cover|covers|music box|8-bit|lullaby|piano|acoustic|unplugged|stripped|acapella|acappella|sped up|speed up|slowed|reverb|remix|bootleg|mashup|medley|live|concert|tour version|band version|orchestra|orchestral|english version|japanese version|japanese deluxe|french version|special version|light ver|2024 version|alternate versions|on a train)\b|เวอร์ชันพิเศษ|แสดงสด|คอนเสิร์ต|อะคูสติก|บรรเลง|カラオケ|原曲歌手|ガイド無し|オルゴール/i;
 
 const IDOL48_ARTIST_REGEX = /^(bnk48|cgm48|akb48|qrra|vyra|mimigumo|indy camp)$/i;
 
@@ -1120,6 +1259,337 @@ const AKB48_ROMAJI_MAP: Record<string, { display: string; aliases: string[] }> =
   '大声ダイヤモンド': {
     display: 'Oogoe Diamond (大声ダイヤモンド)',
     aliases: ['Oogoe Diamond', 'ก็ชอบให้รู้ว่าชอบ', '大声ダイヤモンド'],
+  },
+};
+
+const ANIME_QUERY_META: Record<
+  string,
+  { expectedArtist: string; display: string; aliases: string[] }
+> = {
+  'LiSA 紅蓮華': {
+    expectedArtist: 'LiSA',
+    display: 'Gurenge (Demon Slayer / ดาบพิฆาตอสูร)',
+    aliases: ['Gurenge', '紅蓮華', 'Demon Slayer', 'Kimetsu no Yaiba', 'ดาบพิฆาตอสูร'],
+  },
+  'Aimer 残響散歌': {
+    expectedArtist: 'Aimer',
+    display: 'Zankyosanka (Demon Slayer SS2 / ดาบพิฆาตอสูร)',
+    aliases: ['Zankyosanka', '残響散歌', 'Demon Slayer', 'Kimetsu no Yaiba', 'ดาบพิฆาตอสูร'],
+  },
+  'MAN WITH A MISSION 絆ノ奇跡': {
+    expectedArtist: 'Man With A Mission',
+    display: 'Kizuna no Kiseki (Demon Slayer SS3 / ดาบพิฆาตอสูร)',
+    aliases: ['Kizuna no Kiseki', '絆ノ奇跡', 'Demon Slayer', 'Kimetsu no Yaiba', 'ดาบพิฆาตอสูร'],
+  },
+  'YOASOBI アイドル': {
+    expectedArtist: 'YOASOBI',
+    display: 'Idol (Oshi no Ko / เกิดใหม่เป็นลูกโอชิ)',
+    aliases: ['Idol', 'アイドル', 'Oshi no Ko', 'เกิดใหม่เป็นลูกโอชิ'],
+  },
+  'King Gnu SPECIALZ': {
+    expectedArtist: 'King Gnu',
+    display: 'SPECIALZ (Jujutsu Kaisen / มหาเวทย์ผนึกมาร)',
+    aliases: ['SPECIALZ', 'Jujutsu Kaisen', 'มหาเวทย์ผนึกมาร'],
+  },
+  'Eve Kaikai Kitan': {
+    expectedArtist: 'Eve',
+    display: 'Kaikai Kitan (Jujutsu Kaisen / มหาเวทย์ผนึกมาร)',
+    aliases: ['Kaikai Kitan', '廻廻奇譚', 'Jujutsu Kaisen', 'มหาเวทย์ผนึกมาร'],
+  },
+  'Tatsuya Kitani 青のすみか': {
+    expectedArtist: 'Tatsuya Kitani',
+    display: 'Where Our Blue Is / Ao no Sumika (Jujutsu Kaisen SS2 / มหาเวทย์ผนึกมาร)',
+    aliases: ['Where Our Blue Is', 'Ao no Sumika', '青のすみか', 'Jujutsu Kaisen', 'มหาเวทย์ผนึกมาร'],
+  },
+  'Kenshi Yonezu KICK BACK': {
+    expectedArtist: 'Kenshi Yonezu',
+    display: 'KICK BACK (Chainsaw Man / เชนซอว์แมน)',
+    aliases: ['KICK BACK', 'Chainsaw Man', 'เชนซอว์แมน'],
+  },
+  'Vaundy CHAINSAW BLOOD': {
+    expectedArtist: 'Vaundy',
+    display: 'CHAINSAW BLOOD (Chainsaw Man / เชนซอว์แมน)',
+    aliases: ['CHAINSAW BLOOD', 'Chainsaw Man', 'เชนซอว์แมน'],
+  },
+  'ano Chu, Tayousei': {
+    expectedArtist: 'ano',
+    display: 'Chu, Tayousei. (Chainsaw Man / เชนซอว์แมน)',
+    aliases: ['Chu Tayousei', 'Chainsaw Man', 'เชนซอว์แมน'],
+  },
+  'Creepy Nuts Bling-Bang-Bang-Born': {
+    expectedArtist: 'Creepy Nuts',
+    display: 'Bling-Bang-Bang-Born (Mashle / ศึกโลกเวทมนตร์คนพลังกล้าม)',
+    aliases: ['Bling-Bang-Bang-Born', 'Mashle', 'ศึกโลกเวทมนตร์คนพลังกล้าม'],
+  },
+  'Creepy Nuts オトノケ': {
+    expectedArtist: 'Creepy Nuts',
+    display: 'Otonoke (Dandadan / ดันดาดัน)',
+    aliases: ['Otonoke', 'オトノケ', 'Dandadan', 'ดันดาดัน'],
+  },
+  'YOASOBI 勇者': {
+    expectedArtist: 'YOASOBI',
+    display: 'Yuusha / The Brave (Frieren / คำอธิษฐานในวันที่จากลา)',
+    aliases: ['Yuusha', 'The Brave', '勇者', 'Frieren', 'คำอธิษฐานในวันที่จากลา'],
+  },
+  'Official HIGE DANdism ミックスナッツ': {
+    expectedArtist: 'Official HIGE DANdism',
+    display: 'Mixed Nuts (SPY x FAMILY / สปาย x แฟมิลี)',
+    aliases: ['Mixed Nuts', 'ミックスナッツ', 'Spy x Family', 'สปายxแฟมิลี'],
+  },
+  'Gen Hoshino 喜劇': {
+    expectedArtist: 'Gen Hoshino',
+    display: 'Comedy (SPY x FAMILY / สปาย x แฟมิลี)',
+    aliases: ['Comedy', 'Kigeki', '喜劇', 'Spy x Family', 'สปายxแฟมิลี'],
+  },
+  'SiM The Rumbling': {
+    expectedArtist: 'SiM',
+    display: 'The Rumbling (Attack on Titan / ผ่าพิภพไททัน)',
+    aliases: ['The Rumbling', 'Attack on Titan', 'Shingeki no Kyojin', 'ผ่าพิภพไททัน'],
+  },
+  'Linked Horizon Shinzou wo Sasageyo': {
+    expectedArtist: 'Linked Horizon',
+    display: 'Shinzo wo Sasageyo! (Attack on Titan / ผ่าพิภพไททัน)',
+    aliases: ['Shinzo wo Sasageyo', 'Shinzou wo Sasageyo', '心臓を捧げよ', 'Attack on Titan', 'ผ่าพิภพไททัน'],
+  },
+  'Linked Horizon 紅蓮の弓矢': {
+    expectedArtist: 'Linked Horizon',
+    display: 'Guren no Yumiya (Attack on Titan / ผ่าพิภพไททัน)',
+    aliases: ['Guren no Yumiya', '紅蓮の弓矢', 'Attack on Titan', 'ผ่าพิภพไททัน'],
+  },
+  'TK from 凛として時雨 unravel': {
+    expectedArtist: 'TK from Ling tosite sigure',
+    display: 'Unravel (Tokyo Ghoul / โตเกียวกูล)',
+    aliases: ['Unravel', 'Tokyo Ghoul', 'โตเกียวกูล'],
+  },
+  'TK from Ling tosite sigure Katharsis': {
+    expectedArtist: 'TK from Ling tosite sigure',
+    display: 'Katharsis (Tokyo Ghoul:re / โตเกียวกูล)',
+    aliases: ['Katharsis', 'Tokyo Ghoul', 'โตเกียวกูล'],
+  },
+  'amazarashi Kisetsu wa Tsugitsugi Shindeiku': {
+    expectedArtist: 'amazarashi',
+    display: 'Kisetsu wa Tsugitsugi Shindeiku (Tokyo Ghoul √A / โตเกียวกูล)',
+    aliases: ['Kisetsu wa Tsugitsugi Shindeiku', 'Tokyo Ghoul', 'โตเกียวกูล'],
+  },
+  'LiSA crossing field': {
+    expectedArtist: 'LiSA',
+    display: 'Crossing Field (Sword Art Online / ซอร์ดอาร์ตออนไลน์)',
+    aliases: ['Crossing Field', 'Sword Art Online', 'SAO', 'ซอร์ดอาร์ตออนไลน์'],
+  },
+  'LiSA ADAMAS': {
+    expectedArtist: 'LiSA',
+    display: 'ADAMAS (Sword Art Online: Alicization / ซอร์ดอาร์ตออนไลน์)',
+    aliases: ['ADAMAS', 'Sword Art Online', 'SAO', 'ซอร์ดอาร์ตออนไลน์'],
+  },
+  'いきものがかり ブルーバード': {
+    expectedArtist: 'Ikimonogakari',
+    display: 'Blue Bird (Naruto Shippuden / นารูโตะ)',
+    aliases: ['Blue Bird', 'ブルーバード', 'Naruto', 'Naruto Shippuden', 'นารูโตะ'],
+  },
+  'KANA-BOON シルエット': {
+    expectedArtist: 'KANA-BOON',
+    display: 'Silhouette (Naruto Shippuden / นารูโตะ)',
+    aliases: ['Silhouette', 'シルエット', 'Naruto', 'Naruto Shippuden', 'นารูโตะ'],
+  },
+  'FLOW GO!!!': {
+    expectedArtist: 'Flow',
+    display: 'GO!!! (Naruto / นารูโตะ)',
+    aliases: ['GO', 'GO!!!', 'Naruto', 'นารูโตะ'],
+  },
+  'Ado New Genesis': {
+    expectedArtist: 'Ado',
+    display: 'New Genesis / Shin Jidai (One Piece Film: Red / วันพีซ)',
+    aliases: ['New Genesis', 'Shin Jidai', '新時代', 'One Piece', 'วันพีซ'],
+  },
+  'RADWIMPS Zenzenzense': {
+    expectedArtist: 'Radwimps',
+    display: 'Zenzenzense (Your Name / หลับตาฝัน ถึงชื่อเธอ)',
+    aliases: ['Zenzenzense', '前前前世', 'Your Name', 'Kimi no Na wa', 'หลับตาฝันถึงชื่อเธอ'],
+  },
+  'Mrs. GREEN APPLE インフェルノ': {
+    expectedArtist: 'Mrs. GREEN APPLE',
+    display: 'Inferno (Fire Force / หน่วยผจญคนไฟลุก)',
+    aliases: ['Inferno', 'インフェルノ', 'Fire Force', 'Enen no Shouboutai', 'หน่วยผจญคนไฟลุก'],
+  },
+  'Mrs. GREEN APPLE Lilac': {
+    expectedArtist: 'Mrs. GREEN APPLE',
+    display: 'Lilac (Oblivion Battery / แบตเตอรี่ลืมความจำ)',
+    aliases: ['Lilac', 'ライラック', 'Oblivion Battery', 'Boukyaku Battery'],
+  },
+  'Official HIGE DANdism Cry Baby': {
+    expectedArtist: 'Official HIGE DANdism',
+    display: 'Cry Baby (Tokyo Revengers / โตเกียว รีเวนเจอร์ส)',
+    aliases: ['Cry Baby', 'Tokyo Revengers', 'โตเกียวรีเวนเจอร์ส'],
+  },
+  'Vaundy 裸の勇者': {
+    expectedArtist: 'Vaundy',
+    display: 'Hadaka no Yuusha (Ranking of Kings / อันดับพระราชา)',
+    aliases: ['Hadaka no Yuusha', 'Hadaka No Yusha', '裸の勇者', 'Ranking of Kings', 'Ousama Ranking', 'อันดับพระราชา'],
+  },
+  'SPYAIR イマジネーション': {
+    expectedArtist: 'Spyair',
+    display: 'Imagination (Haikyuu!! / ไฮคิว คู่ตบฟ้าประทาน)',
+    aliases: ['Imagination', 'イマジネーション', 'Haikyuu', 'ไฮคิว'],
+  },
+  'BURNOUT SYNDROMES FLY HIGH!!': {
+    expectedArtist: 'BURNOUT SYNDROMES',
+    display: 'FLY HIGH!! (Haikyuu!! / ไฮคิว คู่ตบฟ้าประทาน)',
+    aliases: ['FLY HIGH', 'Haikyuu', 'ไฮคิว'],
+  },
+  'Kenshi Yonezu Peace Sign': {
+    expectedArtist: 'Kenshi Yonezu',
+    display: 'Peace Sign (My Hero Academia / มายฮีโร่ อคาเดเมีย)',
+    aliases: ['Peace Sign', 'ピースサイン', 'My Hero Academia', 'Boku no Hero Academia', 'มายฮีโร่อคาเดเมีย'],
+  },
+  'ポルノグラフィティ THE DAY': {
+    expectedArtist: 'Porno Graffitti',
+    display: 'THE DAY (My Hero Academia / มายฮีโร่ อคาเดเมีย)',
+    aliases: ['THE DAY', 'My Hero Academia', 'Boku no Hero Academia', 'มายฮีโร่อคาเดเมีย'],
+  },
+  'UVERworld ODD FUTURE': {
+    expectedArtist: 'UVERworld',
+    display: 'ODD FUTURE (My Hero Academia / มายฮีโร่ อคาเดเมีย)',
+    aliases: ['ODD FUTURE', 'My Hero Academia', 'มายฮีโร่อคาเดเมีย'],
+  },
+  'BLUE ENCOUNT Polaris': {
+    expectedArtist: 'BLUE ENCOUNT',
+    display: 'Polaris (My Hero Academia / มายฮีโร่ อคาเดเมีย)',
+    aliases: ['Polaris', 'ポラリス', 'My Hero Academia', 'มายฮีโร่อคาเดเมีย'],
+  },
+  'ClariS コネクト': {
+    expectedArtist: 'ClariS',
+    display: 'Connect (Madoka Magica / สาวน้อยเวทมนตร์ มาโดกะ)',
+    aliases: ['Connect', 'コネクト', 'Madoka Magica', 'มาโดกะ'],
+  },
+  'Goose house 光るなら': {
+    expectedArtist: 'Goose house',
+    display: 'Hikarunara (Your Lie in April / เพลงรักสองหัวใจ)',
+    aliases: ['Hikarunara', '光るなら', 'Your Lie in April', 'Shigatsu wa Kimi no Uso', 'เพลงรักสองหัวใจ'],
+  },
+  'Yoko Takahashi 残酷な天使のテーゼ': {
+    expectedArtist: 'Yoko Takahashi',
+    display: 'Zankoku na Tenshi no Thesis (Evangelion / อีวานเกเลียน)',
+    aliases: ['Zankoku na Tenshi no Thesis', 'A Cruel Angels Thesis', '残酷な天使のテーゼ', 'Evangelion', 'อีวานเกเลียน'],
+  },
+  'YUI again': {
+    expectedArtist: 'yui',
+    display: 'Again (Fullmetal Alchemist: Brotherhood / แขนกลคนแปรธาตุ)',
+    aliases: ['Again', 'Fullmetal Alchemist', 'FMA', 'FMAB', 'แขนกลคนแปรธาตุ'],
+  },
+  'NICO Touches the Walls Hologram': {
+    expectedArtist: 'NICO Touches the Walls',
+    display: 'Hologram (Fullmetal Alchemist: Brotherhood / แขนกลคนแปรธาตุ)',
+    aliases: ['Hologram', 'Fullmetal Alchemist', 'FMAB', 'แขนกลคนแปรธาตุ'],
+  },
+  'SID Rain': {
+    expectedArtist: 'SID',
+    display: 'Rain (Fullmetal Alchemist: Brotherhood / แขนกลคนแปรธาตุ)',
+    aliases: ['Rain', 'Fullmetal Alchemist', 'FMAB', 'แขนกลคนแปรธาตุ'],
+  },
+  'ASIAN KUNG-FU GENERATION リライト': {
+    expectedArtist: 'Asian Kung-Fu Generation',
+    display: 'Rewrite (Fullmetal Alchemist / แขนกลคนแปรธาตุ)',
+    aliases: ['Rewrite', 'リライト', 'Fullmetal Alchemist', 'FMA', 'แขนกลคนแปรธาตุ'],
+  },
+  'Masayuki Suzuki DADDY ! DADDY ! DO !': {
+    expectedArtist: 'Masayuki Suzuki',
+    display: 'DADDY ! DADDY ! DO ! (Kaguya-sama / สารภาพรักกับคุณคางุยะ)',
+    aliases: ['DADDY DADDY DO', 'Kaguya-sama', 'Love is War', 'สารภาพรักกับคุณคางุยะ'],
+  },
+  'Masayuki Suzuki Love Dramatic': {
+    expectedArtist: 'Masayuki Suzuki',
+    display: 'Love Dramatic (Kaguya-sama / สารภาพรักกับคุณคางุยะ)',
+    aliases: ['Love Dramatic', 'Kaguya-sama', 'Love is War', 'สารภาพรักกับคุณคางุยะ'],
+  },
+  '結束バンド 青春コンプレックス': {
+    expectedArtist: 'kessoku band',
+    display: 'Seishun Complex (Bocchi the Rock! / บจจิ เดอะ ร็อก)',
+    aliases: ['Seishun Complex', 'seisyun complex', '青春コンプレックス', 'Bocchi the Rock', 'บจจิเดอะร็อก'],
+  },
+  'Vickeblanka Black Catcher': {
+    expectedArtist: 'VK Blanka',
+    display: 'Black Catcher (Black Clover / แบล็คโคลเวอร์)',
+    aliases: ['Black Catcher', 'Black Clover', 'แบล็คโคลเวอร์'],
+  },
+  'KANA-BOON Song of the Dead': {
+    expectedArtist: 'KANA-BOON',
+    display: 'Song of the Dead (Zom 100 / ซอม 100)',
+    aliases: ['Song of the Dead', 'Zom 100', 'ซอม 100'],
+  },
+  '10-FEET Dai Zero Kan': {
+    expectedArtist: '10-FEET',
+    display: 'Dai Zero Kan (The First Slam Dunk / สแลมดังก์)',
+    aliases: ['Dai Zero Kan', '第ゼロ感', 'Slam Dunk', 'The First Slam Dunk', 'สแลมดังก์'],
+  },
+  'JAM Project THE HERO': {
+    expectedArtist: 'JAM Project',
+    display: 'THE HERO!! (One Punch Man / วันพันช์แมน)',
+    aliases: ['THE HERO', 'One Punch Man', 'วันพันช์แมน'],
+  },
+  'UNISON SQUARE GARDEN Chaos ga Kiwamaru': {
+    expectedArtist: 'UNISON SQUARE GARDEN',
+    display: 'Chaos ga Kiwamaru (Blue Lock / ขังดวลแข้ง)',
+    aliases: ['Chaos ga Kiwamaru', 'Blue Lock', 'ขังดวลแข้ง'],
+  },
+  'Konomi Suzuki Redo': {
+    expectedArtist: 'Konomi Suzuki',
+    display: 'Redo (Re:Zero / รีเซทชีวิต ฝ่าวิกฤตต่างโลก)',
+    aliases: ['Redo', 'Re:Zero', 'ReZero', 'รีเซทชีวิตฝ่าวิกฤตต่างโลก'],
+  },
+  'MYTH & ROID Voracity': {
+    expectedArtist: 'Myth & Roid',
+    display: 'VORACITY (Overlord / โอเวอร์ลอร์ด)',
+    aliases: ['VORACITY', 'Overlord', 'โอเวอร์ลอร์ด'],
+  },
+  'OxT Clattanoia': {
+    expectedArtist: 'OxT',
+    display: 'Clattanoia (Overlord / โอเวอร์ลอร์ด)',
+    aliases: ['Clattanoia', 'Overlord', 'โอเวอร์ลอร์ด'],
+  },
+  'UVERworld Touch off': {
+    expectedArtist: 'UVERworld',
+    display: 'Touch off (The Promised Neverland / พันธสัญญาเนเวอร์แลนด์)',
+    aliases: ['Touch off', 'The Promised Neverland', 'พันธสัญญาเนเวอร์แลนด์'],
+  },
+  'EGOIST The Everlasting Guilty Crown': {
+    expectedArtist: 'EGOIST',
+    display: 'The Everlasting Guilty Crown (Guilty Crown / ปฏิวัติหัตถ์ราชัน)',
+    aliases: ['The Everlasting Guilty Crown', 'Guilty Crown', 'ปฏิวัติหัตถ์ราชัน'],
+  },
+  'supercell Kimi no Shiranai Monogatari': {
+    expectedArtist: 'Supercell',
+    display: 'Kimi no Shiranai Monogatari (Bakemonogatari / ปกรณัมของเหล่าภูต)',
+    aliases: ['Kimi no Shiranai Monogatari', 'Kimino Shiranai Monogatari', 'Bakemonogatari', 'ปกรณัมของเหล่าภูต'],
+  },
+  'Aimer Brave Shine': {
+    expectedArtist: 'Aimer',
+    display: 'Brave Shine (Fate/stay night: UBW / มหาสงครามจอกศักดิ์สิทธิ์)',
+    aliases: ['Brave Shine', 'Fate stay night', 'Fate', 'มหาสงครามจอกศักดิ์สิทธิ์'],
+  },
+  'LiSA Oath Sign': {
+    expectedArtist: 'LiSA',
+    display: 'Oath Sign (Fate/Zero / ปฐมบทสงครามจอกศักดิ์สิทธิ์)',
+    aliases: ['Oath Sign', 'Fate Zero', 'Fate', 'ปฐมบทสงครามจอกศักดิ์สิทธิ์'],
+  },
+  'Masatoshi Ono Departure': {
+    expectedArtist: 'Masatoshi Ono',
+    display: 'Departure! (Hunter x Hunter / ฮันเตอร์ x ฮันเตอร์)',
+    aliases: ['Departure', 'Hunter x Hunter', 'HxH', 'ฮันเตอร์xฮันเตอร์'],
+  },
+  'Galneryus Hunting for your dream': {
+    expectedArtist: 'GALNERYUS',
+    display: 'HUNTING FOR YOUR DREAM (Hunter x Hunter / ฮันเตอร์ x ฮันเตอร์)',
+    aliases: ['Hunting for your dream', 'Hunter x Hunter', 'HxH', 'ฮันเตอร์xฮันเตอร์'],
+  },
+  'ORANGE RANGE Asterisk': {
+    expectedArtist: 'Orange Range',
+    display: '*Asterisk (Bleach / เทพมรณะ)',
+    aliases: ['Asterisk', 'Bleach', 'เทพมรณะ'],
+  },
+  'Ryokuoushoku Shakai Be a flower': {
+    expectedArtist: 'Ryokuoushoku Shakai',
+    display: 'Be a flower / Hana ni Natte (The Apothecary Diaries / หมอยาตำรับโคมแดง)',
+    aliases: ['Be a flower', 'Hana ni Natte', '花になって', 'The Apothecary Diaries', 'หมอยาตำรับโคมแดง'],
   },
 };
 
@@ -1157,6 +1627,19 @@ export function isRelevantTrackForQuery(
 
   const artistLower = artistName.toLowerCase();
   const qLower = query.toLowerCase();
+
+  if (category === 'anime') {
+    const animeMeta = ANIME_QUERY_META[query];
+    if (animeMeta) {
+      const expLower = animeMeta.expectedArtist.toLowerCase();
+      return (
+        artistLower === expLower ||
+        artistLower.includes(expLower) ||
+        expLower.includes(artistLower)
+      );
+    }
+  }
+
   const isArtistMatch =
     artistLower === qLower || artistLower.includes(qLower) || qLower.includes(artistLower);
 
@@ -1202,6 +1685,12 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
         for (const a of romajiInfo.aliases) aliases.add(a);
       }
 
+      if (category === 'anime' && ANIME_QUERY_META[query]) {
+        const animeInfo = ANIME_QUERY_META[query];
+        cleanTitle = animeInfo.display;
+        for (const a of animeInfo.aliases) aliases.add(a);
+      }
+
       matched.push({
         id: String(item.id),
         title: cleanTitle,
@@ -1216,8 +1705,8 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
       });
     }
 
-    // For specific song queries (thai / tpop / specific 48G song), take the top official studio match directly
-    if (category === 'thai' || category === 'tpop') {
+    // For specific song queries (thai / tpop / anime), take the top official studio match directly
+    if (category === 'thai' || category === 'tpop' || category === 'anime') {
       return matched.slice(0, 1);
     }
     if (category === 'idol48') {
@@ -1286,12 +1775,13 @@ export async function getCategoryPool(
       'thai',
       'tpop',
       'idol48',
+      'anime',
       'inter',
       'kpop',
       'retro',
     ];
     for (const c of subCats) {
-      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 5);
+      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 4);
       for (const q of sample) {
         queries.push({ q, cat: c });
       }
