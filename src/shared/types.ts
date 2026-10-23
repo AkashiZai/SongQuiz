@@ -176,9 +176,9 @@ export interface ServerToClientEvents {
 export const CATEGORY_LABELS: Record<Category, { name: string; emoji: string; desc: string }> = {
   thai: { name: 'เพลงไทยฮิต', emoji: '🇹🇭', desc: 'เพลงไทยฮิตติดชาร์ตทุกแนว' },
   rock: {
-    name: 'ร็อก / อัลเทอร์ไทย',
+    name: 'ร็อก / อัลเทอร์ไทย (90s-2010)',
     emoji: '🎸',
-    desc: 'LOSO, Silly Fools, Bodyslam, Big Ass, Moderndog, อินดี้/อัลเทอร์',
+    desc: 'LOSO, Silly Fools, Bodyslam, Big Ass, Clash, หิน เหล็ก ไฟ, Moderndog',
   },
   rap: {
     name: 'แร็ป / ฮิปฮอปไทย',
