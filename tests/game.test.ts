@@ -442,11 +442,33 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
     assert.equal(isFuzzyAnswerMatch('ดาบพิฆาตอสูร', animeTrack), true);
 
     // Verify 4-choice options in Anime category show ONLY the Anime Name (not song title or artist)
-    const { buildChoicesForTrack, FALLBACK_TRACKS } = await import('../src/server/deezer.js');
+    const { buildChoicesForTrack, FALLBACK_TRACKS, pickTracksForRoom } = await import('../src/server/deezer.js');
     const choices = buildChoicesForTrack(animeTrack, FALLBACK_TRACKS);
     assert.equal(choices.length, 4);
     assert.equal(choices.includes('Demon Slayer / ดาบพิฆาตอสูร'), true);
     assert.equal(choices.some((c) => c.includes('Gurenge') || c.includes('LiSA')), false);
+
+    // Verify consecutive games in Anime category do not repeat tracks across games
+    const store = new InMemoryStateStore();
+    const mockAnimePool = Array.from({ length: 24 }, (_, idx) => ({
+      id: `ani-mock-${idx + 1}`,
+      title: `Song ${idx + 1} (Anime Series ${idx + 1})`,
+      artist: `Artist ${idx + 1}`,
+      cover: 'http://x',
+      preview: 'http://x',
+      aliases: [`Song ${idx + 1}`, `Anime Series ${idx + 1}`],
+      animeTitle: `Anime Series ${idx + 1}`,
+      category: 'anime' as const,
+    }));
+    await store.setCachedTracks('anime', mockAnimePool, 60000);
+
+    const usedInRoom = new Set<string>();
+    const game1 = await pickTracksForRoom('anime', 10, usedInRoom, store);
+    const game2 = await pickTracksForRoom('anime', 10, new Set<string>(), store);
+
+    const game1Ids = new Set(game1.selected.map((t) => t.id));
+    const overlap = game2.selected.filter((t) => game1Ids.has(t.id));
+    assert.equal(overlap.length, 0);
   });
 });
 

@@ -216,6 +216,55 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'Galneryus Hunting for your dream',
     'ORANGE RANGE Asterisk',
     'Ryokuoushoku Shakai Be a flower',
+    'SawanoHiroyuki[nZk] LEveL',
+    'YUNGBLUD Abyss',
+    'OneRepublic Nobody',
+    'Rosa Walton I Really Want to Stay at Your House',
+    'FLOW COLORS',
+    'Gen Hoshino Doraemon',
+    'Motohiro Hata Himawari no Yakusoku',
+    'BUMP OF CHICKEN Chronostasis',
+    'Hikaru Utada One Last Kiss',
+    'RADWIMPS Suzume',
+    'RADWIMPS Grand Escape',
+    'TRUE Sincerely',
+    'SPYAIR Samurai Heart',
+    'THE ORAL CIGARETTES Kyoran Hey Kids!!',
+    'UNISON SQUARE GARDEN Sugar Song and Bitter Step',
+    'Konomi Suzuki This game',
+    'Machico fantastic dreamer',
+    'TRUE Storyteller',
+    'LONGMAN Spiral',
+    'MADKID RISE',
+    'BURNOUT SYNDROMES Good Morning World',
+    'T.M.Revolution resonance',
+    'FUNKIST Snow fairy',
+    'BoA MASAYUME CHASING',
+    'UVERworld CORE PRIDE',
+    'Lia My Soul, Your Beats',
+    'ZONE secret base',
+    'fripSide only my railgun',
+    'FZMZ BROKEN GAMES',
+    'natori Absolute Zero',
+    'Official HIGE DANdism Same Blue',
+    'Creepy Nuts Daten',
+    'Creepy Nuts Yofukashi no Uta',
+    'ClariS ALIVE',
+    'さユり 花の塔',
+    'YOASOBI 怪物',
+    'YOASOBI 祝福',
+    'Do As Infinity Fukai Mori',
+    'GRANRODEO Can Do',
+    'sumika Fiction',
+    'Ikimonogakari Netsujou no Spectrum',
+    'Survive Said The Prophet MUKANJYO',
+    'Queen Bee Fire',
+    'MAN WITH A MISSION Winding Road',
+    'Fear, and Loathing in Las Vegas Let Me Hear',
+    'Ling tosite sigure abnormalize',
+    'Eir Aoi Sirius',
+    'Mika Nakashima KISS OF DEATH',
+    'Sora Amamiya Skyreach',
   ],
   inter: [
     'Taylor Swift',
@@ -1591,6 +1640,251 @@ const ANIME_QUERY_META: Record<
     display: 'Be a flower / Hana ni Natte (The Apothecary Diaries / หมอยาตำรับโคมแดง)',
     aliases: ['Be a flower', 'Hana ni Natte', '花になって', 'The Apothecary Diaries', 'หมอยาตำรับโคมแดง'],
   },
+  'SawanoHiroyuki[nZk] LEveL': {
+    expectedArtist: 'SawanoHiroyuki',
+    display: 'LEveL (Solo Leveling / โซโลเลเวลลิง)',
+    aliases: ['LEveL', 'Solo Leveling', 'โซโลเลเวลลิง'],
+  },
+  'YUNGBLUD Abyss': {
+    expectedArtist: 'YUNGBLUD',
+    display: 'Abyss (Kaiju No. 8 / ไคจูหมายเลข 8)',
+    aliases: ['Abyss', 'Kaiju No 8', 'ไคจูหมายเลข 8'],
+  },
+  'OneRepublic Nobody': {
+    expectedArtist: 'OneRepublic',
+    display: 'Nobody (Kaiju No. 8 / ไคจูหมายเลข 8)',
+    aliases: ['Nobody', 'Kaiju No 8', 'ไคจูหมายเลข 8'],
+  },
+  'Rosa Walton I Really Want to Stay at Your House': {
+    expectedArtist: 'Rosa Walton',
+    display: 'I Really Want to Stay at Your House (Cyberpunk: Edgerunners / ไซเบอร์พังก์)',
+    aliases: ['I Really Want to Stay at Your House', 'Cyberpunk Edgerunners', 'Cyberpunk', 'ไซเบอร์พังก์'],
+  },
+  'FLOW COLORS': {
+    expectedArtist: 'Flow',
+    display: 'COLORS (Code Geass / โค้ดกีอัส)',
+    aliases: ['COLORS', 'Code Geass', 'โค้ดกีอัส'],
+  },
+  'Gen Hoshino Doraemon': {
+    expectedArtist: 'Gen Hoshino',
+    display: 'Doraemon (Doraemon / โดราเอมอน)',
+    aliases: ['Doraemon', 'โดราเอมอน'],
+  },
+  'Motohiro Hata Himawari no Yakusoku': {
+    expectedArtist: 'Motohiro Hata',
+    display: 'Himawari no Yakusoku (Stand by Me Doraemon / โดราเอมอน)',
+    aliases: ['Himawari no Yakusoku', 'Doraemon', 'Stand by Me Doraemon', 'โดราเอมอน'],
+  },
+  'BUMP OF CHICKEN Chronostasis': {
+    expectedArtist: 'BUMP OF CHICKEN',
+    display: 'Chronostasis (Detective Conan / ยอดนักสืบจิ๋วโคนัน)',
+    aliases: ['Chronostasis', 'Detective Conan', 'Conan', 'โคนัน', 'ยอดนักสืบจิ๋วโคนัน'],
+  },
+  'Hikaru Utada One Last Kiss': {
+    expectedArtist: 'Hikaru Utada',
+    display: 'One Last Kiss (Evangelion / อีวานเกเลียน)',
+    aliases: ['One Last Kiss', 'Evangelion', 'อีวานเกเลียน'],
+  },
+  'RADWIMPS Suzume': {
+    expectedArtist: 'Radwimps',
+    display: 'Suzume (Suzume / การผนึกประตูของซุซุเมะ)',
+    aliases: ['Suzume', 'การผนึกประตูของซุซุเมะ', 'ซุซุเมะ'],
+  },
+  'RADWIMPS Grand Escape': {
+    expectedArtist: 'Radwimps',
+    display: 'Grand Escape (Weathering With You / ฤดูฝัน ฉันมีเธอ)',
+    aliases: ['Grand Escape', 'Weathering With You', 'Tenki no Ko', 'ฤดูฝันฉันมีเธอ'],
+  },
+  'TRUE Sincerely': {
+    expectedArtist: 'TRUE',
+    display: 'Sincerely (Violet Evergarden / ไวโอเล็ต เอเวอร์การ์เดน)',
+    aliases: ['Sincerely', 'Violet Evergarden', 'ไวโอเล็ตเอเวอร์การ์เดน'],
+  },
+  'SPYAIR Samurai Heart': {
+    expectedArtist: 'Spyair',
+    display: 'Samurai Heart (Gintama / กินทามะ)',
+    aliases: ['Samurai Heart', 'Some Like It Hot', 'Gintama', 'กินทามะ'],
+  },
+  'THE ORAL CIGARETTES Kyoran Hey Kids!!': {
+    expectedArtist: 'THE ORAL CIGARETTES',
+    display: 'Kyoran Hey Kids!! (Noragami / โนรางามิ เทวดาขาจร)',
+    aliases: ['Kyoran Hey Kids', 'Kyouran Hey Kids', 'Noragami', 'โนรางามิ'],
+  },
+  'UNISON SQUARE GARDEN Sugar Song and Bitter Step': {
+    expectedArtist: 'UNISON SQUARE GARDEN',
+    display: 'Sugar Song and Bitter Step (Kekkai Sensen / สมรภูมิเขตป้องกันโลหิต)',
+    aliases: ['Sugar Song and Bitter Step', 'Kekkai Sensen', 'Blood Blockade Battlefront', 'สมรภูมิเขตป้องกันโลหิต'],
+  },
+  'Konomi Suzuki This game': {
+    expectedArtist: 'Konomi Suzuki',
+    display: 'This game (No Game No Life / โนเกม โนไลฟ์)',
+    aliases: ['This game', 'No Game No Life', 'NGNL', 'โนเกมโนไลฟ์'],
+  },
+  'Machico fantastic dreamer': {
+    expectedArtist: 'Machico',
+    display: 'fantastic dreamer (KonoSuba / ขอให้โชคดีมีชัยในโลกแฟนตาซี)',
+    aliases: ['fantastic dreamer', 'KonoSuba', 'ขอให้โชคดีมีชัยในโลกแฟนตาซี'],
+  },
+  'TRUE Storyteller': {
+    expectedArtist: 'TRUE',
+    display: 'Storyteller (Tensei Slime / เกิดใหม่ทั้งทีก็เป็นสไลม์ไปซะแล้ว)',
+    aliases: ['Storyteller', 'Tensei Slime', 'That Time I Got Reincarnated as a Slime', 'เกิดใหม่ทั้งทีก็เป็นสไลม์ไปซะแล้ว', 'สไลม์'],
+  },
+  'LONGMAN Spiral': {
+    expectedArtist: 'LONGMAN',
+    display: 'Spiral (Mushoku Tensei / เกิดชาตินี้พี่ต้องเทพ)',
+    aliases: ['Spiral', 'Mushoku Tensei', 'เกิดชาตินี้พี่ต้องเทพ'],
+  },
+  'MADKID RISE': {
+    expectedArtist: 'Madkid',
+    display: 'RISE (The Rising of the Shield Hero / ผู้กล้าโล่ผงาด)',
+    aliases: ['RISE', 'Shield Hero', 'The Rising of the Shield Hero', 'ผู้กล้าโล่ผงาด'],
+  },
+  'BURNOUT SYNDROMES Good Morning World': {
+    expectedArtist: 'BURNOUT SYNDROMES',
+    display: 'Good Morning World! (Dr. STONE / ดร.สโตน เจ้าแห่งวิทยาศาสตร์)',
+    aliases: ['Good Morning World', 'Dr. STONE', 'Dr Stone', 'ดรสโตน'],
+  },
+  'T.M.Revolution resonance': {
+    expectedArtist: 'T.M.Revolution',
+    display: 'Resonance (Soul Eater / โซลอีทเตอร์ ยมทูตกลืนวิญญาณ)',
+    aliases: ['Resonance', 'Soul Eater', 'โซลอีทเตอร์'],
+  },
+  'FUNKIST Snow fairy': {
+    expectedArtist: 'FUNKIST',
+    display: 'Snow fairy (Fairy Tail / แฟรี่เทล ศึกจอมเวทอภินิหาร)',
+    aliases: ['Snow fairy', 'Fairy Tail', 'แฟรี่เทล'],
+  },
+  'BoA MASAYUME CHASING': {
+    expectedArtist: 'BoA',
+    display: 'MASAYUME CHASING (Fairy Tail / แฟรี่เทล ศึกจอมเวทอภินิหาร)',
+    aliases: ['MASAYUME CHASING', 'Fairy Tail', 'แฟรี่เทล'],
+  },
+  'UVERworld CORE PRIDE': {
+    expectedArtist: 'UVERworld',
+    display: 'CORE PRIDE (Blue Exorcist / มือปราบผีพันธุ์ซาตาน)',
+    aliases: ['CORE PRIDE', 'Blue Exorcist', 'Ao no Exorcist', 'มือปราบผีพันธุ์ซาตาน'],
+  },
+  'Lia My Soul, Your Beats': {
+    expectedArtist: 'lia',
+    display: 'My Soul, Your Beats! (Angel Beats! / แองเจิลบีทส์)',
+    aliases: ['My Soul Your Beats', 'Angel Beats', 'แองเจิลบีทส์'],
+  },
+  'ZONE secret base': {
+    expectedArtist: 'Zone',
+    display: 'secret base ~Kimi ga Kureta Mono~ (Anohana / ดอกไม้ มิตรภาพ และความทรงจำ)',
+    aliases: ['secret base', 'Anohana', 'ดอกไม้มิตรภาพและความทรงจำ'],
+  },
+  'fripSide only my railgun': {
+    expectedArtist: 'Fripside',
+    display: 'only my railgun (A Certain Scientific Railgun / เรลกัน แฟ้มลับคดีวิทยาศาสตร์)',
+    aliases: ['only my railgun', 'Railgun', 'Toaru Kagaku no Railgun', 'เรลกัน'],
+  },
+  'FZMZ BROKEN GAMES': {
+    expectedArtist: 'FZMZ',
+    display: 'BROKEN GAMES (Shangri-La Frontier / แชงกรีล่า ฟรอนเทียร์)',
+    aliases: ['BROKEN GAMES', 'Shangri-La Frontier', 'แชงกรีล่าฟรอนเทียร์'],
+  },
+  'natori Absolute Zero': {
+    expectedArtist: 'natori',
+    display: 'Absolute Zero / Zettai Reido (Wind Breaker / วินด์เบรกเกอร์)',
+    aliases: ['Absolute Zero', 'Zettai Reido', 'Wind Breaker', 'วินด์เบรกเกอร์'],
+  },
+  'Official HIGE DANdism Same Blue': {
+    expectedArtist: 'Official HIGE DANdism',
+    display: 'Same Blue (Blue Box / กล่องรักวัยใส)',
+    aliases: ['Same Blue', 'Blue Box', 'Ao no Hako', 'กล่องรักวัยใส'],
+  },
+  'Creepy Nuts Daten': {
+    expectedArtist: 'Creepy Nuts',
+    display: 'Daten (Call of the Night / เพลงรักมนุษย์ค้างคาว)',
+    aliases: ['Daten', 'Call of the Night', 'Yofukashi no Uta', 'เพลงรักมนุษย์ค้างคาว'],
+  },
+  'Creepy Nuts Yofukashi no Uta': {
+    expectedArtist: 'Creepy Nuts',
+    display: 'Yofukashi no Uta (Call of the Night / เพลงรักมนุษย์ค้างคาว)',
+    aliases: ['Yofukashi no Uta', 'Call of the Night', 'เพลงรักมนุษย์ค้างคาว'],
+  },
+  'ClariS ALIVE': {
+    expectedArtist: 'ClariS',
+    display: 'ALIVE (Lycoris Recoil / ไลโคริส รีคอยล์)',
+    aliases: ['ALIVE', 'Lycoris Recoil', 'ไลโคริสรีคอยล์'],
+  },
+  'さユり 花の塔': {
+    expectedArtist: 'SAYURI',
+    display: 'Hana no Tou / Tower of Flower (Lycoris Recoil / ไลโคริส รีคอยล์)',
+    aliases: ['Hana no Tou', 'Tower of Flower', '花の塔', 'Lycoris Recoil', 'ไลโคริสรีคอยล์'],
+  },
+  'YOASOBI 怪物': {
+    expectedArtist: 'YOASOBI',
+    display: 'Kaibutsu / Monster (BEASTARS / บีสตาร์)',
+    aliases: ['Kaibutsu', 'Monster', '怪物', 'BEASTARS', 'บีสตาร์'],
+  },
+  'YOASOBI 祝福': {
+    expectedArtist: 'YOASOBI',
+    display: 'Shukufuku / The Blessing (Gundam: The Witch from Mercury / กันดั้ม แม่มดจากดาวพุธ)',
+    aliases: ['Shukufuku', 'The Blessing', '祝福', 'Gundam', 'Witch from Mercury', 'กันดั้ม'],
+  },
+  'Do As Infinity Fukai Mori': {
+    expectedArtist: 'Do As Infinity',
+    display: 'Fukai Mori (Inuyasha / อินุยาฉะ เทพอสูรจิ้งจอกเงิน)',
+    aliases: ['Fukai Mori', '深い森', 'Inuyasha', 'อินุยาฉะ'],
+  },
+  'GRANRODEO Can Do': {
+    expectedArtist: 'GRANRODEO',
+    display: 'Can Do (Kuroko no Basket / คุโรโกะ นายจืดพลิกสังเวียนบาส)',
+    aliases: ['Can Do', 'Kuroko no Basket', 'Kurokos Basketball', 'คุโรโกะ'],
+  },
+  'sumika Fiction': {
+    expectedArtist: 'sumika',
+    display: 'Fiction (Wotakoi / ยากแท้จริงหนอรักของโอตาคุ)',
+    aliases: ['Fiction', 'Wotakoi', 'ยากแท้จริงหนอรักของโอตาคุ'],
+  },
+  'Ikimonogakari Netsujou no Spectrum': {
+    expectedArtist: 'Ikimonogakari',
+    display: 'Netsujou no Spectrum (The Seven Deadly Sins / ศึกตำนาน 7 อัศวิน)',
+    aliases: ['Netsujou no Spectrum', 'Seven Deadly Sins', 'Nanatsu no Taizai', 'ศึกตำนาน 7 อัศวิน'],
+  },
+  'Survive Said The Prophet MUKANJYO': {
+    expectedArtist: 'Survive Said The Prophet',
+    display: 'MUKANJYO (Vinland Saga / สงครามคนทมิฬ)',
+    aliases: ['MUKANJYO', 'Vinland Saga', 'สงครามคนทมิฬ'],
+  },
+  'Queen Bee Fire': {
+    expectedArtist: 'QUEEN BEE',
+    display: 'Fire / Kaen (Dororo / ดาบล่าพญามาร โดโรโระ)',
+    aliases: ['Fire', 'Kaen', '火炎', 'Dororo', 'โดโรโระ'],
+  },
+  'MAN WITH A MISSION Winding Road': {
+    expectedArtist: 'Man With A Mission',
+    display: 'Winding Road (Golden Kamuy / โกลเดนคามุย)',
+    aliases: ['Winding Road', 'Golden Kamuy', 'โกลเดนคามุย'],
+  },
+  'Fear, and Loathing in Las Vegas Let Me Hear': {
+    expectedArtist: 'Fear, and Loathing in Las Vegas',
+    display: 'Let Me Hear (Parasyte / ปรสิต เดรัจฉาน)',
+    aliases: ['Let Me Hear', 'Parasyte', 'Kiseijuu', 'ปรสิตเดรัจฉาน'],
+  },
+  'Ling tosite sigure abnormalize': {
+    expectedArtist: 'Ling tosite sigure',
+    display: 'abnormalize (Psycho-Pass / ไซโคพาส ถอดรหัสล่า)',
+    aliases: ['abnormalize', 'Psycho-Pass', 'ไซโคพาส'],
+  },
+  'Eir Aoi Sirius': {
+    expectedArtist: 'Eir Aoi',
+    display: 'Sirius (Kill la Kill / คิลลาคิล)',
+    aliases: ['Sirius', 'Kill la Kill', 'คิลลาคิล'],
+  },
+  'Mika Nakashima KISS OF DEATH': {
+    expectedArtist: 'Mika Nakashima',
+    display: 'KISS OF DEATH (DARLING in the FRANXX / ดาร์ลิงอินเดอะแฟรงก์)',
+    aliases: ['KISS OF DEATH', 'Darling in the Franxx', 'ดาร์ลิงอินเดอะแฟรงก์'],
+  },
+  'Sora Amamiya Skyreach': {
+    expectedArtist: 'Sora Amamiya',
+    display: 'Skyreach (Akame ga Kill! / อาคาเมะ สวยประหาร)',
+    aliases: ['Skyreach', 'Akame ga Kill', 'อาคาเมะสวยประหาร'],
+  },
 };
 
 export function extractAnimeTitle(rawDisplayOrTitle: string): string {
@@ -1736,16 +2030,24 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
   }
 }
 
+const fetchedQueriesByCategory = new Map<Category, Set<string>>();
+const recentPlayedIdsByCategory = new Map<Category, string[]>();
+const recentPlayedBucketsByCategory = new Map<Category, string[]>();
+
 export async function getCategoryPool(
   category: Category,
-  store: StateStore
+  store: StateStore,
+  forceAugment = false
 ): Promise<TrackItem[]> {
   const cached = await store.getCachedTracks(category);
-  if (cached && cached.length >= 16) {
+  if (!forceAugment && cached && cached.length >= 16) {
     return cached;
   }
 
   if (category === 'tts') {
+    if (cached && cached.length >= 16) {
+      return cached;
+    }
     const thaiTracks = await getCategoryPool('thai', store);
     const combinedMap = new Map<string, TrackItem>();
 
@@ -1795,15 +2097,38 @@ export async function getCategoryPool(
       'retro',
     ];
     for (const c of subCats) {
-      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 4);
+      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 7);
       for (const q of sample) {
         queries.push({ q, cat: c });
       }
     }
   } else {
-    // Sample 24 different artist+song queries per category fetch for wide artist rotation
-    const list = shuffleArray(CATEGORY_QUERIES[category]).slice(0, 24);
-    queries = list.map((q) => ({ q, cat: category }));
+    const allQueries = CATEGORY_QUERIES[category];
+    let fetchedSet = fetchedQueriesByCategory.get(category);
+    if (!fetchedSet) {
+      fetchedSet = new Set<string>();
+      fetchedQueriesByCategory.set(category, fetchedSet);
+    }
+
+    // Prioritize queries that haven't been fetched yet so consecutive games explore the full catalog
+    const unfetched = shuffleArray(allQueries.filter((q) => !fetchedSet!.has(q)));
+    const batchSize = forceAugment ? 36 : 48;
+    let selectedQueries: string[];
+    if (unfetched.length >= batchSize) {
+      selectedQueries = unfetched.slice(0, batchSize);
+    } else {
+      const remainingNeeded = batchSize - unfetched.length;
+      fetchedSet.clear();
+      const refill = shuffleArray(
+        allQueries.filter((q) => !unfetched.includes(q))
+      ).slice(0, Math.max(0, remainingNeeded));
+      selectedQueries = [...unfetched, ...refill];
+    }
+
+    for (const q of selectedQueries) {
+      fetchedSet.add(q);
+    }
+    queries = selectedQueries.map((q) => ({ q, cat: category }));
   }
 
   const fetchedBatches = await Promise.all(
@@ -1811,6 +2136,17 @@ export async function getCategoryPool(
   );
 
   const deduped = new Map<string, TrackItem>();
+  // Preserve already-cached official tracks so augmenting expands the pool rather than replacing it
+  if (cached && cached.length > 0) {
+    for (const existing of cached) {
+      if (existing.id.startsWith('fb-')) continue;
+      const normKey = normalizeSongText(existing.title);
+      if (normKey && !deduped.has(normKey)) {
+        deduped.set(normKey, existing);
+      }
+    }
+  }
+
   for (const batch of fetchedBatches) {
     for (const track of batch) {
       const normKey = normalizeSongText(track.title);
@@ -1835,14 +2171,73 @@ export async function getCategoryPool(
     }
   }
 
-  const finalPool = Array.from(deduped.values());
+  const finalPool = shuffleArray(Array.from(deduped.values()));
   await store.setCachedTracks(category, finalPool, CACHE_TTL_MS);
   return finalPool;
 }
 
+function getTrackBucketKey(track: TrackItem): string {
+  return track.category === 'anime'
+    ? extractAnimeTitle(track.animeTitle || track.title).toLowerCase().trim()
+    : track.artist.toLowerCase().trim();
+}
+
+function selectRoundRobinFromTier(
+  candidates: TrackItem[],
+  needed: number,
+  chosenIds: Set<string>,
+  chosenBuckets: Set<string>
+): TrackItem[] {
+  if (needed <= 0 || candidates.length === 0) return [];
+
+  const byBucket = new Map<string, TrackItem[]>();
+  for (const track of shuffleArray(candidates)) {
+    if (chosenIds.has(track.id)) continue;
+    const key = getTrackBucketKey(track);
+    const list = byBucket.get(key) ?? [];
+    list.push(track);
+    byBucket.set(key, list);
+  }
+
+  // Order buckets so anime/artists not yet picked in this match come first
+  const freshBuckets: TrackItem[][] = [];
+  const repeatBuckets: TrackItem[][] = [];
+  for (const [key, list] of shuffleArray(Array.from(byBucket.entries()))) {
+    if (chosenBuckets.has(key)) {
+      repeatBuckets.push(list);
+    } else {
+      freshBuckets.push(list);
+    }
+  }
+
+  const orderedBuckets = [...freshBuckets, ...repeatBuckets];
+  const picked: TrackItem[] = [];
+  let pass = 0;
+
+  while (picked.length < needed) {
+    let addedInPass = false;
+    for (const bucket of orderedBuckets) {
+      if (pass < bucket.length) {
+        const candidate = bucket[pass];
+        if (!chosenIds.has(candidate.id)) {
+          picked.push(candidate);
+          chosenIds.add(candidate.id);
+          chosenBuckets.add(getTrackBucketKey(candidate));
+          addedInPass = true;
+          if (picked.length >= needed) break;
+        }
+      }
+    }
+    if (!addedInPass) break;
+    pass += 1;
+  }
+
+  return picked;
+}
+
 /**
- * Picks `count` tracks for a room while enforcing maximum artist diversity
- * (picks 1 song per distinct artist first before ever repeating an artist).
+ * Picks `count` tracks for a room while enforcing maximum artist/anime diversity
+ * and avoiding repeating recently played tracks across consecutive games.
  */
 export async function pickTracksForRoom(
   category: Category,
@@ -1850,43 +2245,81 @@ export async function pickTracksForRoom(
   usedTrackIds: Set<string>,
   store: StateStore
 ): Promise<{ selected: TrackItem[]; fullPool: TrackItem[] }> {
-  const pool = await getCategoryPool(category, store);
-  const unused = pool.filter((t) => !usedTrackIds.has(t.id));
-  const source = unused.length >= count ? unused : pool;
+  let pool = await getCategoryPool(category, store);
+  const recentIdsList = recentPlayedIdsByCategory.get(category) ?? [];
+  const recentIds = new Set<string>(recentIdsList);
+  const recentBucketsList = recentPlayedBucketsByCategory.get(category) ?? [];
+  const recentBuckets = new Set<string>(recentBucketsList);
 
-  // Group available songs by anime title (for anime category) or normalized artist name
-  const byArtist = new Map<string, TrackItem[]>();
-  for (const track of shuffleArray(source)) {
-    const bucketKey =
-      track.category === 'anime'
-        ? extractAnimeTitle(track.animeTitle || track.title).toLowerCase()
-        : track.artist.toLowerCase().trim();
-    const list = byArtist.get(bucketKey) ?? [];
-    list.push(track);
-    byArtist.set(bucketKey, list);
+  const freshCount = pool.filter(
+    (t) => !usedTrackIds.has(t.id) && !recentIds.has(t.id)
+  ).length;
+
+  // If the current cached pool doesn't have enough fresh songs for this round, augment the pool from unfetched queries
+  if (freshCount < count && category !== 'tts') {
+    pool = await getCategoryPool(category, store, true);
   }
 
-  // Round-robin selection across shuffled artists: guarantees 1 song per artist first!
-  const artistBuckets = shuffleArray(Array.from(byArtist.values()));
+  const chosenIds = new Set<string>();
+  const chosenBuckets = new Set<string>();
   const selected: TrackItem[] = [];
-  let pass = 0;
 
-  while (selected.length < count) {
-    let addedInPass = false;
-    for (const bucket of artistBuckets) {
-      if (pass < bucket.length) {
-        selected.push(bucket[pass]);
-        addedInPass = true;
-        if (selected.length >= count) break;
-      }
-    }
-    if (!addedInPass) break;
-    pass += 1;
+  // Tier 1: Unused in room, not in recent cross-game history, AND anime/artist not in recent cross-game history
+  const tier1 = pool.filter(
+    (t) =>
+      !usedTrackIds.has(t.id) &&
+      !recentIds.has(t.id) &&
+      !recentBuckets.has(getTrackBucketKey(t))
+  );
+  // Tier 2: Unused in room and not in recent cross-game history
+  const tier2 = pool.filter(
+    (t) => !usedTrackIds.has(t.id) && !recentIds.has(t.id)
+  );
+  // Tier 3: Unused in room
+  const tier3 = pool.filter((t) => !usedTrackIds.has(t.id));
+  // Tier 4: Not in recent cross-game history
+  const tier4 = pool.filter((t) => !recentIds.has(t.id));
+  // Tier 5: Full pool fallback
+  const tier5 = pool;
+
+  for (const tier of [tier1, tier2, tier3, tier4, tier5]) {
+    if (selected.length >= count) break;
+    const more = selectRoundRobinFromTier(
+      tier,
+      count - selected.length,
+      chosenIds,
+      chosenBuckets
+    );
+    selected.push(...more);
   }
+
+  const updatedRecentIds = [...recentIdsList];
+  const updatedRecentBuckets = [...recentBucketsList];
 
   for (const t of selected) {
     usedTrackIds.add(t.id);
+    updatedRecentIds.push(t.id);
+    updatedRecentBuckets.push(getTrackBucketKey(t));
   }
+
+  const maxRecentIds = Math.min(
+    Math.max(count * 3, 45),
+    Math.max(10, Math.floor(pool.length * 0.75))
+  );
+  const totalDistinctBuckets = new Set(pool.map(getTrackBucketKey)).size;
+  const maxRecentBuckets = Math.min(
+    Math.max(count * 2, 24),
+    Math.max(6, Math.floor(totalDistinctBuckets * 0.65))
+  );
+
+  recentPlayedIdsByCategory.set(
+    category,
+    updatedRecentIds.slice(-maxRecentIds)
+  );
+  recentPlayedBucketsByCategory.set(
+    category,
+    updatedRecentBuckets.slice(-maxRecentBuckets)
+  );
 
   return { selected: shuffleArray(selected), fullPool: pool };
 }
