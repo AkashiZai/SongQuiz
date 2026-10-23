@@ -428,12 +428,25 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
 
     // Verify player can type either the song name or anime name (English or Thai)
     const animeTrack = {
+      id: 'ani-test-1',
       title: 'Gurenge (Demon Slayer / ดาบพิฆาตอสูร)',
+      artist: 'LiSA',
+      cover: 'http://x',
+      preview: 'http://x',
       aliases: ['Gurenge', '紅蓮華', 'Demon Slayer', 'Kimetsu no Yaiba', 'ดาบพิฆาตอสูร'],
+      animeTitle: 'Demon Slayer / ดาบพิฆาตอสูร',
+      category: 'anime' as const,
     };
     assert.equal(isFuzzyAnswerMatch('gurenge', animeTrack), true);
     assert.equal(isFuzzyAnswerMatch('demon slayer', animeTrack), true);
     assert.equal(isFuzzyAnswerMatch('ดาบพิฆาตอสูร', animeTrack), true);
+
+    // Verify 4-choice options in Anime category show ONLY the Anime Name (not song title or artist)
+    const { buildChoicesForTrack, FALLBACK_TRACKS } = await import('../src/server/deezer.js');
+    const choices = buildChoicesForTrack(animeTrack, FALLBACK_TRACKS);
+    assert.equal(choices.length, 4);
+    assert.equal(choices.includes('Demon Slayer / ดาบพิฆาตอสูร'), true);
+    assert.equal(choices.some((c) => c.includes('Gurenge') || c.includes('LiSA')), false);
   });
 });
 

@@ -26,6 +26,7 @@ export interface TrackItem {
   cover: string;
   preview: string;
   aliases?: string[];
+  animeTitle?: string;
   category: Category;
 }
 

@@ -17,6 +17,7 @@ import {
 } from '../shared/types.js';
 import {
   buildChoicesForTrack,
+  extractAnimeTitle,
   FALLBACK_TRACKS,
   getCategoryPool,
   pickTracksForRoom,
@@ -666,7 +667,10 @@ export class GameManager {
     let isCorrect = false;
 
     if (room.settings.answerMode === 'choice') {
-      const expectedChoice = `${track.title} — ${track.artist}`;
+      const expectedChoice =
+        track.category === 'anime'
+          ? track.animeTitle || extractAnimeTitle(track.title)
+          : `${track.title} — ${track.artist}`;
       isCorrect =
         answer === expectedChoice || isFuzzyAnswerMatch(answer.split(' — ')[0], track);
     } else {

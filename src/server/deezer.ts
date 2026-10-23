@@ -1593,6 +1593,16 @@ const ANIME_QUERY_META: Record<
   },
 };
 
+export function extractAnimeTitle(rawDisplayOrTitle: string): string {
+  const match = rawDisplayOrTitle.match(/\(([^()]+\/[^()]+)\)\s*$/);
+  const inner = match ? match[1].trim() : rawDisplayOrTitle.trim();
+  return inner
+    .replace(/\b(SS\d+|Season\s*\d+|Part\s*\d+|Film:\s*Red|Shippuden|√A|:re|:\s*Alicization|:\s*Brotherhood|:\s*UBW)\b/gi, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\s+\/\s+/g, ' / ')
+    .trim();
+}
+
 export function isRelevantTrackForQuery(
   item: DeezerTrackRaw,
   query: string,
@@ -1685,9 +1695,12 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
         for (const a of romajiInfo.aliases) aliases.add(a);
       }
 
+      let animeTitle: string | undefined;
       if (category === 'anime' && ANIME_QUERY_META[query]) {
         const animeInfo = ANIME_QUERY_META[query];
         cleanTitle = animeInfo.display;
+        animeTitle = extractAnimeTitle(animeInfo.display);
+        aliases.add(animeTitle);
         for (const a of animeInfo.aliases) aliases.add(a);
       }
 
@@ -1701,6 +1714,7 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
           'https://picsum.photos/seed/music/400/400',
         preview: `/api/audio?url=${encodeURIComponent(item.preview)}`,
         aliases: Array.from(aliases),
+        animeTitle,
         category,
       });
     }
@@ -1840,13 +1854,16 @@ export async function pickTracksForRoom(
   const unused = pool.filter((t) => !usedTrackIds.has(t.id));
   const source = unused.length >= count ? unused : pool;
 
-  // Group available songs by normalized artist name
+  // Group available songs by anime title (for anime category) or normalized artist name
   const byArtist = new Map<string, TrackItem[]>();
   for (const track of shuffleArray(source)) {
-    const artistKey = track.artist.toLowerCase().trim();
-    const list = byArtist.get(artistKey) ?? [];
+    const bucketKey =
+      track.category === 'anime'
+        ? extractAnimeTitle(track.animeTitle || track.title).toLowerCase()
+        : track.artist.toLowerCase().trim();
+    const list = byArtist.get(bucketKey) ?? [];
     list.push(track);
-    byArtist.set(artistKey, list);
+    byArtist.set(bucketKey, list);
   }
 
   // Round-robin selection across shuffled artists: guarantees 1 song per artist first!
@@ -1875,6 +1892,29 @@ export async function pickTracksForRoom(
 }
 
 export function buildChoicesForTrack(target: TrackItem, pool: TrackItem[]): string[] {
+  if (target.category === 'anime') {
+    const correctAnime = extractAnimeTitle(target.animeTitle || target.title);
+    const usedAnimeNorms = new Set<string>([normalizeSongText(correctAnime)]);
+    const animeDistractors: string[] = [];
+
+    const animeCandidates = [
+      ...shuffleArray(pool.filter((t) => t.category === 'anime')),
+      ...shuffleArray(FALLBACK_TRACKS.filter((t) => t.category === 'anime')),
+    ];
+
+    for (const c of animeCandidates) {
+      const label = extractAnimeTitle(c.animeTitle || c.title);
+      const norm = normalizeSongText(label);
+      if (norm && !usedAnimeNorms.has(norm)) {
+        usedAnimeNorms.add(norm);
+        animeDistractors.push(label);
+        if (animeDistractors.length === 3) break;
+      }
+    }
+
+    return shuffleArray([correctAnime, ...animeDistractors.slice(0, 3)]);
+  }
+
   const targetNorm = normalizeSongText(target.title);
   const targetArtistKey = target.artist.toLowerCase().trim();
 
