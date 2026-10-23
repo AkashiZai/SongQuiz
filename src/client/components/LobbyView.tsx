@@ -46,6 +46,8 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
 
   const categories: Category[] = [
     'thai',
+    'rock',
+    'rap',
     'tpop',
     'idol48',
     'anime',

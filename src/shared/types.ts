@@ -1,5 +1,7 @@
 export type Category =
   | 'thai'
+  | 'rock'
+  | 'rap'
   | 'tpop'
   | 'idol48'
   | 'anime'
@@ -173,6 +175,16 @@ export interface ServerToClientEvents {
 
 export const CATEGORY_LABELS: Record<Category, { name: string; emoji: string; desc: string }> = {
   thai: { name: 'เพลงไทยฮิต', emoji: '🇹🇭', desc: 'เพลงไทยฮิตติดชาร์ตทุกแนว' },
+  rock: {
+    name: 'ร็อก / อัลเทอร์ไทย',
+    emoji: '🎸',
+    desc: 'LOSO, Silly Fools, Bodyslam, Big Ass, Moderndog, อินดี้/อัลเทอร์',
+  },
+  rap: {
+    name: 'แร็ป / ฮิปฮอปไทย',
+    emoji: '🎤',
+    desc: 'Illslick, YOUNGOHM, P9d, Younggu, F.HERO, SARAN, 1MILL',
+  },
   tpop: { name: 'T-POP ไอดอล', emoji: '✨', desc: 'BUS, 4EVE, PROXIE, PiXXiE, LYKN, ATLAS' },
   idol48: { name: '48 Group (BNK/CGM/AKB)', emoji: '🌸', desc: 'รวมเพลง BNK48, CGM48 และ AKB48' },
   anime: { name: 'เพลงอนิเมะ (Anime OP/ED)', emoji: '⛩️', desc: 'รวมเพลงอนิเมะดังหลากหลายเรื่องและยุคสมัย' },

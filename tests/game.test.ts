@@ -470,6 +470,71 @@ describe('Room Lifecycle, Reconnect & Host Transfer (InMemoryStateStore)', async
     const overlap = game2.selected.filter((t) => game1Ids.has(t.id));
     assert.equal(overlap.length, 0);
   });
+
+  it('filters Thai Rock/Alternative and Thai Rap/Hip-Hop categories and rejects foreign lookalike artists', async () => {
+    const { isRelevantTrackForQuery } = await import('../src/server/deezer.js');
+
+    // Accept LOSO and Silly Fools in rock category
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 40, title: 'ซมซาน', artist: { name: 'Loso' }, preview: 'http://x' },
+        'Loso ซมซาน',
+        'rock'
+      ),
+      true
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 41, title: 'จิ๊จ๊ะ', artist: { name: 'Silly Fools' }, preview: 'http://x' },
+        'Silly Fools จิ๊จ๊ะ',
+        'rock'
+      ),
+      true
+    );
+    // Reject foreign artist in rock category
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 42, title: 'Mwaka Moon', artist: { name: 'Kalash' }, preview: 'http://x' },
+        'Kala ขอเป็นตัวเลือก',
+        'rock'
+      ),
+      false
+    );
+
+    // Accept P9d, ILLSlick, YOUNGOHM, Younggu in rap category (both Thai and English song titles)
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 43, title: 'อย่าเสือก', artist: { name: 'P9d' }, preview: 'http://x' },
+        'P9d อย่าเสือก',
+        'rap'
+      ),
+      true
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 44, title: 'Sleep Walker', artist: { name: 'ILLSlick' }, preview: 'http://x' },
+        'ILLSlick Sleep Walker',
+        'rap'
+      ),
+      true
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 45, title: 'ธาตุทองซาวด์', artist: { name: 'YOUNGOHM' }, preview: 'http://x' },
+        'YOUNGOHM ธาตุทองซาวด์',
+        'rap'
+      ),
+      true
+    );
+    assert.equal(
+      isRelevantTrackForQuery(
+        { id: 46, title: 'Shibuya', artist: { name: 'Younggu' }, preview: 'http://x' },
+        'Younggu SHIBUYA',
+        'rap'
+      ),
+      true
+    );
+  });
 });
 
 

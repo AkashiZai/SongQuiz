@@ -173,6 +173,8 @@ async function bootstrap() {
 
       const validCats: Category[] = [
         'thai',
+        'rock',
+        'rap',
         'tpop',
         'idol48',
         'anime',

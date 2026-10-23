@@ -68,6 +68,276 @@ const CATEGORY_QUERIES: Record<Exclude<Category, 'mixed' | 'tts'>, string[]> = {
     'Polycat อาวรณ์',
     'Anatomy Rabbit ขอให้โลกนี้ใจดีกับเธอ',
   ],
+  rock: [
+    'Loso ซมซาน',
+    'Loso ใจสั่งมา',
+    'Loso อะไรก็ยอม',
+    'Loso เราและนาย',
+    'Loso พันธ์ทิพย์',
+    'Loso เคยรักฉันบ้างไหม',
+    'Loso แม่',
+    'Loso เส้นทางชีวิต',
+    'Loso คืนจันทร์',
+    'Silly Fools จิ๊จ๊ะ',
+    'Silly Fools ขี้หึง',
+    'Silly Fools ผิดที่ไว้ใจ',
+    'Silly Fools น้ำลาย',
+    'Silly Fools วัดใจ',
+    'Silly Fools เพียงรัก',
+    'Silly Fools คิดถึง',
+    'Silly Fools ไหนว่าจะไม่หลอกกัน',
+    'Silly Fools เหนื่อยแล้ว',
+    'Bodyslam ยาพิษ',
+    'Bodyslam ความเชื่อ',
+    'Bodyslam แสงสุดท้าย',
+    'Bodyslam งมงาย',
+    'Bodyslam คนที่ถูกรัก',
+    'Bodyslam อกหัก',
+    'Bodyslam เรือเล็กควรออกจากฝั่ง',
+    'Big Ass เล่นของสูง',
+    'Big Ass พรหมลิขิต',
+    'Big Ass ข้าน้อยสมควรตาย',
+    'Big Ass อย่างน้อย',
+    'Big Ass ทิ้งไว้ในใจ',
+    'Big Ass ลมเปลี่ยนทิศ',
+    'Potato ปากดี',
+    'Potato รักแท้ดูแลไม่ได้',
+    'Potato ขอบคุณที่รักกัน',
+    'Potato ทิ้งไว้กลางทาง',
+    'Clash ขอเช็ดน้ำตา',
+    'Clash รับได้ทุกอย่าง',
+    'Clash โรคประจำตัว',
+    'Clash ยิ้มเข้าไว้',
+    'Paradox ฤดูร้อน',
+    'Paradox ผงาดง้ำค้ำโลก',
+    'Paradox มีแต่เธอ',
+    'Paradox บอลลูน',
+    'Paradox เพ้อ',
+    'Paradox ซักซี๊ดนึง',
+    'Moderndog บุษบา',
+    'Moderndog ตาสว่าง',
+    'Moderndog ติ๋ม',
+    'Moderndog รูปไม่หล่อ',
+    'Pru ทุกสิ่ง',
+    'Pru เพื่อนเอ๋ย',
+    'Flure ฤดูที่ฉันเหงา',
+    'Flure คนที่รออยู่',
+    'Blackhead ยิ่งโตยิ่งสวย',
+    'Blackhead ยืนยัน',
+    'Blackhead เพียงกระซิบ',
+    'Fly ชาวนากับงูเห่า',
+    'Y Not 7 ทิ้งรักลงแม่น้ำ',
+    'Y Not 7 เรื่องขี้หมา',
+    'Smile Buffalo ดีเกินไป',
+    'Smile Buffalo เหนื่อยบ้างไหม',
+    'หิน เหล็ก ไฟ ยอม',
+    'หิน เหล็ก ไฟ นางแมว',
+    'หิน เหล็ก ไฟ สู้',
+    'เสือ ธนพล ชีวิตหนี้',
+    'เสือ ธนพล รักคงยังไม่พอ',
+    'เสือ ธนพล 18 ฝน',
+    'อัสนี & วสันต์ ยินดีไม่มีปัญหา',
+    'อัสนี & วสันต์ รักเธอเสมอ',
+    'อัสนี & วสันต์ รักไม่ยอมเปลี่ยนแปลง',
+    'อัสนี & วสันต์ ก็เคยสัญญา',
+    'ไมโคร เอาไปเลย',
+    'ไมโคร รักปอนปอน',
+    'ไมโคร อย่าดีกว่า',
+    'Pause ที่ว่าง',
+    'Pause ข้อความ',
+    'Crescendo ความจริงในใจ',
+    'Sqweez Animal คำบางคำ',
+    'Sqweez Animal จนวันสุดท้าย',
+    'The Richman Toy กระเป๋าแบนแฟนยิ้ม',
+    'Slur เซโรงัง',
+    'Slur หรือ',
+    'Zeal สองรัก',
+    'Zeal หมดชีวิตฉันให้เธอ',
+    'Zeal เหวี่ยง',
+    'Retrospect ไม่มีเธอ',
+    'Retrospect เหนื่อยไหมหัวใจ',
+    'Sweet Mullet พลังแสงอาทิตย์',
+    'Sweet Mullet สภาวะหัวใจล้มเหลวเฉียบพลัน',
+    'Sweet Mullet ภาพติดตา',
+    'Lomosonic ขอ',
+    'Slot Machine เคลิ้ม',
+    'Slot Machine ผ่าน',
+    'Cocktail คุกเข่า',
+    'Cocktail เธอ',
+    'Cocktail ดึงดัน',
+    'Labanoon เชือกวิเศษ',
+    'Labanoon ยาม',
+    'Labanoon แพ้ทาง',
+    'Kala ขอเป็นตัวเลือก',
+    'Kala เธอเป็นแฟนฉันแล้ว',
+    'Taxi คิดถึงฉันไหมเวลาที่เธอ',
+    'Playground มุม',
+    'Instinct โปรดส่งใครมารักฉันที',
+    'Ab Normal พูดไม่ค่อยเก่ง',
+    'Ab Normal ใจน้อย',
+    'Klear คำยินดี',
+    'Klear สิ่งของ',
+    '25hours ไม่เคย',
+    '25hours ยินดีที่ไม่รู้จัก',
+    '25hours ทำได้เพียง',
+    'Scrubb ใกล้',
+    'Scrubb ทุกอย่าง',
+    'Scrubb คู่กัน',
+    'Scrubb รอยยิ้ม',
+    'Tattoo Colour ขาหมู',
+    'Tattoo Colour โกหก',
+    'Tattoo Colour ซินเดอเรลล่า',
+    'Getsunova ความเงียบดังที่สุด',
+    'Getsunova คนไม่จำเป็น',
+    'Greasy Café สิ่งเหล่านี้',
+    'Greasy Café ฝืน',
+    'Desktop Error น้ำค้าง',
+    'Desktop Error ทุกทุกวัน',
+    'Safeplanet ข้างกาย',
+    'Safeplanet คำตอบ',
+    'Solitude is Bliss 04.00',
+    'Solitude is Bliss ใหม่ซ้ำเดิม',
+    'The Yers เกลียด',
+    'The Yers ระหว่างขับรถ',
+    'Tilly Birds คิดแต่ไม่ถึง',
+    'Three Man Down ฝนตกไหม',
+    'Only Monday ได้แต่นึกถึง',
+    'Only Monday ท้ายปี',
+    'Paper Planes ทรงอย่างแบด',
+    'TaitosmitH แดงกับเขียว',
+    'TaitosmitH นักเลงเก่า',
+    'Anatomy Rabbit ขอให้โลกนี้ใจดีกับเธอ',
+    'Television off ให้เธอหายไป',
+    'Moving and Cut อย่าเลย อย่าไว้ใจ',
+    'Stoondio แค่เธออยู่ตรงนี้',
+  ],
+  rap: [
+    'P9d อย่าเสือก',
+    'ILLSlick Sleep Walker',
+    'ILLSlick จูบ',
+    'ILLSlick ถ้ามากพอ',
+    'ILLSlick Thai Town',
+    'ILLSlick M-Leg',
+    'ILLSlick ก้อนหิน',
+    'ILLSlick BEST THING',
+    'ILLSlick ลองซ้อม',
+    'ILLSlick ตีหนึ่งที่คูเมือง',
+    'ILLSlick Ride',
+    'YOUNGOHM ธาตุทองซาวด์',
+    'YOUNGOHM เฉยเมย',
+    'YOUNGOHM ดูไว้',
+    'YOUNGOHM ธารารัตน์',
+    'YOUNGOHM ไฟเย็น',
+    'YOUNGOHM Very Very Small',
+    'YOUNGOHM นครดารา',
+    'YOUNGOHM ใจฉันตามเธอไป',
+    'YOUNGOHM เรื่องราวความรักในตำนาน',
+    'YOUNGOHM แค่เธอแค่เธอ',
+    'YOUNGOHM Benz ดำ',
+    'YOUNGOHM กรุงเทพมหานคร',
+    'Younggu วิ่งแบบพี่ตูน',
+    'Younggu SHIBUYA',
+    'Younggu FON',
+    'Younggu Chi Mi',
+    'Younggu Centipede',
+    'Younggu Hip Hop',
+    'Younggu Kalum',
+    'Younggu Playboi',
+    'F.HERO เสือสิ้นลาย',
+    'F.HERO จำเลยรัก',
+    'F.HERO ยันเช้า',
+    'F.HERO มีแค่เรา',
+    'F.HERO Mirror Mirror',
+    'F.HERO กุหลาบ',
+    'F.HERO จำเก่ง',
+    'Twopee Southside อย่าหายไปไหนอีกเลย',
+    'Twopee Southside Aow La Woii',
+    'Twopee Southside Lit',
+    'Twopee Southside Flower',
+    'THAITANIUM Yak Lai',
+    'THAITANIUM Ta Lueng',
+    'THAITANIUM Mai Wai Laew',
+    'THAITANIUM Sud Kob Fah',
+    'Joey Boy ลอยทะเล',
+    'Joey Boy ยกมือขึ้น',
+    'Joey Boy สาละวัน',
+    'Joey Boy ร้ายก็รัก',
+    'ดาจิม',
+    'URBOYTJ วายร้าย',
+    'URBOYTJ เค้าก่อน',
+    'URBOYTJ แบกไม่ไหว',
+    'URBOYTJ กอดได้ไหม',
+    'URBOYTJ รังเกียจกันไหม',
+    'URBOYTJ เป็นได้ทุกอย่าง',
+    'MILLI พักก่อน',
+    'MILLI สุดปัง',
+    'MILLI รักนะเว้ย',
+    '1MILL GET IT SPEND IT',
+    '1MILL AGAIN 2',
+    '1MILL PR4Y',
+    '1MILL 1 of 1',
+    '1MILL เงินหมื่น',
+    'FIIXD ข้อมือ',
+    'FIIXD Hiphop ปลอม',
+    'FIIXD กอดฉัน',
+    'FIIXD มนต์รักนักแร็พ',
+    'DIAMOND MQT ธรรมดา',
+    'DIAMOND MQT Gucci Belt',
+    'DIAMOND MQT W.R.U',
+    'Saran ลืมแทบไม่ไหว',
+    'Saran ใจพัง',
+    'Saran ตกหลุมรักการอยู่คนเดียว',
+    'Saran Airplane Mode',
+    'Saran รออยู่อย่างนั้น',
+    'Saran สถานีปลายทาง',
+    'MAIYARAP แฟนใหม่หน้าคุ้น',
+    'MAIYARAP ปากดี',
+    'MAIYARAP สุดใจ',
+    'LAZYLOXY Morning',
+    'LAZYLOXY BADBOY',
+    'LAZYLOXY SHADOW',
+    'OG-ANIC เป็นไรไหม',
+    'OG-ANIC รู้ทั้งรู้',
+    'OG-ANIC ครั้งสุดท้าย',
+    'OG-ANIC ไม่ว่าง',
+    'RachYO เลวพอกัน',
+    'RachYO ยอมขอบตาดำ',
+    'RachYO ปะป๊าปล่อย',
+    'RachYO ขวัญใจรถแห่',
+    'RachYO บ้านนาบ้านเรา',
+    'SPRITE ทน',
+    'SPRITE บังอร',
+    'SPRITE ดาวดึงส์',
+    'SPRITE ปิก้า ปิก้า',
+    'SPRITE คำหวาน',
+    'ZENTYARB ฉบับปรับปรุง',
+    'ZENTYARB ฆาตกรความจำเสื่อม',
+    'ZENTYARB หนาวแล้ว',
+    'ZENTYARB ลืมสักที',
+    'PunYarb เท่ไป',
+    'PunYarb คำถาม',
+    'D Gerrard รถไฟบนฟ้า',
+    'D Gerrard นักวิทยาศาสตร์',
+    'D Gerrard ดวงดี',
+    'D Gerrard Luxury',
+    'WONDERFRAME 555',
+    'WONDERFRAME อยู่ดีๆก็',
+    'TangBadVoice เปรตป่ะ',
+    'TangBadVoice หมากแพง',
+    'TangBadVoice คนนี้คนไทย',
+    'AUTTA ชายหน้ามึน',
+    'AUTTA ทางรถไฟกับวัยเซ่อ',
+    'Tobii Bad Girls Like You',
+    'Tobii Saxo Love',
+    'IRONBOY นิสัยไม่ดี',
+    'IRONBOY ปาร์ตี้นารี',
+    'IRONBOY Baddie',
+    'NICECNX หลอก',
+    'NICECNX รักดี',
+    'Gunner นอนมาเต็ม',
+    'K6y ก่อนลา',
+    'P-HOT Bye Bye',
+  ],
   tpop: [
     'BUS แค่ไหนแค่นั้น',
     'BUS แค่น้องชาย',
@@ -1261,6 +1531,114 @@ export const FALLBACK_TRACKS: TrackItem[] = [
     aliases: ['bad romance'],
     category: 'retro',
   },
+  {
+    id: 'fb-rock-1',
+    title: 'ซมซาน',
+    artist: 'Loso',
+    cover: 'https://picsum.photos/seed/rk1/400/400',
+    preview: '/api/fallback-audio/fb-rock-1.wav',
+    aliases: ['ซมซาน', 'som san'],
+    category: 'rock',
+  },
+  {
+    id: 'fb-rock-2',
+    title: 'จิ๊จ๊ะ',
+    artist: 'Silly Fools',
+    cover: 'https://picsum.photos/seed/rk2/400/400',
+    preview: '/api/fallback-audio/fb-rock-2.wav',
+    aliases: ['จิ๊จ๊ะ', 'ji ja'],
+    category: 'rock',
+  },
+  {
+    id: 'fb-rock-3',
+    title: 'ยาพิษ',
+    artist: 'Bodyslam',
+    cover: 'https://picsum.photos/seed/rk3/400/400',
+    preview: '/api/fallback-audio/fb-rock-3.wav',
+    aliases: ['ยาพิษ'],
+    category: 'rock',
+  },
+  {
+    id: 'fb-rock-4',
+    title: 'เล่นของสูง',
+    artist: 'Big Ass',
+    cover: 'https://picsum.photos/seed/rk4/400/400',
+    preview: '/api/fallback-audio/fb-rock-4.wav',
+    aliases: ['เล่นของสูง'],
+    category: 'rock',
+  },
+  {
+    id: 'fb-rock-5',
+    title: 'บุษบา',
+    artist: 'Moderndog',
+    cover: 'https://picsum.photos/seed/rk5/400/400',
+    preview: '/api/fallback-audio/fb-rock-5.wav',
+    aliases: ['บุษบา', 'busaba'],
+    category: 'rock',
+  },
+  {
+    id: 'fb-rock-6',
+    title: 'ฤดูร้อน',
+    artist: 'Paradox',
+    cover: 'https://picsum.photos/seed/rk6/400/400',
+    preview: '/api/fallback-audio/fb-rock-6.wav',
+    aliases: ['ฤดูร้อน'],
+    category: 'rock',
+  },
+  {
+    id: 'fb-rap-1',
+    title: 'อย่าเสือก',
+    artist: 'P9d',
+    cover: 'https://picsum.photos/seed/rp1/400/400',
+    preview: '/api/fallback-audio/fb-rap-1.wav',
+    aliases: ['อย่าเสือก'],
+    category: 'rap',
+  },
+  {
+    id: 'fb-rap-2',
+    title: 'จูบ',
+    artist: 'ILLSlick',
+    cover: 'https://picsum.photos/seed/rp2/400/400',
+    preview: '/api/fallback-audio/fb-rap-2.wav',
+    aliases: ['จูบ'],
+    category: 'rap',
+  },
+  {
+    id: 'fb-rap-3',
+    title: 'ธาตุทองซาวด์',
+    artist: 'YOUNGOHM',
+    cover: 'https://picsum.photos/seed/rp3/400/400',
+    preview: '/api/fallback-audio/fb-rap-3.wav',
+    aliases: ['ธาตุทองซาวด์'],
+    category: 'rap',
+  },
+  {
+    id: 'fb-rap-4',
+    title: 'วิ่งแบบพี่ตูน',
+    artist: 'Younggu',
+    cover: 'https://picsum.photos/seed/rp4/400/400',
+    preview: '/api/fallback-audio/fb-rap-4.wav',
+    aliases: ['วิ่งแบบพี่ตูน'],
+    category: 'rap',
+  },
+  {
+    id: 'fb-rap-5',
+    title: 'เสือสิ้นลาย',
+    artist: 'F.HERO',
+    cover: 'https://picsum.photos/seed/rp5/400/400',
+    preview: '/api/fallback-audio/fb-rap-5.wav',
+    aliases: ['เสือสิ้นลาย'],
+    category: 'rap',
+  },
+  {
+    id: 'fb-rap-6',
+    title: 'ลืมแทบไม่ไหว',
+    artist: 'Saran',
+    cover: 'https://picsum.photos/seed/rp6/400/400',
+    preview: '/api/fallback-audio/fb-rap-6.wav',
+    aliases: ['ลืมแทบไม่ไหว'],
+    category: 'rap',
+  },
 ];
 
 interface DeezerTrackRaw {
@@ -1283,6 +1661,47 @@ const NON_OFFICIAL_ALBUM_REGEX =
   /\b(88rising|raw session|live session|another session|studio session|in my room session|session|off vocal|vocal off|instrumental|karaoke|backing track|minus one|type beat|free beat|lofi|lo-fi|ringtone|tribute|cover|covers|music box|8-bit|lullaby|piano|acoustic|unplugged|stripped|acapella|acappella|sped up|speed up|slowed|reverb|remix|bootleg|mashup|medley|live|concert|tour version|band version|orchestra|orchestral|english version|japanese version|japanese deluxe|french version|special version|light ver|2024 version|alternate versions|on a train)\b|เวอร์ชันพิเศษ|แสดงสด|คอนเสิร์ต|อะคูสติก|บรรเลง|カラオケ|原曲歌手|ガイド無し|オルゴール/i;
 
 const IDOL48_ARTIST_REGEX = /^(bnk48|cgm48|akb48|qrra|vyra|mimigumo|indy camp)$/i;
+
+const THAI_ROCK_ARTIST_REGEX =
+  /^(loso|sek loso|โลโซ|เสก โลโซ|silly fools|bodyslam|big ass|potato|clash|paradox|moderndog|modern dog|pru|พรู|flure|blackhead|fly|y not 7|smile buffalo|หิน เหล็ก ไฟ|เสือ ธนพล|เสือ ธนพล อินทฤทธิ์|อัสนี & วสันต์|อัสนี-วสันต์|อัสนี วสันต์|ไมโคร|pause|พราว|crescendo|sqweez animal|the richman toy|slur|zeal|retrospect|sweet mullet|ebola|lomosonic|slot machine|cocktail|labanoon|kala|กะลา|taxi|hangman|playground|instinct|ab normal|klear|25hours|25 hours|scrubb|tattoo colour|getsunova|greasy café|greasy cafe|desktop error|safeplanet|solitude is bliss|the yers|tilly birds|three man down|only monday|paper planes|taitosmith|anatomy rabbit|dept|television off|h 3 f|moving and cut|stoondio|polycat|mirrr|slapkiss|purpeech)$/i;
+
+const THAI_RAP_ARTIST_REGEX =
+  /^(p9d|illslick|youngohm|younggu|f\.hero|ฟักกลิ้ง ฮีโร่|twopee southside|twopee|thaitanium|joey boy|โจอี้ บอย|ก้านคอคลับ|dajim|ดาจิม|urboytj|milli|1mill|fiixd|diamond mqt|saran|maiyarap|lazyloxy|og-anic|highhot|rachyo|sprite|guygeegee|zentyarb|punyarb|p-hot|mindset|pok mindset|wonderframe|tangbadvoice|autta|d gerrard|pmc|ปู่จ๋าน ลองไมค์|tobii|ironboy|nicecnx|gunner|k6y|t!ne)$/i;
+
+const THAI_ROMAJI_TITLE_MAP: Record<string, { display: string; aliases: string[] }> = {
+  'Yak Lai': {
+    display: 'ยักไหล่ (Yak Lai)',
+    aliases: ['ยักไหล่', 'Yak Lai'],
+  },
+  'Ta Lueng': {
+    display: 'ทะลึ่ง (Ta Lueng)',
+    aliases: ['ทะลึ่ง', 'Ta Lueng'],
+  },
+  'Ta Lueng Baby': {
+    display: 'ทะลึ่ง (Ta Lueng Baby)',
+    aliases: ['ทะลึ่ง', 'Ta Lueng', 'Ta Lueng Baby'],
+  },
+  'Mai Wai Laew': {
+    display: 'ไม่ไหวแล้ว (Mai Wai Laew)',
+    aliases: ['ไม่ไหวแล้ว', 'Mai Wai Laew'],
+  },
+  'Sud Kob Fah': {
+    display: 'สุดขอบฟ้า (Sud Kob Fah)',
+    aliases: ['สุดขอบฟ้า', 'Sud Kob Fah'],
+  },
+  'Aow La Woii': {
+    display: 'เอาละเว้ย (Aow La Woii)',
+    aliases: ['เอาละเว้ย', 'Aow La Woii'],
+  },
+  'Galaxy Express': {
+    display: 'รถไฟบนฟ้า (Galaxy Express)',
+    aliases: ['รถไฟบนฟ้า', 'Galaxy Express'],
+  },
+  Scientist: {
+    display: 'นักวิทยาศาสตร์ (Scientist)',
+    aliases: ['นักวิทยาศาสตร์', 'Scientist'],
+  },
+};
 
 const AKB48_ROMAJI_MAP: Record<string, { display: string; aliases: string[] }> = {
   '恋するフォーチュンクッキー': {
@@ -1929,8 +2348,14 @@ export function isRelevantTrackForQuery(
     return IDOL48_ARTIST_REGEX.test(artistName);
   }
 
-  const artistLower = artistName.toLowerCase();
-  const qLower = query.toLowerCase();
+  const artistLower = artistName
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+  const qLower = query
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 
   if (category === 'anime') {
     const animeMeta = ANIME_QUERY_META[query];
@@ -1949,6 +2374,25 @@ export function isRelevantTrackForQuery(
 
   if (!isArtistMatch) {
     return false;
+  }
+
+  if (category === 'rock') {
+    if (!THAI_ROCK_ARTIST_REGEX.test(artistName)) {
+      return false;
+    }
+    // Require Thai script in title/artist except for Thai Alternative bands with official English song titles
+    if (
+      !THAI_SCRIPT_REGEX.test(rawTitle) &&
+      !THAI_SCRIPT_REGEX.test(artistName) &&
+      !/^(solitude is bliss|anatomy rabbit|h 3 f|dept|moderndog)$/i.test(artistName)
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  if (category === 'rap') {
+    return THAI_RAP_ARTIST_REGEX.test(artistName);
   }
 
   if (category === 'thai' || category === 'tpop') {
@@ -1983,7 +2427,7 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
       const aliases = new Set<string>([cleanTitle, item.title]);
       if (item.title_short) aliases.add(item.title_short);
 
-      const romajiInfo = AKB48_ROMAJI_MAP[cleanTitle];
+      const romajiInfo = AKB48_ROMAJI_MAP[cleanTitle] || THAI_ROMAJI_TITLE_MAP[cleanTitle];
       if (romajiInfo) {
         cleanTitle = romajiInfo.display;
         for (const a of romajiInfo.aliases) aliases.add(a);
@@ -2013,8 +2457,14 @@ async function fetchDeezerQuery(query: string, category: Category): Promise<Trac
       });
     }
 
-    // For specific song queries (thai / tpop / anime), take the top official studio match directly
-    if (category === 'thai' || category === 'tpop' || category === 'anime') {
+    // For specific song queries (thai / rock / rap / tpop / anime), take the top official studio match directly
+    if (
+      category === 'thai' ||
+      category === 'rock' ||
+      category === 'rap' ||
+      category === 'tpop' ||
+      category === 'anime'
+    ) {
       return matched.slice(0, 1);
     }
     if (category === 'idol48') {
@@ -2089,6 +2539,8 @@ export async function getCategoryPool(
   if (category === 'mixed') {
     const subCats: Array<Exclude<Category, 'mixed' | 'tts'>> = [
       'thai',
+      'rock',
+      'rap',
       'tpop',
       'idol48',
       'anime',
@@ -2097,7 +2549,7 @@ export async function getCategoryPool(
       'retro',
     ];
     for (const c of subCats) {
-      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 7);
+      const sample = shuffleArray(CATEGORY_QUERIES[c]).slice(0, 6);
       for (const q of sample) {
         queries.push({ q, cat: c });
       }

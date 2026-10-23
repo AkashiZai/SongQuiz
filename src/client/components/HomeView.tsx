@@ -55,6 +55,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   const categories: Category[] = [
     'thai',
+    'rock',
+    'rap',
     'tpop',
     'idol48',
     'anime',

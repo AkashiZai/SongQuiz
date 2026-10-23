@@ -935,6 +935,8 @@ export class GameManager {
   private validateCategory(cat: unknown): Category {
     const valid: Category[] = [
       'thai',
+      'rock',
+      'rap',
       'tpop',
       'idol48',
       'anime',
